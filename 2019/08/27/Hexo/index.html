@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="安装nodejs和npm12sudo apt-get install nodejssudo apt-get install npm 安装hexo创建文件夹12mkdir Hexo  cd Hexo 安装Hexo1sudo npm install -g hexo 初始化1hexo init 此步骤会在hexo文件夹下生成默认的网站模板文件。 清除之前生成的静态模板文件：1hexo clean 生成新">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T17:40:56.286Z">
+<meta property="og:updated_time" content="2019-08-29T09:54:25.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo github 个人微博">
 <meta name="twitter:description" content="安装nodejs和npm12sudo apt-get install nodejssudo apt-get install npm 安装hexo创建文件夹12mkdir Hexo  cd Hexo 安装Hexo1sudo npm install -g hexo 初始化1hexo init 此步骤会在hexo文件夹下生成默认的网站模板文件。 清除之前生成的静态模板文件：1hexo clean 生成新">
@@ -307,13 +307,13 @@
 <p>3.部署<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy（hexo d）</span><br></pre></td></tr></table></figure></p>
 <h1 id="安装-Hexo-Admin插件"><a href="#安装-Hexo-Admin插件" class="headerlink" title="安装 Hexo Admin插件"></a>安装 Hexo Admin插件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br></pre></td></tr></table></figure>
 <p>打开本地管理界面<br><a href="http://localhost:4000/admin" target="_blank" rel="noopener">http://localhost:4000/admin</a></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="一、安装hexo错误：（nodejs版本太低，不能用apt直接升级）"><a href="#一、安装hexo错误：（nodejs版本太低，不能用apt直接升级）" class="headerlink" title="一、安装hexo错误：（nodejs版本太低，不能用apt直接升级）"></a>一、安装hexo错误：（nodejs版本太低，不能用apt直接升级）</h2><p><strong>解决</strong><br>1.产看node版本，没安装的请先安装；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  node -v</span><br></pre></td></tr></table></figure></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="安装hexo错误：（nodejs版本太低，不能用apt直接升级）"><a href="#安装hexo错误：（nodejs版本太低，不能用apt直接升级）" class="headerlink" title="安装hexo错误：（nodejs版本太低，不能用apt直接升级）"></a>安装hexo错误：（nodejs版本太低，不能用apt直接升级）</h2><p><strong>解决</strong><br>1.产看node版本，没安装的请先安装；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  node -v</span><br></pre></td></tr></table></figure></p>
 <p>2.清楚node缓存；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo npm cache clean -f</span><br></pre></td></tr></table></figure></p>
 <p>3.安装node版本管理工具’n’;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo npm install n -g</span><br></pre></td></tr></table></figure></p>
 <p>4.使用版本管理工具安装指定node或者升级到最新node版本；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo n stable  （安装node最新版本）</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://www.cnblogs.com/legendjslc/articles/10131412.html" target="_blank" rel="noopener">参考</a></p>
-<h2 id="二、hexo-d-ERROR-Deployer-not-found-git"><a href="#二、hexo-d-ERROR-Deployer-not-found-git" class="headerlink" title="二、hexo d(ERROR Deployer not found: git)"></a>二、hexo d(ERROR Deployer not found: git)</h2><p><strong>解决</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
-<h2 id="三、hexo输入数学公式不显示"><a href="#三、hexo输入数学公式不显示" class="headerlink" title="三、hexo输入数学公式不显示"></a>三、hexo输入数学公式不显示</h2><ol>
+<h2 id="hexo-d-ERROR-Deployer-not-found-git"><a href="#hexo-d-ERROR-Deployer-not-found-git" class="headerlink" title="hexo d(ERROR Deployer not found: git)"></a>hexo d(ERROR Deployer not found: git)</h2><p><strong>解决</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<h2 id="hexo输入数学公式不显示"><a href="#hexo输入数学公式不显示" class="headerlink" title="hexo输入数学公式不显示"></a>hexo输入数学公式不显示</h2><ol>
 <li><p>在开始部分插入如下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; async</span><br><span class="line">  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 </li>
@@ -333,7 +333,7 @@
         <p><span>Title:</span><a href="/2019/08/27/Hexo/">Hexo github 个人微博</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-08-27, 00:10:39</p>
-        <p><span>Updated:</span>2019-08-27, 01:40:56</p>
+        <p><span>Updated:</span>2019-08-29, 17:54:25</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/08/27/Hexo/" title="Hexo github 个人微博">http://blog.zhengmingz.top/2019/08/27/Hexo/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/08/27/Hexo/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -363,7 +363,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装nodejs和npm"><span class="toc-number">1.</span> <span class="toc-text">安装nodejs和npm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装hexo"><span class="toc-number">2.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#github配置"><span class="toc-number">3.</span> <span class="toc-text">github配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-Hexo-Admin插件"><span class="toc-number">4.</span> <span class="toc-text">安装 Hexo Admin插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">5.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、安装hexo错误：（nodejs版本太低，不能用apt直接升级）"><span class="toc-number">5.1.</span> <span class="toc-text">一、安装hexo错误：（nodejs版本太低，不能用apt直接升级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、hexo-d-ERROR-Deployer-not-found-git"><span class="toc-number">5.2.</span> <span class="toc-text">二、hexo d(ERROR Deployer not found: git)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、hexo输入数学公式不显示"><span class="toc-number">5.3.</span> <span class="toc-text">三、hexo输入数学公式不显示</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装nodejs和npm"><span class="toc-number">1.</span> <span class="toc-text">安装nodejs和npm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装hexo"><span class="toc-number">2.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#github配置"><span class="toc-number">3.</span> <span class="toc-text">github配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-Hexo-Admin插件"><span class="toc-number">4.</span> <span class="toc-text">安装 Hexo Admin插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">5.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装hexo错误：（nodejs版本太低，不能用apt直接升级）"><span class="toc-number">5.1.</span> <span class="toc-text">安装hexo错误：（nodejs版本太低，不能用apt直接升级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-d-ERROR-Deployer-not-found-git"><span class="toc-number">5.2.</span> <span class="toc-text">hexo d(ERROR Deployer not found: git)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo输入数学公式不显示"><span class="toc-number">5.3.</span> <span class="toc-text">hexo输入数学公式不显示</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -413,6 +413,28 @@
 
 
     
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://blog.zhengmingz.top/2019/08/27/Hexo/';
+            this.page.identifier = '2019/08/27/Hexo/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
 
 
 
@@ -431,7 +453,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo github 个人微博</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo github 个人微博</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
 
 
 
@@ -494,6 +516,27 @@
 
 
 
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <div class="scroll" id="scroll">

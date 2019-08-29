@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });   问题一问题描述假设有N个物品，其中第i个物品的重量为Wi。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少">
+<meta name="description" content="title: 背包问题date: 2019/8/26updated: 文章的更新时间categories:   数据结构tag:  动态规划 背包问题   问题一问题描述假设有N个物品，其中第i个物品的重量为Wi。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少？在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="背包问题">
 <meta property="og:url" content="http://blog.zhengmingz.top/2019/08/26/knapsack-problem/index.html">
 <meta property="og:site_name" content="zzm">
-<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });   问题一问题描述假设有N个物品，其中第i个物品的重量为Wi。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少">
+<meta property="og:description" content="title: 背包问题date: 2019/8/26updated: 文章的更新时间categories:   数据结构tag:  动态规划 背包问题   问题一问题描述假设有N个物品，其中第i个物品的重量为Wi。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少？在">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-27T05:09:33.690Z">
+<meta property="og:updated_time" content="2019-08-29T10:10:55.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="背包问题">
-<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });   问题一问题描述假设有N个物品，其中第i个物品的重量为Wi。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少">
+<meta name="twitter:description" content="title: 背包问题date: 2019/8/26updated: 文章的更新时间categories:   数据结构tag:  动态规划 背包问题   问题一问题描述假设有N个物品，其中第i个物品的重量为Wi。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少？在">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -293,14 +293,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-
+        <p>title: 背包问题<br>date: 2019/8/26<br>updated: 文章的更新时间<br>categories: </p>
+<ul>
+<li>数据结构<br>tag: </li>
+<li>动态规划</li>
+<li>背包问题</li>
+</ul>
+<hr>
 <h1 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h1><p><strong>问题描述</strong><br>假设有N个物品，其中第i个物品的重量为W<sub>i</sub>。 现在需要将这些物品分成两堆，使得在“第一堆物品的总重量与第二堆物品的总重量之差尽可能小”的前提下，第一堆物品的数量与第二堆物品的数量之差尽可能大。那么，两堆物品总重量之差最小是多少？在总重量之差最小的前提下，两堆物品的数量之差最大是多少？</p>
 <p><strong>输入</strong><br>第一行包含一个整数N，2<script type="math/tex">\leq</script>N<script type="math/tex">\leq</script>100。<br>第二行包含N个空格隔开的整数W<sub>1</sub>到W<sub>N</sub>，1<script type="math/tex">\leq</script>W<sub>i</sub><script type="math/tex">\leq</script>100。</p>
 <p><strong>输出</strong><br>输出两个空格隔开的整数，第一个整数表示两堆物品的总重量之差的最小值，第二个整数表示在总重量之差最小的提前下，两堆物品的数量之差的最大值。</p>
@@ -340,7 +339,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
         <p><span>Title:</span><a href="/2019/08/26/knapsack-problem/">背包问题</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-08-26, 22:49:00</p>
-        <p><span>Updated:</span>2019-08-27, 13:09:33</p>
+        <p><span>Updated:</span>2019-08-29, 18:10:55</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/08/26/knapsack-problem/" title="背包问题">http://blog.zhengmingz.top/2019/08/26/knapsack-problem/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/08/26/knapsack-problem/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -363,8 +362,8 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/08/26/hello-world/">
-                    Hello World
+                <a href="/2019/07/17/python-small-tips/">
+                    python small tips
                 </a>
             </div>
         
@@ -426,6 +425,28 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 
 
     
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://blog.zhengmingz.top/2019/08/26/knapsack-problem/';
+            this.page.identifier = '2019/08/26/knapsack-problem/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
 
 
 
@@ -440,13 +461,13 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/08/26/hello-world/" title="Next: Hello World">
+            <a href="/2019/07/17/python-small-tips/" title="Next: python small tips">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo github 个人微博</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo github 个人微博</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
 
 
 
@@ -509,6 +530,27 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 
 
 
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <div class="scroll" id="scroll">

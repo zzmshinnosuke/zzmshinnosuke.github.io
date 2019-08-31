@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="安装nodejs和npm12sudo apt-get install nodejssudo apt-get install npm 安装hexo创建文件夹12mkdir Hexo  cd Hexo 安装Hexo1sudo npm install -g hexo 初始化1hexo init 此步骤会在hexo文件夹下生成默认的网站模板文件。 清除之前生成的静态模板文件：1hexo clean 生成新">
+<meta name="description" content="Hexo安装、配置，在github上部署，yelee主题配置">
+<meta name="keywords" content="个人博客,Hexo,github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo github 个人微博">
+<meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://blog.zhengmingz.top/2019/08/27/Hexo/index.html">
 <meta property="og:site_name" content="zzm">
-<meta property="og:description" content="安装nodejs和npm12sudo apt-get install nodejssudo apt-get install npm 安装hexo创建文件夹12mkdir Hexo  cd Hexo 安装Hexo1sudo npm install -g hexo 初始化1hexo init 此步骤会在hexo文件夹下生成默认的网站模板文件。 清除之前生成的静态模板文件：1hexo clean 生成新">
+<meta property="og:description" content="Hexo安装、配置，在github上部署，yelee主题配置">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-29T10:41:50.796Z">
+<meta property="og:updated_time" content="2019-08-31T06:19:52.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo github 个人微博">
-<meta name="twitter:description" content="安装nodejs和npm12sudo apt-get install nodejssudo apt-get install npm 安装hexo创建文件夹12mkdir Hexo  cd Hexo 安装Hexo1sudo npm install -g hexo 初始化1hexo init 此步骤会在hexo文件夹下生成默认的网站模板文件。 清除之前生成的静态模板文件：1hexo clean 生成新">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Hexo安装、配置，在github上部署，yelee主题配置">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo github 个人微博 | zzm</title>
+<title>Hexo | zzm</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: true
     }
 </script>
 
@@ -106,6 +107,13 @@
         
 
         
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
 
 
         
@@ -118,11 +126,6 @@
                         </div>
                         <div class="icon-wrap icon-ribbon hide" data-idx="1">
                             <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
                         </div>
                         
                         
@@ -140,8 +143,6 @@
                         <li>Menu</li>
                         <li>Tags</li>
                         
-                        <li>Friends</li>
-                        
                         
                         <li>About Me</li>
                         
@@ -156,13 +157,11 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a href="/">主页</a></li>
+                            <li><a href="/archives/">所有</a></li>
                         
-                            <li><a href="/archives/">所有文章</a></li>
+                            <li><a href="/tags/">标签</a></li>
                         
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
+                            <li><a href="/about/">关于</a></li>
                         
                         </ul>
                     </nav>
@@ -180,30 +179,18 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li></ul>
                     </div>
                 </section>
                 
                 
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
                 
 
                 
                 
-                <section class="switch-part switch-part4">
+                <section class="switch-part switch-part3">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">业余程序员</div>
                 </section>
                 
             </div>
@@ -229,13 +216,11 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="/">主页</a></li>
+                    <li><a href="/archives/">所有</a></li>
                 
-                    <li><a href="/archives/">所有文章</a></li>
+                    <li><a href="/tags/">标签</a></li>
                 
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
+                    <li><a href="/about/">关于</a></li>
                 
                 <div class="clearfix"></div>
                 </ul>
@@ -272,7 +257,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo github 个人微博
+      Hexo
     </h1>
   
 
@@ -280,8 +265,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/博客/">博客</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -289,7 +282,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="安装nodejs和npm"><a href="#安装nodejs和npm" class="headerlink" title="安装nodejs和npm"></a>安装nodejs和npm</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+        <p>Hexo安装、配置，在github上部署，yelee主题配置<br><a id="more"></a></p>
+<h1 id="安装nodejs和npm"><a href="#安装nodejs和npm" class="headerlink" title="安装nodejs和npm"></a>安装nodejs和npm</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
 <h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>创建文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir Hexo  </span><br><span class="line">cd Hexo</span><br></pre></td></tr></table></figure></p>
 <p>安装Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo</span><br></pre></td></tr></table></figure></p>
 <p>初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
@@ -322,6 +316,8 @@
 <p>2.修改_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: yelee</span><br></pre></td></tr></table></figure></p>
 <p>3.支持数学公式<br>修改 themes/yelee/_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
 <p>4.不喜欢yelee的标题风格<br>修改 themes/yelee/_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heading_stytle:2  //改为github风格</span><br></pre></td></tr></table></figure></p>
+<p>5.社交图标设置<br>themes/yelee/source/css/_partial/customise/social-icon.styl</p>
+<p><strong>参考</strong><br><a href="http://moxfive.coding.me/yelee/2.Basic-Usage/post-excerpt.html" target="_blank" rel="noopener">yelee配置中文说明</a><br><a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" rel="noopener">yelee github</a></p>
 
       
     </div>
@@ -330,12 +326,12 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/08/27/Hexo/">Hexo github 个人微博</a></p>
+        <p><span>Title:</span><a href="/2019/08/27/Hexo/">Hexo</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-08-27, 00:10:39</p>
-        <p><span>Updated:</span>2019-08-29, 18:41:50</p>
+        <p><span>Updated:</span>2019-08-31, 14:19:52</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/08/27/Hexo/" title="Hexo github 个人微博">http://blog.zhengmingz.top/2019/08/27/Hexo/</a>
+            <span>Full URL:</span><a class="post-url" href="/2019/08/27/Hexo/" title="Hexo">http://blog.zhengmingz.top/2019/08/27/Hexo/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/08/27/Hexo/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -399,7 +395,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo github 个人微博　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Hexo　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -453,7 +449,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo github 个人微博</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
 
 
 
@@ -462,16 +458,16 @@
         
     </script>
 </div>
-      <footer id="footer">
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2019 zzm
+                2019 zzm
             </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
+
         </div>
         
             <div class="visit">
@@ -494,6 +490,8 @@
         
     </div>
 </footer>
+
+
     </div>
     
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
@@ -549,12 +547,12 @@ MathJax.Hub.Queue(function() {
     
         var oOpenInNew = {
             
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
             
             
             
             
-            
-             archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             
              friends: "#js-friends a", 

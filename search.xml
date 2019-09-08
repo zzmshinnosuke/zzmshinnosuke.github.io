@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>conda</title>
+      <link href="/2019/09/08/conda/"/>
+      <url>/2019/09/08/conda/</url>
+      
+        <content type="html"><![CDATA[<p>conda的安装与配置<br><a id="more"></a></p><h1 id="安装conda"><a href="#安装conda" class="headerlink" title="安装conda"></a>安装conda</h1><p> <strong>下载</strong><br> <code>wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh</code><br> <strong>安装</strong><br> <code>bash Miniconda2-latest-Linux-x86_64.sh -b -p /home/user/miniconda2</code><br> <code>mv Miniconda2-latest-Linux-x86_64.sh download</code><br><strong>配置环境</strong><br>在<code>.bashrc</code>中添加<br><code>PATH=/home/user/miniconda2/bin:$PATH</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> conda </tag>
+            
+            <tag> cuda </tag>
+            
+            <tag> tensorflow </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ftp服务器搭建</title>
       <link href="/2019/09/03/ftp/"/>
       <url>/2019/09/03/ftp/</url>

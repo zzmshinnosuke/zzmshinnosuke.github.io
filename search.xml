@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>ubuntu双系统</title>
+      <link href="/2019/09/16/install-ubuntu/"/>
+      <url>/2019/09/16/install-ubuntu/</url>
+      
+        <content type="html"><![CDATA[<p>在已经安装windows的基础上，安装ubuntu16，使用硬盘安装的方式，不用u盘。<br><a id="more"></a></p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><blockquote><p>下载安装easybcd</p></blockquote><h1 id="安装ubuntu"><a href="#安装ubuntu" class="headerlink" title="安装ubuntu"></a>安装ubuntu</h1><h1 id="卸载一些没用的软件"><a href="#卸载一些没用的软件" class="headerlink" title="卸载一些没用的软件"></a>卸载一些没用的软件</h1><h1 id="安装过程遇到的问题"><a href="#安装过程遇到的问题" class="headerlink" title="安装过程遇到的问题"></a>安装过程遇到的问题</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安装 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> 双系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>分割数组的最大值</title>
       <link href="/2019/09/12/splitArray/"/>
       <url>/2019/09/12/splitArray/</url>
@@ -222,7 +249,7 @@
       
       <categories>
           
-          <category> 数据结构 </category>
+          <category> 算法 </category>
           
       </categories>
       

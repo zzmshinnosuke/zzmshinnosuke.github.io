@@ -15,13 +15,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="zzm">
-<meta property="og:url" content="http://blog.zhengmingz.top/tags/递归/index.html">
+<meta name="description" content="给定一个数组，修改其中一个数字，找到最长子数组">
+<meta name="keywords" content="迭代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最长子数组">
+<meta property="og:url" content="http://blog.zhengmingz.top/2019/09/17/Algorithm-longestSubarray/index.html">
 <meta property="og:site_name" content="zzm">
+<meta property="og:description" content="给定一个数组，修改其中一个数字，找到最长子数组">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-17T07:08:51.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zzm">
+<meta name="twitter:title" content="最长子数组">
+<meta name="twitter:description" content="给定一个数组，修改其中一个数字，找到最长子数组">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -53,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: 递归 | zzm</title>
+<title>最长子数组 | zzm</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -63,9 +68,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -233,60 +238,171 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Algorithm-longestSubarray" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/09/17/Algorithm-bugNum/" class="archive-article-date">
-      <time datetime="2019-09-17T02:25:27.000Z" itemprop="datePublished">09-17</time>
+    <div class="article-meta">
+      <a href="/2019/09/17/Algorithm-longestSubarray/" class="article-date">
+      <time datetime="2019-09-17T06:27:32.000Z" itemprop="datePublished">2019-09-17</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/17/Algorithm-bugNum/">修改bug</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最长子数组
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/算法/">算法</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/迭代/">迭代</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>给定一个数组，修改其中一个数字，找到最长子数组<br><a id="more"></a></p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个无序的整型数组，允许将其中一个元素修改为任意整型值（包括原值），使修改后的数组存在尽可能长的连续递增序列。<br>输出修改后数组最长递增序列的长度</p>
+<p><strong>输入描述</strong><br>第一行输入为数组长度；第二行输入为数组元素，以空格隔开。数组中无重复元素，输入元素的取值范围为[-100000,100000]。<br><strong>输出描述</strong><br>修改之后数组内最长连续递增序列的长度<br><strong>示例1</strong><br>输入<br><code>5</code><br><code>3 1 2 5 4</code><br>输出<br><code>4</code><br>说明：将5改为3，或将3改为0<br><strong>示例2</strong><br>输入<br><code>4</code><br><code>3 7 4 8</code><br>输出<br><code>3</code><br>说明：将7改为小于4的值</p>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>先找到所有递增子数组，<br>将所有的子数组与相邻子数组进行修改一位合并，如果不能合并则+1，可以合并则+另一个数组长度。<br>找到合并后的最长子数组。</p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#判断两个子数组能否合并</span><br><span class="line">def check(nums,seq1,seq2):</span><br><span class="line">    if (seq1[1]-seq1[0]+1)==1:</span><br><span class="line">        return seq2[1]-seq2[0]+1+1</span><br><span class="line">    if (seq2[1]-seq2[0]+1)==1:</span><br><span class="line">        return seq1[1]-seq1[0]+1+1</span><br><span class="line">    if (nums[seq2[0]+1]&gt;nums[seq1[1]]+2) or (nums[seq2[0]]&gt;nums[seq1[1]-1]+2):</span><br><span class="line">        return seq2[1]-seq2[0]+1+seq1[1]-seq1[0]+1</span><br><span class="line">    len1=seq1[1]-seq1[0]+1</span><br><span class="line">    len2=seq2[1]-seq2[0]+1</span><br><span class="line">    if len1&gt;len2:</span><br><span class="line">        return len1+1</span><br><span class="line">    else:</span><br><span class="line">        return len2+1</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    count=int(input())</span><br><span class="line">    nums=[int(a) for a in input().split(&apos; &apos;)]</span><br><span class="line">    seqs=[]</span><br><span class="line">    index=0</span><br><span class="line">    #先将原数组划分为递增的多个子数组</span><br><span class="line">    for i in range(len(nums)):</span><br><span class="line">        i=i+1</span><br><span class="line">        if i==len(nums):</span><br><span class="line">            seqs.append([index,i-1])</span><br><span class="line">            break</span><br><span class="line">        if nums[i-1]&gt;=nums[i]:</span><br><span class="line">            seqs.append([index,i-1])</span><br><span class="line">            index=i</span><br><span class="line">    #将相邻的子数组合并，找到最长的子数组</span><br><span class="line">    max=seqs[0][1]+seqs[0][0]+1</span><br><span class="line">    for i in range(len(seqs)):</span><br><span class="line">        if i==len(seqs)-1:</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            result=check(nums,seqs[i],seqs[i+1])</span><br><span class="line">            if result&gt;max:</span><br><span class="line">                max=result</span><br><span class="line">    print(max)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
+        <p><span>Created:</span>2019-09-17, 14:27:32</p>
+        <p><span>Updated:</span>2019-09-17, 15:08:51</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/09/17/Algorithm-longestSubarray/" title="最长子数组">http://blog.zhengmingz.top/2019/09/17/Algorithm-longestSubarray/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/17/Algorithm-longestSubarray/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/09/17/Algorithm-bugNum/">
+                    修改bug
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解析"><span class="toc-number">2.</span> <span class="toc-text">解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码"><span class="toc-number">3.</span> <span class="toc-text">源码</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"最长子数组　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/09/17/Algorithm-bugNum/" title="Next: 修改bug">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-bugNum/">修改bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/16/install-ubuntu/">ubuntu双系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/12/splitArray/">分割数组的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/wpfgif/">wpf加载gif</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/ZshTmuxVim/">tmux+vim+zsh 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/sketchpaper/">sketch paper</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/conda/">conda</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/ftp/">ftp服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/17/python-small-tips/">python small tips</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>最长子数组</title>
+      <link href="/2019/09/17/Algorithm-longestSubarray/"/>
+      <url>/2019/09/17/Algorithm-longestSubarray/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个数组，修改其中一个数字，找到最长子数组<br><a id="more"></a></p><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个无序的整型数组，允许将其中一个元素修改为任意整型值（包括原值），使修改后的数组存在尽可能长的连续递增序列。<br>输出修改后数组最长递增序列的长度</p><p><strong>输入描述</strong><br>第一行输入为数组长度；第二行输入为数组元素，以空格隔开。数组中无重复元素，输入元素的取值范围为[-100000,100000]。<br><strong>输出描述</strong><br>修改之后数组内最长连续递增序列的长度<br><strong>示例1</strong><br>输入<br><code>5</code><br><code>3 1 2 5 4</code><br>输出<br><code>4</code><br>说明：将5改为3，或将3改为0<br><strong>示例2</strong><br>输入<br><code>4</code><br><code>3 7 4 8</code><br>输出<br><code>3</code><br>说明：将7改为小于4的值</p><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>先找到所有递增子数组，<br>将所有的子数组与相邻子数组进行修改一位合并，如果不能合并则+1，可以合并则+另一个数组长度。<br>找到合并后的最长子数组。</p><h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#判断两个子数组能否合并</span><br><span class="line">def check(nums,seq1,seq2):</span><br><span class="line">    if (seq1[1]-seq1[0]+1)==1:</span><br><span class="line">        return seq2[1]-seq2[0]+1+1</span><br><span class="line">    if (seq2[1]-seq2[0]+1)==1:</span><br><span class="line">        return seq1[1]-seq1[0]+1+1</span><br><span class="line">    if (nums[seq2[0]+1]&gt;nums[seq1[1]]+2) or (nums[seq2[0]]&gt;nums[seq1[1]-1]+2):</span><br><span class="line">        return seq2[1]-seq2[0]+1+seq1[1]-seq1[0]+1</span><br><span class="line">    len1=seq1[1]-seq1[0]+1</span><br><span class="line">    len2=seq2[1]-seq2[0]+1</span><br><span class="line">    if len1&gt;len2:</span><br><span class="line">        return len1+1</span><br><span class="line">    else:</span><br><span class="line">        return len2+1</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    count=int(input())</span><br><span class="line">    nums=[int(a) for a in input().split(&apos; &apos;)]</span><br><span class="line">    seqs=[]</span><br><span class="line">    index=0</span><br><span class="line">    #先将原数组划分为递增的多个子数组</span><br><span class="line">    for i in range(len(nums)):</span><br><span class="line">        i=i+1</span><br><span class="line">        if i==len(nums):</span><br><span class="line">            seqs.append([index,i-1])</span><br><span class="line">            break</span><br><span class="line">        if nums[i-1]&gt;=nums[i]:</span><br><span class="line">            seqs.append([index,i-1])</span><br><span class="line">            index=i</span><br><span class="line">    #将相邻的子数组合并，找到最长的子数组</span><br><span class="line">    max=seqs[0][1]+seqs[0][0]+1</span><br><span class="line">    for i in range(len(seqs)):</span><br><span class="line">        if i==len(seqs)-1:</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            result=check(nums,seqs[i],seqs[i+1])</span><br><span class="line">            if result&gt;max:</span><br><span class="line">                max=result</span><br><span class="line">    print(max)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 迭代 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>修改bug</title>
       <link href="/2019/09/17/Algorithm-bugNum/"/>
       <url>/2019/09/17/Algorithm-bugNum/</url>

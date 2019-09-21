@@ -60,7 +60,7 @@
       <link href="/2019/09/16/install-ubuntu/"/>
       <url>/2019/09/16/install-ubuntu/</url>
       
-        <content type="html"><![CDATA[<p>在已经安装windows的基础上，安装ubuntu16，使用硬盘安装的方式，不用u盘。<br><a id="more"></a></p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><blockquote><p>下载安装easybcd</p></blockquote><h1 id="安装ubuntu"><a href="#安装ubuntu" class="headerlink" title="安装ubuntu"></a>安装ubuntu</h1><h1 id="卸载一些没用的软件"><a href="#卸载一些没用的软件" class="headerlink" title="卸载一些没用的软件"></a>卸载一些没用的软件</h1><h1 id="安装过程遇到的问题"><a href="#安装过程遇到的问题" class="headerlink" title="安装过程遇到的问题"></a>安装过程遇到的问题</h1>]]></content>
+        <content type="html"><![CDATA[<p>在已经安装windows的基础上，安装ubuntu16，使用硬盘安装的方式，不用u盘。<br><a id="more"></a></p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul><li>下载安装easybcd，创建启动条目<br>title Install Ubuntu<br>root (hd0,0)<br>kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-16.04.2-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8<br>initrd (hd0,0)/initrd.lz</li><li>将vmlinuz.efi   initrd.lz   系统iso复制到 对应的分区目录下</li></ul><h1 id="安装ubuntu"><a href="#安装ubuntu" class="headerlink" title="安装ubuntu"></a>安装ubuntu</h1><ul><li>进入临时系统，执行下面命令，可以防止安装过程卡死（ubuntu硬盘安装一直正在探测文件系统）<br>sudo umount -l /isodevice/    </li><li>分区<br>/ 根分区 主分区 ext4<br>/home 用户分区 ext4  尽可能大<br>/swap 交换分区，和内存一样大</li><li>在easybcd中添加ubuntu启动项，选择grub2</li></ul><h1 id="卸载一些没用的软件"><a href="#卸载一些没用的软件" class="headerlink" title="卸载一些没用的软件"></a>卸载一些没用的软件</h1><ul><li>卸载libreoffices<br>sudo apt-get remove libreoffice-common</li><li>删除Amazon广告图标<br>sudo rm -f /usr/share/applications/com.canonical.launcher.amazon.desktop<br>sudo rm -f /usr/share/applications/ubuntu-amazon-default.desktop</li><li>删除多余的软件<br>sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku landscape-client-ui-install transmission-common</li></ul><h1 id="安装过程遇到的问题"><a href="#安装过程遇到的问题" class="headerlink" title="安装过程遇到的问题"></a>安装过程遇到的问题</h1><h2 id="在联想p318上安装的时候，卡死。failed-to-create-kernel-channel-22"><a href="#在联想p318上安装的时候，卡死。failed-to-create-kernel-channel-22" class="headerlink" title="在联想p318上安装的时候，卡死。failed to create kernel channel, -22"></a>在联想p318上安装的时候，卡死。failed to create kernel channel, -22</h2><p>在安装界面，按‘e’，进入编辑，在<code>quiet splash</code>后添加<br><code>quiet splash nouveau.modeset=0</code><br>装完后系统特别卡，键盘鼠标都不能用。也可以用使用上面方法临时解决。<br>终极解决，需要安装NVIDIA显卡驱动。</p><h2 id="ubuntu安装NVIDIA显卡驱动"><a href="#ubuntu安装NVIDIA显卡驱动" class="headerlink" title="ubuntu安装NVIDIA显卡驱动"></a>ubuntu安装NVIDIA显卡驱动</h2><h3 id="安装NVIDIA显卡驱动"><a href="#安装NVIDIA显卡驱动" class="headerlink" title="安装NVIDIA显卡驱动"></a>安装NVIDIA显卡驱动</h3><ol><li>去英伟达<a href="http://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">官网</a>下载驱动程序</li><li>禁用nouveau第三方驱动<br>打开编辑配置文件： <code>sudo gedit /etc/modprobe.d/blacklist.conf</code><br>在最后一行添加：<code>blacklist nouveau</code><br>改好后执行命令：<code>sudo update-initramfs -u</code><br>重启使之生效：<code>reboot</code></li><li>安装驱动<br>重启后按Ctrl+Alt+F1 进入命令行界面<br>执行命令：<code>lsmod | grep nouveau</code><br>禁用X服务：<code>sudo /etc/init.d/lightdm stop</code> (或者：sudo service lightdm stop)<br>给驱动run文件赋予可执行权限：<code>sudo chmod a+x NVIDIA-Linux-x86_64-390.25.run</code>    (下载的驱动文件名）<br>安装：<code>sudo ./NVIDIA-Linux-x86_64-390.25.run -no-opengl-files</code><pre><code> –no-opengl-files 只安装驱动文件，不安装OpenGL文件。这个参数最重要 –no-x-check 安装驱动时不检查X服务 –no-nouveau-check 安装驱动时不检查nouveau  后面两个参数可不加。</code></pre>开启X服务：<code>sudo /etc/init.d/lightdm start</code> (或者：sudo service lightdm start)<br>重启，没有问题，输入命令：<code>nvidia-smi</code><br>如果出现了驱动版本就表示安装成功了。</li></ol><p><a href="https://blog.csdn.net/u014797226/article/details/79626693" target="_blank" rel="noopener">参考</a></p><h3 id="禁用Nouveau-开源驱动"><a href="#禁用Nouveau-开源驱动" class="headerlink" title="禁用Nouveau 开源驱动"></a>禁用Nouveau 开源驱动</h3><p>首先添加一个blacklist:<br><code># vi /etc/modprobe.d/blacklist-nouveau.conf</code><br>写入以下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">blacklist nouveau</span><br><span class="line">blacklist lbm-nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">alias nouveau off</span><br><span class="line">alias lbm-nouveau off</span><br></pre></td></tr></table></figure></p><p>为了保证完全禁用掉，还要在内核中直接禁用Nouveau:<br><code># echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf</code><br>这之后，更新配置试生效：<br><code># update-initramfs -u</code><br>重启</p>]]></content>
       
       
       <categories>
@@ -75,6 +75,8 @@
             <tag> ubuntu </tag>
             
             <tag> 双系统 </tag>
+            
+            <tag> NVIDIA显卡驱动 </tag>
             
         </tags>
       
@@ -99,9 +101,9 @@
       
         <tags>
             
-            <tag> 二分法 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 二分法 </tag>
             
         </tags>
       
@@ -248,9 +250,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> ftp </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> 服务器 </tag>
             

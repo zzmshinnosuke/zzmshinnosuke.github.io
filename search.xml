@@ -4,11 +4,71 @@
   
     
     <entry>
+      <title>c中指针地址加1</title>
+      <link href="/2019/10/22/c-point-addr/"/>
+      <url>/2019/10/22/c-point-addr/</url>
+      
+        <content type="html"><![CDATA[<p>c、c++中一些指针、数组地址加减的问题<br><a id="more"></a></p><h1 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">int a[5]=&#123;0,1,2,3,4&#125;;</span><br><span class="line">int *p=(int *)(&amp;a+1);</span><br><span class="line">printf(&quot;%p\n&quot;,&amp;a);</span><br><span class="line">printf(&quot;%p\n&quot;,&amp;a+1);</span><br><span class="line">printf(&quot;%d\n&quot;,*(p));</span><br><span class="line">printf(&quot;%d\n&quot;,*(p-1));</span><br><span class="line">printf(&quot;%d\n&quot;,*(p-2));</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0x7ffcfb1f5830</span><br><span class="line">0x7ffcfb1f5844</span><br><span class="line">32764</span><br><span class="line">4</span><br><span class="line">3</span><br></pre></td></tr></table></figure></p><p>指针P+n = 指针P + sizeof（指针的类型）<em> n<br>sizeof(a)=20 a的类型是int(</em>)[5]</p><p>如果改为<code>int *p=(int *)(&amp;a[0]+1);</code>结果就完全不同了</p><p><a href="https://blog.csdn.net/qq_23996069/article/details/89309016" target="_blank" rel="noopener">参考1</a><br><a href="https://blog.csdn.net/m0_37605407/article/details/79198118" target="_blank" rel="noopener">参考2</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c </tag>
+            
+            <tag> 指针 </tag>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 地址 </tag>
+            
+            <tag> c++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker</title>
+      <link href="/2019/10/08/docker/"/>
+      <url>/2019/10/08/docker/</url>
+      
+        <content type="html"><![CDATA[<p>Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br><a id="more"></a><br><a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">参考</a><br><a href="https://blog.csdn.net/talkxin/article/details/83061973" target="_blank" rel="noopener">参考</a><br><a href="https://www.cnblogs.com/me115/p/5539047.html" target="_blank" rel="noopener">参考</a></p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h1><p><strong>运行容器</strong><br>docker run -d -P training/webapp python app.py<br>-d 后台运行<br>-P 自动映射端口<br>-p 指定端口 #-p 5000:5000<br><strong>查看容器</strong><br>docker ps<br><strong>停止容器</strong><br>docker stop id/name<br><strong>重启容器</strong><br>docker start id/name</p><p><strong>附着容器</strong><br>附着到正在运行的容器<br>docker attach <id、container_name><br>进入正在运行的容器内部，同时运行bash(比attach更好用)<br>docker exec -t -i <id container_name>  /bin/bash</id></id、container_name></p><h2 id="镜像使用"><a href="#镜像使用" class="headerlink" title="镜像使用"></a>镜像使用</h2><p>$ docker images  #列出本地镜像<br>$ docker pull ubuntu:13.10 #获取新镜像</p><h1 id="docker-gpu环境"><a href="#docker-gpu环境" class="headerlink" title="docker gpu环境"></a>docker gpu环境</h1><p><a href="https://www.jianshu.com/p/401a37387ecb" target="_blank" rel="noopener">参考</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安装 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> gpu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Django 在 pycharm（社区版）上安装运行</title>
       <link href="/2019/09/26/django1/"/>
       <url>/2019/09/26/django1/</url>
       
-        <content type="html"><![CDATA[<p>django可以基于python后端开发web<br><a id="more"></a></p><h1 id="环境及版本"><a href="#环境及版本" class="headerlink" title="环境及版本"></a>环境及版本</h1><p>ubuntu 16<br>python<br>pycharm（community）<br>pip 安装，需要先安装python，下载tar.gz文件，解压，python setup.py install</p><h1 id="Django安装"><a href="#Django安装" class="headerlink" title="Django安装"></a>Django安装</h1><p>pip install django<br>输入 django-admin 验证是否安装成功</p><p>在pycharm中创建django工程<br>1.创建项目<br>django-admin startproject Demo  （Demo为项目名称）<br>使用pycharm open生成的项目工程目录如下：<br><img src="//blog.zhengmingz.top/2019/09/26/django1/1.png" alt="1"><br>2.创建应用<br>点击pycharm左下角，选择terminal<br><img src="//blog.zhengmingz.top/2019/09/26/django1/3.png" alt="3"><br>在Terminal中输入：<br>python manage.py startapp web （web为应用名称）<br>项目目录如下：<br><img src="//blog.zhengmingz.top/2019/09/26/django1/2.png" alt="2"><br>3.启动服务<br>在terminal中输入<br>python manage.py runserver<br>在服务启动后，在浏览其中输入127.0.0.1:8000<br><img src="//blog.zhengmingz.top/2019/09/26/django1/4.png" alt="4"><br>可以看到服务启动成功。<br>4.允许其他电脑访问该服务<br>在settings.py中将<br>ALLOWED_HOSTS = []  改为 ALLOWED_HOSTS = [‘*’,]，注意不要漏掉“,”<br>在Terminal中输入：<br>python manage.py runserver 0.0.0.0:9000<br>支持ipv6：  python manage.py runserver [::]:9000<br>在其他机器可以使用本机器的ip和port访问<br>如:<code>192.168.2.5:9000</code><br> <code>[ipv6]:9000</code></p><p>5.问题<br>（1）Django app接口url报错Forbidden (CSRF cookie not set.)<br>这是因为Django对表单post请求做的安全性验证，在app开发中，可以干掉这一项，具体操作如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改settings.py文件，注释掉</span><br><span class="line">django.middleware.csrf.CsrfViewMiddleware&apos;</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE_CLASSES = [ </span><br><span class="line">&apos;django.middleware.security.SecurityMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.sessions.middleware.SessionMiddleware&apos;, </span><br><span class="line">&apos;django.middleware.common.CommonMiddleware&apos;, </span><br><span class="line"># &apos;django.middleware.csrf.CsrfViewMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.auth.middleware.SessionAuthenticationMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.messages.middleware.MessageMiddleware&apos;, </span><br><span class="line">&apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;, </span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>django可以基于python后端开发web<br><a id="more"></a></p><h1 id="环境及版本"><a href="#环境及版本" class="headerlink" title="环境及版本"></a>环境及版本</h1><p>ubuntu 16<br>python<br>pycharm（community）<br>pip 安装，需要先安装python，下载tar.gz文件，解压，python setup.py install</p><h1 id="Django安装"><a href="#Django安装" class="headerlink" title="Django安装"></a>Django安装</h1><p>pip install django<br>输入 django-admin 验证是否安装成功</p><p>在pycharm中创建django工程<br>1.创建项目<br>django-admin startproject Demo  （Demo为项目名称）<br>使用pycharm open生成的项目工程目录如下：<br><img src="//blog.zhengmingz.top/2019/09/26/django1/1.png" alt="1"><br>2.创建应用<br>点击pycharm左下角，选择terminal<br><img src="//blog.zhengmingz.top/2019/09/26/django1/3.png" alt="3"><br>在Terminal中输入：<br>python manage.py startapp web （web为应用名称）<br>项目目录如下：<br><img src="//blog.zhengmingz.top/2019/09/26/django1/2.png" alt="2"><br>3.启动服务<br>在terminal中输入<br>python manage.py runserver<br>在服务启动后，在浏览其中输入127.0.0.1:8000<br><img src="//blog.zhengmingz.top/2019/09/26/django1/4.png" alt="4"><br>可以看到服务启动成功。<br>4.允许其他电脑访问该服务<br>在settings.py中将<br>ALLOWED_HOSTS = []  改为 ALLOWED_HOSTS = [‘*’,]，注意不要漏掉“,”<br>在Terminal中输入：<br>python manage.py runserver 0.0.0.0:9000<br>支持ipv6：  python manage.py runserver [::]:9000<br>在其他机器可以使用本机器的ip和port访问<br>如:<code>192.168.2.5:9000</code><br> <code>[ipv6]:9000</code></p><p>5.问题<br>（1）Django app接口url报错Forbidden (CSRF cookie not set.)<br>这是因为Django对表单post请求做的安全性验证，在app开发中，可以干掉这一项，具体操作如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改settings.py文件，注释掉</span><br><span class="line">django.middleware.csrf.CsrfViewMiddleware&apos;</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE_CLASSES = [ </span><br><span class="line">&apos;django.middleware.security.SecurityMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.sessions.middleware.SessionMiddleware&apos;, </span><br><span class="line">&apos;django.middleware.common.CommonMiddleware&apos;, </span><br><span class="line"># &apos;django.middleware.csrf.CsrfViewMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.auth.middleware.SessionAuthenticationMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.messages.middleware.MessageMiddleware&apos;, </span><br><span class="line">&apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;, </span><br><span class="line">]</span><br></pre></td></tr></table></figure><h1 id="django-性能优化，提高并发数量"><a href="#django-性能优化，提高并发数量" class="headerlink" title="django 性能优化，提高并发数量"></a>django 性能优化，提高并发数量</h1><p>nginx+uwsgi+django<br><a href="https://www.jianshu.com/p/4db9581353a1" target="_blank" rel="noopener">参考1</a> (未验证可行性)<br><a href="https://blog.csdn.net/u013378306/article/details/76215982" target="_blank" rel="noopener">参考2</a> (未验证可行性)<br><a href="https://www.cnblogs.com/1204guo/p/8056641.html" target="_blank" rel="noopener">参考3</a> (未验证可行性)</p>]]></content>
       
       
       <categories>

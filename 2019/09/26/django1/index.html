@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://blog.zhengmingz.top/2019/09/26/django1/4.png">
 <meta property="og:image" content="http://blog.zhengmingz.top/2019/09/26/django1/5.png">
 <meta property="og:image" content="http://blog.zhengmingz.top/2019/09/26/django1/6.png">
-<meta property="og:updated_time" content="2019-10-30T15:39:09.529Z">
+<meta property="og:updated_time" content="2019-10-30T15:41:05.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 在 pycharm（社区版）上安装运行">
 <meta name="twitter:description" content="django可以基于python后端开发web">
@@ -296,9 +296,7 @@
 <p>5.问题<br>（1）Django app接口url报错Forbidden (CSRF cookie not set.)<br>这是因为Django对表单post请求做的安全性验证，在app开发中，可以干掉这一项，具体操作如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改settings.py文件，注释掉</span><br><span class="line">django.middleware.csrf.CsrfViewMiddleware&apos;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE_CLASSES = [ </span><br><span class="line">&apos;django.middleware.security.SecurityMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.sessions.middleware.SessionMiddleware&apos;, </span><br><span class="line">&apos;django.middleware.common.CommonMiddleware&apos;, </span><br><span class="line"># &apos;django.middleware.csrf.CsrfViewMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.auth.middleware.SessionAuthenticationMiddleware&apos;, </span><br><span class="line">&apos;django.contrib.messages.middleware.MessageMiddleware&apos;, </span><br><span class="line">&apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;, </span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>(2) 跨域问题<br>pip install django-cors-headers</p>
-<p>配置settings.py文件<br>添加</p>
-<h1 id="设置可跨域范围"><a href="#设置可跨域范围" class="headerlink" title="设置可跨域范围"></a>设置可跨域范围</h1><p>CORS_ALLOW_CREDENTIALS = True<br>CORS_ORIGIN_ALLOW_ALL = True<br><img src="//blog.zhengmingz.top/2019/09/26/django1/5.png" alt="5"></p>
-<h1 id="定义跨域中间件"><a href="#定义跨域中间件" class="headerlink" title="定义跨域中间件"></a>定义跨域中间件</h1><p>‘corsheaders.middleware.CorsMiddleware’,<br><img src="//blog.zhengmingz.top/2019/09/26/django1/6.png" alt="6"></p>
+<p>配置settings.py文件<br>添加<br>设置可跨域范围<br>CORS_ALLOW_CREDENTIALS = True<br>CORS_ORIGIN_ALLOW_ALL = True<br><img src="//blog.zhengmingz.top/2019/09/26/django1/5.png" alt="5"><br>定义跨域中间件<br>‘corsheaders.middleware.CorsMiddleware’,<br><img src="//blog.zhengmingz.top/2019/09/26/django1/6.png" alt="6"></p>
 <h1 id="django-性能优化，提高并发数量"><a href="#django-性能优化，提高并发数量" class="headerlink" title="django 性能优化，提高并发数量"></a>django 性能优化，提高并发数量</h1><p>nginx+uwsgi+django<br><a href="https://www.jianshu.com/p/4db9581353a1" target="_blank" rel="noopener">参考1</a> (未验证可行性)<br><a href="https://blog.csdn.net/u013378306/article/details/76215982" target="_blank" rel="noopener">参考2</a> (未验证可行性)<br><a href="https://www.cnblogs.com/1204guo/p/8056641.html" target="_blank" rel="noopener">参考3</a> (未验证可行性)</p>
 
       
@@ -311,7 +309,7 @@
         <p><span>Title:</span><a href="/2019/09/26/django1/">Django 在 pycharm（社区版）上安装运行</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-09-26, 17:06:09</p>
-        <p><span>Updated:</span>2019-10-30, 23:39:09</p>
+        <p><span>Updated:</span>2019-10-30, 23:41:05</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/09/26/django1/" title="Django 在 pycharm（社区版）上安装运行">http://blog.zhengmingz.top/2019/09/26/django1/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/26/django1/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -347,7 +345,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境及版本"><span class="toc-number">1.</span> <span class="toc-text">环境及版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django安装"><span class="toc-number">2.</span> <span class="toc-text">Django安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置可跨域范围"><span class="toc-number">3.</span> <span class="toc-text">设置可跨域范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定义跨域中间件"><span class="toc-number">4.</span> <span class="toc-text">定义跨域中间件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#django-性能优化，提高并发数量"><span class="toc-number">5.</span> <span class="toc-text">django 性能优化，提高并发数量</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境及版本"><span class="toc-number">1.</span> <span class="toc-text">环境及版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django安装"><span class="toc-number">2.</span> <span class="toc-text">Django安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#django-性能优化，提高并发数量"><span class="toc-number">3.</span> <span class="toc-text">django 性能优化，提高并发数量</span></a></li></ol>
         
     </div>
     <style>

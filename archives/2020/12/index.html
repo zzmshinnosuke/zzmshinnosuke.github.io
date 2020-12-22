@@ -15,18 +15,13 @@
 
 
 
-<meta name="description" content="在ubuntu服务器上搭建ftp服务，用于个人使用">
-<meta name="keywords" content="ftp,ubuntu,服务器,安装">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ftp服务器搭建">
-<meta property="og:url" content="http://blog.zhengmingz.top/2019/09/03/ftp/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zzm">
+<meta property="og:url" content="http://blog.zhengmingz.top/archives/2020/12/index.html">
 <meta property="og:site_name" content="zzm">
-<meta property="og:description" content="在ubuntu服务器上搭建ftp服务，用于个人使用">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-09T09:20:42.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ftp服务器搭建">
-<meta name="twitter:description" content="在ubuntu服务器上搭建ftp服务，用于个人使用">
+<meta name="twitter:title" content="zzm">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +53,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>ftp服务器搭建 | zzm</title>
+<title>Archives: 2020/12 | zzm</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -68,8 +63,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
-        isArchive: false,
+        isPost: false,
+        isArchive: true,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -238,181 +233,60 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-ftp" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2019/09/03/ftp/" class="article-date">
-      <time datetime="2019-09-03T09:41:04.000Z" itemprop="datePublished">2019-09-03</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2020/12/22/linux-manage/" class="archive-article-date">
+      <time datetime="2020-12-22T07:12:59.000Z" itemprop="datePublished">12-22</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      ftp服务器搭建
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/12/22/linux-manage/">linux-manage</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/安装/">安装</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ftp/">ftp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装/">安装</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <p>在ubuntu服务器上搭建ftp服务，用于个人使用<br><a id="more"></a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>安装VSFTPD</strong><br>使用 apt-get 安装 vsftpd：<br><code>sudo apt-get install vsftpd -y</code><br><strong>启动 VSFTPD</strong><br>安装完成后 VSFTPD 会自动启动，通过 netstat 命令可以看到系统已经[监听了 21 端口]：<br><code>sudo netstat -nltp | grep 21</code><br>如果没有启动，可以手动开启 VSFTPD 服务：<br><code>sudo systemctl start vsftpd.service</code><br>FTP 协议默认使用 21 端口作为服务端口<br><strong>配置用户访问目录</strong><br>新建用户主目录<br><code>sudo mkdir /home/ftp</code><br><strong>新建用户uftp并设置密码</strong><br>创建一个用户 uftp ：<br><code>sudo useradd -d /home/uftp -s /bin/bash uftp</code><br>为用户 uftp 设置密码：<br><code>sudo passwd uftp</code><br>删除掉 pam.d 中 vsftpd，因为该配置文件会导致使用用户名登录 ftp 失败：<br><code>sudo rm /etc/pam.d/vsftpd</code><br><strong>限制该用户只能通过ftp访问，不可以直接登录服务器</strong><br>sudo usermod -s /sbin/nologin uftp<br><strong>修改vsftpd配置</strong><br>修改 <code>/etc/vsftpd.conf</code> 文件中的配置（直接将如下配置添加到配置文件最下方）：<br>限制用户对主目录以外目录访问<br><code>chroot_local_user=YES</code><br>指定一个 userlist 存放允许访问 ftp 的用户列表<br><code>userlist_deny=NO</code><br><code>userlist_enable=YES</code><br>记录允许访问 ftp 用户列表<br><code>userlist_file=/etc/vsftpd.user_list</code><br>不配置可能导致莫名的530问题<br><code>seccomp_sandbox=NO</code><br>允许文件上传<br><code>write_enable=YES</code><br>使用utf8编码<br><code>utf8_filesystem=YES</code><br>新建文件 /etc/vsftpd.user_list，用于存放允许访问 ftp 的用户：<br><code>sudo touch /etc/vsftpd.user_list</code><br><code>sudo chmod a+w /etc/vsftpd.user_list</code><br>修改 <code>/etc/vsftpd.user_list</code> ，加入刚刚创建的用户：<br><code>uftp</code><br><strong>设置访问权限</strong><br>设置主目录访问权限（只读）：<br><code>sudo chmod a-w /home/ftp</code><br>新建公共目录，并设置权限（读写）：<br><code>sudo mkdir /home/ftp/public &amp;&amp; sudo chmod 777 -R/home/ftp/public</code><br>重启vsftpd 服务：<br><code>sudo systemctl restart vsftpd.service</code></p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>1.购买域名<br>2.设置域名解析，直接将域名绑定到ftp服务器的ip上。</p>
-<h2 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h2><p><strong>1.ftp连接错误</strong><code>500 OOPS: vsftpd</code><br><strong>解决</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br><span class="line"># 添加一行配置 allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://www.php.cn/linux-363729.html" target="_blank" rel="noopener">参考</a></p>
-<h2 id="ftp命令"><a href="#ftp命令" class="headerlink" title="ftp命令"></a>ftp命令</h2><p><strong>命令行连接ftp</strong><br><code>ftp ip</code><br>输入用户名，密码<br>或者 <code>ftp&gt;open ip</code><br><strong>下载文件</strong><br><code>ftp&gt;get filename</code><br><strong>上传文件</strong><br><code>ftp&gt;put filename</code><br><strong>查看目录</strong><br><code>ftp&gt;ls</code><br><strong>查看本地目录</strong><br><code>ftp&gt;!ls</code></p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2019/09/03/ftp/">ftp服务器搭建</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
-        <p><span>Created:</span>2019-09-03, 17:41:04</p>
-        <p><span>Updated:</span>2020-01-09, 17:20:42</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/09/03/ftp/" title="ftp服务器搭建">http://blog.zhengmingz.top/2019/09/03/ftp/</a>
-            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/03/ftp/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
     </div>
 
 
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/09/08/conda/">
-                    conda
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/08/27/Hexo/">
-                    Hexo创建个人博客
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定域名"><span class="toc-number">2.</span> <span class="toc-text">绑定域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装问题"><span class="toc-number">3.</span> <span class="toc-text">安装问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ftp命令"><span class="toc-number">4.</span> <span class="toc-text">ftp命令</span></a></li></ol>
-        
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
     </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"ftp服务器搭建　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
-</div>
-
-
-
-
-
-
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
     
 
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2019/09/08/conda/" title="Pre: conda">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2019/08/27/Hexo/" title="Next: Hexo创建个人博客">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/12/22/linux-manage/">linux-manage</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/12/remote-connect/">remote-connect</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/dict-set-tuple/">dict-list-tuple-string</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/shadowsocks/">shadowsocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/Develop-DailyManage/">每日事务安排应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/22/ImageProcess/">图像处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/mysql/">mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/c-point-addr/">c中指针地址加1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/django1/">Django 在 pycharm（社区版）上安装运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/shell/">linux shell中的一些语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Read-FileAndDirectory/">读取某目录下的全部文件和目录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Algorithm-PartOptim/">粒子群优化算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/svg2png/">svg转png格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-bugNum/">修改bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/16/install-ubuntu/">ubuntu双系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/12/splitArray/">分割数组的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/wpfgif/">wpf加载gif</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/ZshTmuxVim/">tmux+vim+zsh 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/sketchpaper/">sketch paper</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/conda/">conda</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/ftp/">ftp服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Hexo/">Hexo创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/knapsack-problem/">背包问题</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

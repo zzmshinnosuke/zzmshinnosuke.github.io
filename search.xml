@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>paper</title>
+      <link href="/2021/01/18/paper/"/>
+      <url>/2021/01/18/paper/</url>
+      
+        <content type="html"><![CDATA[<p>文章阅读<br><a id="more"></a></p><h1 id="CV"><a href="#CV" class="headerlink" title="CV"></a>CV</h1><h2 id="Sketch"><a href="#Sketch" class="headerlink" title="Sketch"></a>Sketch</h2><h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><h3 id="datasets"><a href="#datasets" class="headerlink" title="datasets"></a>datasets</h3><ol><li><h2 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h2></li></ol><h1 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h1><h2 id="Language"><a href="#Language" class="headerlink" title="Language"></a>Language</h2><p>１. <a href>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a><br>BERT 的输入可以包含一个句子对 (句子 A 和句子 B)，也可以是单个句子。此外还增加了一些有特殊作用的标志位：<br>[CLS] 标志放在第一个句子的首位，经过 BERT 得到的的表征向量 C 可以用于后续的分类任务。<br>[SEP] 标志用于分开两个输入句子，例如输入句子 A 和 B，要在句子 A，B 后面增加 [SEP] 标志。<br>[UNK]标志指的是未知字符<br>[MASK] 标志用于遮盖句子中的一些单词，将单词用 [MASK] 遮盖之后，再利用 BERT 输出的 [MASK] 向量预测单词是什么。</p><h2 id="OCR"><a href="#OCR" class="headerlink" title="OCR"></a>OCR</h2><ol><li><a href="https://mp.weixin.qq.com/s/PxEUU6VhB0iuCi2F_Xy-Kw" target="_blank" rel="noopener">LayoutLM2.0</a><br><a href="https://arxiv.org/abs/2012.14740" target="_blank" rel="noopener">LayoutLMv2: Multi-modal Pre-training for Visually-Rich Document Understanding</a><br>Public: arxiv 2020,Harbin Institute of Technology,Microsoft Research Asia<br><a href="https://github.com/microsoft/unilm/tree/master/layoutlm" target="_blank" rel="noopener">code</a><br>Abstract:主要针对扫描文件或数字商业文档进行理解并分析。特点在于在输入阶段直接引入了图像信息，利用多模态预训练框架对文本、图像和布局信息进行联合建模。</li></ol><h1 id="ASP"><a href="#ASP" class="headerlink" title="ASP"></a>ASP</h1><h1 id="MM"><a href="#MM" class="headerlink" title="MM"></a>MM</h1><h2 id="Vison-Language"><a href="#Vison-Language" class="headerlink" title="Vison Language"></a>Vison Language</h2><p>多模特任务主要集中在文本和图像，文本和语音</p><ol><li><p><a href="https://arxiv.org/pdf/2003.13198" target="_blank" rel="noopener">M6-v0: Vision-and-Language Interaction for Multi-modal Pretraining</a><br>Public: arxiv 2020，Alibaba Group,Peking University<br>Abstract: 提出了一个文本和图像多模特预训练方法InterBERT，核心还是transformer中的Attention，里边包含一个 single-stream interaction module和一个 two-stream module，使用三个预训练任务 masked segment modeling (MSM), masked region modeling(MRM) and image-text matching (ITM)来训练模型。最后针对downstream stask来精调模型。感觉就是把transformer输入文本变成了同时输入文本和图像，输出也是文本和图像分别输出。<br>预训练模型经过finetune可以用于：text-based image retrieval，<br>data：提出了一个大规模（3.1Ｍ image-text pairs）基于手机淘宝收集的数据集，但是还没有公布。<br>code: 有，未运行。</p><h2 id="Spoke-Lanuage"><a href="#Spoke-Lanuage" class="headerlink" title="　Spoke Lanuage"></a>　Spoke Lanuage</h2></li><li><p><a href="https://arxiv.org/pdf/2012.08549" target="_blank" rel="noopener">Exploring Transfer Learning For End-to-End Spoken Language Understanding</a><br>Public: arxiv 2020<br>Abstract:</p></li><li><p><a href="https://arxiv.org/pdf/2011.06195" target="_blank" rel="noopener">Towards Semi-Supervised Semantics Understanding from Speech</a><br>Public: arxiv 2020<br>Abstract:</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> paper </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> paper </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux-manage</title>
       <link href="/2020/12/22/linux-manage/"/>
       <url>/2020/12/22/linux-manage/</url>
@@ -461,9 +486,9 @@
       
         <tags>
             
-            <tag> 递归 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 递归 </tag>
             
         </tags>
       
@@ -602,9 +627,9 @@
       
         <tags>
             
-            <tag> sketch </tag>
-            
             <tag> paper </tag>
+            
+            <tag> sketch </tag>
             
             <tag> cvpr </tag>
             
@@ -666,9 +691,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> ftp </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> 服务器 </tag>
             

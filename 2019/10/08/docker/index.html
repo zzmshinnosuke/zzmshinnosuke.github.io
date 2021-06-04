@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-08T14:10:57.466Z">
+<meta property="og:updated_time" content="2021-06-04T08:11:23.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker">
 <meta name="twitter:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
@@ -282,11 +282,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br><a id="more"></a><br><a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">参考</a><br><a href="https://blog.csdn.net/talkxin/article/details/83061973" target="_blank" rel="noopener">参考</a><br><a href="https://www.cnblogs.com/me115/p/5539047.html" target="_blank" rel="noopener">参考</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h1 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h1><p><strong>运行容器</strong><br>docker run -d -P training/webapp python app.py<br>-d 后台运行<br>-P 自动映射端口<br>-p 指定端口 #-p 5000:5000<br><strong>查看容器</strong><br>docker ps<br><strong>停止容器</strong><br>docker stop id/name<br><strong>重启容器</strong><br>docker start id/name</p>
+        <p>Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br><a id="more"></a><br><a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">参考</a><br><a href="https://blog.csdn.net/talkxin/article/details/83061973" target="_blank" rel="noopener">参考</a><br><a href="https://www.cnblogs.com/me115/p/5539047.html" target="_blank" rel="noopener">参考</a><br><a href="https://hub.docker.com/" target="_blank" rel="noopener">dockerhub</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><p>更新ubuntu的apt源索引<br><code>sudo apt-get update</code><br>安装包允许apt通过HTTPS使用仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure></p>
+<p>添加Docker官方GPG key<br><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code><br>设置Docker稳定版仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line">   $(lsb_release -cs) \</span><br><span class="line">   stable&quot;</span><br></pre></td></tr></table></figure></p>
+<p>添加仓库后，更新apt源索引<br><code>sudo apt-get update</code><br>安装最新版Docker CE（社区版）<br><code>sudo apt-get install docker-ce</code><br>检查Docker CE是否安装正确<br><code>sudo docker run hello-world</code></p>
+<h2 id="支持gpu"><a href="#支持gpu" class="headerlink" title="支持gpu"></a>支持gpu</h2><p>安装 nvidia-container-toolkit<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \</span><br><span class="line">  sudo apt-key add -</span><br><span class="line">distribution=$(. /etc/os-release;echo $ID$VERSION_ID)</span><br><span class="line">sudo curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \</span><br><span class="line">  sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">apt-get install nvidia-container-runtime</span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
+<p>查看<br><code>$which nvidia-container-runtime-hook</code><br>验证下-gpus选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$docker run --help | grep -i gpus</span><br><span class="line">       --gpus gpu-request               GPU devices to add to the container (&apos;all&apos; to pass all GPUs)</span><br></pre></td></tr></table></figure></p>
+<p>运行利用GPU的Ubuntu容器<br><code>$ docker run -it --rm --gpus all ubuntu nvidia-smi</code></p>
+<h1 id="添加到docker用户组"><a href="#添加到docker用户组" class="headerlink" title="添加到docker用户组"></a>添加到docker用户组</h1><p>关于Docker时的权限问题解决dial unix /var/run/docker.sock: connect: ‘permission denied’<br>将当前用户加入到docker组中<br><code>sudo gpasswd -a $USER docker</code><br>将当前用户切换到docker组中<br><code>newgrp - docker</code>  </p>
+<h1 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h1><p><strong>运行容器</strong><br>docker run -d -P training/webapp python app.py<br>-d 后台运行<br>-P 自动映射端口<br>-p 指定端口 #-p 5000:5000<br><strong>查看容器</strong><br>docker ps<br><strong>停止容器</strong><br>docker stop id/name<br><strong>重启容器</strong><br>docker start id/name</p>
 <p><strong>附着容器</strong><br>附着到正在运行的容器<br>docker attach <id、container_name><br>进入正在运行的容器内部，同时运行bash(比attach更好用)<br>docker exec -t -i <id container_name>  /bin/bash</id></id、container_name></p>
-<h2 id="镜像使用"><a href="#镜像使用" class="headerlink" title="镜像使用"></a>镜像使用</h2><p>$ docker images  #列出本地镜像<br>$ docker pull ubuntu:13.10 #获取新镜像</p>
-<h1 id="docker-gpu环境"><a href="#docker-gpu环境" class="headerlink" title="docker gpu环境"></a>docker gpu环境</h1><p><a href="https://www.jianshu.com/p/401a37387ecb" target="_blank" rel="noopener">参考</a></p>
+<h2 id="镜像使用"><a href="#镜像使用" class="headerlink" title="镜像使用"></a>镜像使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker images  #列出本地镜像</span><br><span class="line">$ docker pull ubuntu:13.10 #获取新镜像</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -298,7 +304,7 @@
         <p><span>Title:</span><a href="/2019/10/08/docker/">docker</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-10-08, 21:35:41</p>
-        <p><span>Updated:</span>2019-10-08, 22:10:57</p>
+        <p><span>Updated:</span>2021-06-04, 16:11:23</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/10/08/docker/" title="docker">http://blog.zhengmingz.top/2019/10/08/docker/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/10/08/docker/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -334,7 +340,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容器命令"><span class="toc-number">2.</span> <span class="toc-text">容器命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像使用"><span class="toc-number">2.1.</span> <span class="toc-text">镜像使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-gpu环境"><span class="toc-number">3.</span> <span class="toc-text">docker gpu环境</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持gpu"><span class="toc-number">1.2.</span> <span class="toc-text">支持gpu</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加到docker用户组"><span class="toc-number">2.</span> <span class="toc-text">添加到docker用户组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容器命令"><span class="toc-number">3.</span> <span class="toc-text">容器命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像使用"><span class="toc-number">3.1.</span> <span class="toc-text">镜像使用</span></a></li></ol></li></ol>
         
     </div>
     <style>

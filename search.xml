@@ -692,39 +692,6 @@
     
     
     <entry>
-      <title>sketch paper</title>
-      <link href="/2019/09/08/sketchpaper/"/>
-      <url>/2019/09/08/sketchpaper/</url>
-      
-        <content type="html"><![CDATA[<p>skech相关的paper<br><a id="more"></a></p><h1 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h1><h1 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h1><h1 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h1><h2 id="CVPR"><a href="#CVPR" class="headerlink" title="CVPR"></a>CVPR</h2><h1 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h1><h2 id="sigraph："><a href="#sigraph：" class="headerlink" title="sigraph："></a>sigraph：</h2><ul><li><a href="https://arxiv.org/abs/1804.08972" target="_blank" rel="noopener">FaceShop: Deep Sketch-based Face Image Editing</a>，Tiziano Portenier Qiyang Hu, Attila Szabo, Siavash Bigdeli, Paolo Favaro, Matthias Zwicker(University of Bern)</li><li><a href="https://esslab.jp/~ess/en/research/inking/" target="_blank" rel="noopener">Real-Time Data-Driven Interactive Rough Sketch Inking</a>，Edgar Simo-Serra, Satoshi Iizuka, Hiroshi Ishikawa (Waseda University)</li><li><a href="https://esslab.jp/~ess/en/research/sketch_master/" target="_blank" rel="noopener">Mastering Sketching: Adversarial Augmentation for Structured Prediction</a>， Edgar Simo-Serra<em>, Satoshi Iizuka</em>, Hiroshi Ishikawa (Waseda University) (*equal contribution)</li><li><a href="https://www.cs.ubc.ca/labs/imager/tr/2018/StrokeAggregator/" target="_blank" rel="noopener">StrokeAggregator: Consolidating Raw Sketches into Artist-Intended Curve Drawings</a>， Chenxi Liu, Enrique Rosales, Alla Sheffer (The University of British Columbia)</li></ul><h2 id="CVPR："><a href="#CVPR：" class="headerlink" title="CVPR："></a>CVPR：</h2><ul><li><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Hu_Sketch-a-Classifier_Sketch-Based_Photo_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Sketch-a-Classifier: Sketch-Based Photo Classifier Generation</a>，Conghui Hu, Da Li, Yi-Zhe Song, Tao Xiang, Timothy M. Hospedales</li><li><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_SketchyGAN_Towards_Diverse_CVPR_2018_paper.pdf" target="_blank" rel="noopener">SketchyGAN: Towards Diverse and Realistic Sketch to Image Synthesis</a>，Wengling Chen, James Hays</li><li><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Song_Learning_to_Sketch_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Learning to Sketch With Shortcut Cycle Consistency</a>，Jifei Song, Kaiyue Pang, Yi-Zhe Song, Tao Xiang, Timothy M. Hospedales</li><li><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Shen_Zero-Shot_Sketch-Image_Hashing_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Zero-Shot Sketch-Image Hashing，Yuming Shen</a>, Li Liu, Fumin Shen, Ling Shao</li><li><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Muhammad_Learning_Deep_Sketch_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Learning Deep Sketch Abstraction</a>，Umar Riaz Muhammad, Yongxin Yang, Yi-Zhe Song, Tao Xiang, Timothy M. Hospedales</li><li><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_SketchMate_Deep_Hashing_CVPR_2018_paper.pdf" target="_blank" rel="noopener">SketchMate: Deep Hashing for Million-Scale Human Sketch Retrieval</a>，Peng Xu, Yongye Huang, Tongtong Yuan, Kaiyue Pang, Yi-Zhe Song, Tao Xiang, Timothy M. Hospedales, Zhanyu Ma, Jun Guo</li></ul><h2 id="ECCV"><a href="#ECCV" class="headerlink" title="ECCV:"></a>ECCV:</h2><ul><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Jiaxin_Chen_Deep_Cross-modality_Adaptation_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Deep Cross-modality Adaptation via Semantics Preserving Adversarial Learning for Sketch-based 3D Shape Retrieval</a>, Jiaxin Chen, Yi Fang</li><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Yongyi_Lu_Image_Generation_from_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Image Generation from Sketch Constraint Using Contextual GAN</a>，Yongyi Lu, Shangzhe Wu, Yu-Wing Tai, Chi-Keung Tang</li><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Jingyi_Zhang_Generative_Domain-Migration_Hashing_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Generative Domain-Migration Hashing for Sketch-to-Image Retrieval</a>，Jingyi Zhang, Fumin Shen, Li Liu, Fan Zhu, Mengyang Yu, Ling Shao, Heng Tao Shen, Luc Van Gool</li><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Ke_LI_Universal_Sketch_Perceptual_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Universal Sketch Perceptual Grouping</a>，Ke Li, Kaiyue Pang, Jifei Song, Yi-Zhe Song, Tao Xiang, Timothy M. Hospedales, Honggang Zhang</li><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Kaiyue_Pang_Deep_Factorised_Inverse-Sketching_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Deep Factorised Inverse-Sketching，Kaiyue Pang</a>, Da Li, Jifei Song, Yi-Zhe Song, Tao Xiang, Timothy M. Hospedales</li><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Changqing_Zou_SketchyScene_Richly-Annotated_Scene_ECCV_2018_paper.pdf" target="_blank" rel="noopener">SketchyScene: Richly-Annotated Scene Sketches</a>，Changqing Zou, Qian Yu, Ruofei Du, Haoran Mo, Yi-Zhe Song, Tao Xiang, Chengying Gao, Baoquan Chen, Hao Zhang  </li><li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Sasikiran_Yelamarthi_A_Zero-Shot_Framework_ECCV_2018_paper.pdf" target="_blank" rel="noopener">A_ Zero-Shot Framework for Sketch based Image Retrieval</a>，Sasi Kiran Yelamarthi, Shiva Krishna Reddy, Ashish Mishra, Anurag Mittal</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> research </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> sketch </tag>
-            
-            <tag> paper </tag>
-            
-            <tag> cvpr </tag>
-            
-            <tag> sigraph </tag>
-            
-            <tag> eccv </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>conda</title>
       <link href="/2019/09/08/conda/"/>
       <url>/2019/09/08/conda/</url>
@@ -772,9 +739,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> ftp </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> 服务器 </tag>
             

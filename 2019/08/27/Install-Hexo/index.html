@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zzm">
+
+
+
+<meta name="description" content="Hexo安装、配置，在github上部署，yelee主题配置">
+<meta name="keywords" content="Hexo,github,blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo创建个人博客">
+<meta property="og:url" content="http://blog.zhengmingz.top/2019/08/27/Install-Hexo/index.html">
+<meta property="og:site_name" content="zzm">
+<meta property="og:description" content="Hexo安装、配置，在github上部署，yelee主题配置">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-12-22T09:06:41.268Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo创建个人博客">
+<meta name="twitter:description" content="Hexo安装、配置，在github上部署，yelee主题配置">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="zzm" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Hexo创建个人博客 | zzm</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zzm</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frp/">Frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Image/">Image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAT-DDNS/">NAT-DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVIDIA显卡驱动/">NVIDIA显卡驱动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/">conda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cuda/">cuda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gpu/">gpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jupyter/">jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lab/">lab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notebook/">notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/png/">png</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pycharm/">pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/remote/">remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/screen/">screen</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/self/">self</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super/">super</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tuple/">tuple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vimrc/">vimrc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnc/">vnc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wpf/">wpf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务安排/">事务安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网穿透/">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地址/">地址</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发/">开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/指针/">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/粒子群/">粒子群</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代/">迭代</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">菜鸟程序员</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zzm</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zzm</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Install-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/08/27/Install-Hexo/" class="article-date">
+      <time datetime="2019-08-26T16:10:39.000Z" itemprop="datePublished">2019-08-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo创建个人博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Install/">Install</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Hexo安装、配置，在github上部署，yelee主题配置<br><a id="more"></a></p>
+<h1 id="安装nodejs和npm"><a href="#安装nodejs和npm" class="headerlink" title="安装nodejs和npm"></a>安装nodejs和npm</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>创建文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir Hexo  </span><br><span class="line">cd Hexo</span><br></pre></td></tr></table></figure></p>
+<p>安装Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo</span><br></pre></td></tr></table></figure></p>
+<p>初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>此步骤会在hexo文件夹下生成默认的网站模板文件。</p>
+<p>清除之前生成的静态模板文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
+<p>生成新的静态模板文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate（hexo g）</span><br></pre></td></tr></table></figure></p>
+<p>启动hexo的本地服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server（hexo s）</span><br></pre></td></tr></table></figure></p>
+<h1 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h1><p>1.新建一个仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">github名.github.io</span><br></pre></td></tr></table></figure></p>
+<p>(名称必须与github名一致)<br>在该仓库Settings下GitHub Pageszhong设置Custom domain为自己的域名（和hexo中CNAME设置一样）<br>在source目录下创建文件CNAME<br>写入自己的域名</p>
+<p>2.修改_config.yml文件<br>deploy:<br>type: git<br>repository: <a href="https://github.com/githubID/仓库名.github.io.git" target="_blank" rel="noopener">https://github.com/githubID/仓库名.github.io.git</a><br>branch: master</p>
+<p>3.部署<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy（hexo d）</span><br></pre></td></tr></table></figure></p>
+<h1 id="安装-Hexo-Admin插件"><a href="#安装-Hexo-Admin插件" class="headerlink" title="安装 Hexo Admin插件"></a>安装 Hexo Admin插件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br></pre></td></tr></table></figure>
+<p>打开本地管理界面<br><a href="http://localhost:4000/admin" target="_blank" rel="noopener">http://localhost:4000/admin</a></p>
+<h1 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h1><p>1.创建文章<br>hexo根目录命令行输入<code>hexo new &lt;模板&gt; &lt;文章名&gt;</code>新建文章  </p>
+<p><table>
+  <tr><td>参数</td><td>功能</td><td>路径</td></tr>
+  <tr><td>post</td><td>新建文章</td><td>/source/_posts/</td></tr>
+  <tr><td>draft</td><td>新建草稿</td><td>/source/_drafts/</td></tr>
+  <tr><td>page</td><td>新建页面（标签、分类等）</td><td>/source/</td></tr>
+</table><br>通常情况下使用<code>hexo new post name</code><br>会在<code>source/_posts</code>下生成一个<code>name.md</code>的文件。  </p>
+<h1 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h1><p>配置<code>_config_yml</code>里面的post_asset_folder:false这个选项设置为true。<br>安装<code>hexo-asset-image</code>，运行<code>hexo n &quot;xxxx&quot;</code>来生成md博文时，<code>/source/_posts</code>文件夹内除了xxxx.md文件还有一个同名的文件夹，把图片放入该文件夹。<br>问题直接运行<code>npm install hexo-asset-image save</code>安装的插件有问题，图片不能正确显示，生成的html中图片路径不对（显示 /.top//name.png），使用如下即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<p>插入图片，在md中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![xxx](blogName/imageName.png)</span><br></pre></td></tr></table></figure></p>
+<p>需要配置_config.yml中的url，本地配置为localhost，远程配置为对应的域名<br><a href="https://www.jianshu.com/p/3db6a61d3782" target="_blank" rel="noopener">参考</a></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="安装hexo错误：（nodejs版本太低，不能用apt直接升级）"><a href="#安装hexo错误：（nodejs版本太低，不能用apt直接升级）" class="headerlink" title="安装hexo错误：（nodejs版本太低，不能用apt直接升级）"></a>安装hexo错误：（nodejs版本太低，不能用apt直接升级）</h2><p><strong>解决</strong><br>1.产看node版本，没安装的请先安装；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  node -v</span><br></pre></td></tr></table></figure></p>
+<p>2.清楚node缓存；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo npm cache clean -f</span><br></pre></td></tr></table></figure></p>
+<p>3.安装node版本管理工具’n’;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo npm install n -g</span><br></pre></td></tr></table></figure></p>
+<p>4.使用版本管理工具安装指定node或者升级到最新node版本；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo n stable  （安装node最新版本）</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.cnblogs.com/legendjslc/articles/10131412.html" target="_blank" rel="noopener">参考</a></p>
+<h2 id="hexo-d-ERROR-Deployer-not-found-git"><a href="#hexo-d-ERROR-Deployer-not-found-git" class="headerlink" title="hexo d(ERROR Deployer not found: git)"></a>hexo d(ERROR Deployer not found: git)</h2><p><strong>解决</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<h2 id="hexo输入数学公式不显示"><a href="#hexo输入数学公式不显示" class="headerlink" title="hexo输入数学公式不显示"></a>hexo输入数学公式不显示</h2><ol>
+<li><p>在开始部分插入如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; async</span><br><span class="line">  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在网页中插入所需数学公式的特定格式(或者见yelee):<br>（插入1后）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;</span><br><span class="line">MathJax.Hub.Config(&#123;</span><br><span class="line">tex2jax: &#123;inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]&#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://daniellaah.github.io/2016/Mathmatical-Formula-within-Markdown.html" target="_blank" rel="noopener">参考</a></p>
+<h2 id="有序列表显示问题“-A空格”"><a href="#有序列表显示问题“-A空格”" class="headerlink" title="有序列表显示问题“- A空格”"></a>有序列表显示问题<code>“- A空格”</code></h2><ul>
+<li>A boy</li>
+<li>A- boy<br>如上显示正常显示，前面应该有一个圆点，第一行A空格前面没有圆点。暂时解决只能在A后直接加字符</li>
+</ul>
+<h1 id="yelee"><a href="#yelee" class="headerlink" title="yelee"></a>yelee</h1><p>1.在 themes下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/MOxFIVE/hexo-theme-yelee.git themes/yelee</span><br></pre></td></tr></table></figure></p>
+<p>2.修改_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: yelee</span><br></pre></td></tr></table></figure></p>
+<p>3.支持数学公式<br>修改 <code>themes/yelee/_config.yml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
+<p>4.不喜欢yelee的标题风格<br>修改 themes/yelee/_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heading_stytle:2  //改为github风格</span><br></pre></td></tr></table></figure></p>
+<p>5.社交图标设置<br>themes/yelee/source/css/_partial/customise/social-icon.styl</p>
+<p><strong>参考</strong><br><a href="http://moxfive.coding.me/yelee/2.Basic-Usage/post-excerpt.html" target="_blank" rel="noopener">yelee配置中文说明</a><br><a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" rel="noopener">yelee github</a><br><a href="https://www.imooc.com/article/44667" target="_blank" rel="noopener">博客搭建</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2019/08/27/Install-Hexo/">Hexo创建个人博客</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
+        <p><span>Created:</span>2019-08-27, 00:10:39</p>
+        <p><span>Updated:</span>2021-12-22, 17:06:41</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2019/08/27/Install-Hexo/" title="Hexo创建个人博客">http://blog.zhengmingz.top/2019/08/27/Install-Hexo/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/08/27/Install-Hexo/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/09/03/Install-ftp/">
+                    ftp服务器搭建
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/08/26/Algorithm-knapsack-problem/">
+                    背包问题
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装nodejs和npm"><span class="toc-number">1.</span> <span class="toc-text">安装nodejs和npm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装hexo"><span class="toc-number">2.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#github配置"><span class="toc-number">3.</span> <span class="toc-text">github配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-Hexo-Admin插件"><span class="toc-number">4.</span> <span class="toc-text">安装 Hexo Admin插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新建博客"><span class="toc-number">5.</span> <span class="toc-text">新建博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加图片"><span class="toc-number">6.</span> <span class="toc-text">添加图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装hexo错误：（nodejs版本太低，不能用apt直接升级）"><span class="toc-number">7.1.</span> <span class="toc-text">安装hexo错误：（nodejs版本太低，不能用apt直接升级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-d-ERROR-Deployer-not-found-git"><span class="toc-number">7.2.</span> <span class="toc-text">hexo d(ERROR Deployer not found: git)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo输入数学公式不显示"><span class="toc-number">7.3.</span> <span class="toc-text">hexo输入数学公式不显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有序列表显示问题“-A空格”"><span class="toc-number">7.4.</span> <span class="toc-text">有序列表显示问题“- A空格”</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yelee"><span class="toc-number">8.</span> <span class="toc-text">yelee</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Hexo创建个人博客　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/09/03/Install-ftp/" title="Pre: ftp服务器搭建">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/08/26/Algorithm-knapsack-problem/" title="Next: 背包问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/12/12/Tool-vim/">vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/09/27/Install-nat-ddns/">nat-ddns</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/07/23/Install-jupyter/">jupyter</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/28/Program-linux-shell/">linux-shell</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/13/Tool-git/">git</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/07/Program-python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/05/Program-pytorch-notices/">pytorch-notices</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/18/Research-paper/">paper</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/12/Install-remote-connect/">remote-connect</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/Program-dict-set-tuple/">dict-list-tuple-string</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/Install-shadowsocks/">shadowsocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/Deal-Develop-DailyManage/">每日事务安排应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/22/Program-ImageProcess/">图像处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Install-mysql/">mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Program-c-point-addr/">c中指针地址加1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/Install-docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Install-django/">Django 在 pycharm（社区版）上安装运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Program-Read-FileAndDirectory/">读取某目录下的全部文件和目录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Algorithm-PartOptim/">粒子群优化算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Program-svg2png/">svg转png格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-bugNum/">修改bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/12/Algorithm-splitArray/">分割数组的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Program-wpfgif/">wpf加载gif</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Install-ZshTmuxVim/">tmux+vim+zsh 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/Install-conda/">conda</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Install-ftp/">ftp服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Install-Hexo/">Hexo创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/Algorithm-knapsack-problem/">背包问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2021 zzm
+            </div>
+
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

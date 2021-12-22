@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="分为两种方式：（1）通过U盘制作启动盘安装（2）在已经安装windows的基础上，安装ubuntu16双系统，使用硬盘安装的方式，不用u盘。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-12-22T09:06:15.597Z">
+<meta property="og:updated_time" content="2021-12-22T09:16:46.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu安装">
 <meta name="twitter:description" content="分为两种方式：（1）通过U盘制作启动盘安装（2）在已经安装windows的基础上，安装ubuntu16双系统，使用硬盘安装的方式，不用u盘。">
@@ -287,7 +287,7 @@
 <ul>
 <li>打开Ventoy中的exe文件，选择做启动盘的U盘，点击“安装”制作启动盘</li>
 <li>将Ubuntu系统iso文件，复制到U盘中（格式为exFAT）。</li>
-<li>插入U盘，重启系统，按键盘进入bios的按键，进入启动页面设置从U盘启动，然后保存并重启系统<br>注：如果Ventoy图形界面如果不能对多个iso文件进行切换选择，可以进入字符界面</li>
+<li>插入U盘，重启系统，按键盘进入bios的按键，进入启动页面设置从U盘启动，然后保存并重启系统<br>注：如果Ventoy图形界面不能对多个iso文件进行切换选择，可以进入字符界面</li>
 </ul>
 <h3 id="双系统"><a href="#双系统" class="headerlink" title="双系统"></a>双系统</h3><ul>
 <li>在Win系统下载安装easybcd，创建启动条目<br>title Install Ubuntu<br>root (hd0,0)<br>kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-16.04.2-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8<br>initrd (hd0,0)/initrd.lz</li>
@@ -386,7 +386,7 @@
         <p><span>Title:</span><a href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-09-16, 10:02:47</p>
-        <p><span>Updated:</span>2021-12-22, 17:06:15</p>
+        <p><span>Updated:</span>2021-12-22, 17:16:46</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/09/16/Install-ubuntu/" title="ubuntu安装">http://blog.zhengmingz.top/2019/09/16/Install-ubuntu/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/16/Install-ubuntu/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

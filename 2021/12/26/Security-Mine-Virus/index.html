@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/5.png">
 <meta property="og:image" content="http://blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/6.png">
 <meta property="og:image" content="http://blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/7.png">
-<meta property="og:updated_time" content="2021-12-26T09:09:32.645Z">
+<meta property="og:updated_time" content="2021-12-27T16:02:18.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="清除挖矿病毒">
 <meta name="twitter:description" content="记录一次挖矿病毒的处理，组里有一个4卡RTX3090的服务器被攻击了，在内网使用，可能的原因是搞了一个frp内网穿透。">
@@ -306,7 +306,6 @@
 <li>打开看一下，是一个60秒的定时服务<br><img src="//blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/5.png" alt="title"></li>
 <li>看一下启动的程序，11月04日就植入了，隐藏的时间还挺长的，之前登录都没有看到呀。<br><img src="//blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/6.png" alt="title"></li>
 <li>然后把服务和程序都删除了，等了几分钟果然没有进程再启动了。进入<code>/root</code>目录下，发现<code>.ssh/authotrized_keys</code>建了一个秘钥，应该是便于以后登录留的后门，<code>rm</code>直接删还删不掉，发现还有文件属性的问题，通过<code>chattr</code>命令更改i属性后可以删除。</li>
-<li>忘了一个东西，在<code>/etc/cron.daily</code>,发现了一个定时启动的任务会启动<code>/snap/bin</code>下的程序。忘了是什么定时了，没有保存下来。还有<code>/root/snap</code>这个目录，在根目录下也有<code>/snap</code>这个目录，之前把root下的删除后还会重新创建，就把snap都卸载了。</li>
 </ul>
 <p><a href="https://www.cnblogs.com/hld123/p/13226033.html" target="_blank" rel="noopener">参考</a><br><a href="https://www.jianshu.com/p/71d2f842f341" target="_blank" rel="noopener">参考</a></p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ul>
@@ -325,7 +324,7 @@
         <p><span>Title:</span><a href="/2021/12/26/Security-Mine-Virus/">清除挖矿病毒</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2021-12-26, 14:56:38</p>
-        <p><span>Updated:</span>2021-12-26, 17:09:32</p>
+        <p><span>Updated:</span>2021-12-28, 00:02:18</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2021/12/26/Security-Mine-Virus/" title="清除挖矿病毒">http://blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2021/12/26/Security-Mine-Virus/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

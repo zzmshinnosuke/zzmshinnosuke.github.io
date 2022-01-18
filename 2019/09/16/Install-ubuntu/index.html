@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="分为两种方式：（1）通过U盘制作启动盘安装（2）在已经安装windows的基础上，安装ubuntu16双系统，使用硬盘安装的方式，不用u盘。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-12-26T08:44:08.329Z">
+<meta property="og:updated_time" content="2022-01-18T09:27:04.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu安装">
 <meta name="twitter:description" content="分为两种方式：（1）通过U盘制作启动盘安装（2）在已经安装windows的基础上，安装ubuntu16双系统，使用硬盘安装的方式，不用u盘。">
@@ -342,6 +342,9 @@
 <p><a href="https://blog.csdn.net/u014797226/article/details/79626693" target="_blank" rel="noopener">参考</a></p>
 <p><strong>禁用Nouveau 开源驱动</strong><br>首先添加一个blacklist:<br><code># vi /etc/modprobe.d/blacklist-nouveau.conf</code><br>写入以下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">blacklist nouveau</span><br><span class="line">blacklist lbm-nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">alias nouveau off</span><br><span class="line">alias lbm-nouveau off</span><br></pre></td></tr></table></figure></p>
 <p>为了保证完全禁用掉，还要在内核中直接禁用Nouveau:<br><code># echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf</code><br>这之后，更新配置试生效：<br><code># update-initramfs -u</code><br>重启  </p>
+<p><strong>问题</strong><br>没有关闭系统自动升级，重庆后ubuntu的内核自动升级了，用GPU跑模型的时候，提示cuda不存在，用<code>nvidia-smi</code>查看，提示：<br><code>NVIDIA-SMI has failed because it couldn&#39;t communicate with the NVIDIA driver.  Make sure that the latest NVIDIA driver is installed and running.</code><br>通过如下方法解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install dkms</span><br><span class="line">sudo dkms install -m nvidia -v 418.87.00</span><br></pre></td></tr></table></figure></p>
+<p>其中，418.87.00是之前安装nvidia驱动的版本号，可以通过以下命令查到：<br><code>ls /usr/src | grep nvidia</code></p>
+<p>还可以通过降低系统的内核的方法来解决，由于ubuntu18启动时不能进入一个ubuntu高级的地方可以选择内核版本，所以没用这个方法。  </p>
 <h3 id="安装ssh"><a href="#安装ssh" class="headerlink" title="安装ssh"></a>安装ssh</h3><p>安装ssh<br>打开”终端窗口”，输入”sudo apt-get install openssh-server”—&gt;回车—&gt;输入”y”—&gt;回车—&gt;安装完成。</p>
 <p>查看ssh服务是否启动<br>打开”终端窗口”，输入”sudo ps -e | grep ssh”—&gt;回车—&gt;有sshd,说明ssh服务已经启动，如果没有启动，输入”sudo service ssh start”—&gt;回车—&gt;ssh服务就会启动。</p>
 <p>使用gedit修改配置文件”/etc/ssh/sshd_config”<br>打 开”终端窗口”，输入”sudo gedit /etc/ssh/sshd_config”—&gt;回车—&gt;把配置文件中的”PermitRootLogin without-password”加一个”#”号,把它注释掉—&gt;再增加一句”PermitRootLogin yes”—&gt;保存，修改成功。（否则远程密码不管用）</p>
@@ -386,7 +389,7 @@
         <p><span>Title:</span><a href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-09-16, 10:02:47</p>
-        <p><span>Updated:</span>2021-12-26, 16:44:08</p>
+        <p><span>Updated:</span>2022-01-18, 17:27:04</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/09/16/Install-ubuntu/" title="ubuntu安装">http://blog.zhengmingz.top/2019/09/16/Install-ubuntu/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/16/Install-ubuntu/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -508,7 +511,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2019-2021 zzm
+                2019-2022 zzm
             </div>
 
         </div>

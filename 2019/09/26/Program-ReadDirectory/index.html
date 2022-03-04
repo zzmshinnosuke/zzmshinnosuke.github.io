@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="c、c++中一些指针、数组地址加减的问题">
-<meta name="keywords" content="c,指针,数组,地址,c++">
+<meta name="description" content="Python和linux shell中读取某目录下的文件和目录">
+<meta name="keywords" content="python,shell,file,directory">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c中指针地址加1">
-<meta property="og:url" content="http://blog.zhengmingz.top/2019/10/22/Program-c-point-addr/index.html">
+<meta property="og:title" content="读取某目录下的全部文件和目录">
+<meta property="og:url" content="http://blog.zhengmingz.top/2019/09/26/Program-ReadDirectory/index.html">
 <meta property="og:site_name" content="zzm">
-<meta property="og:description" content="c、c++中一些指针、数组地址加减的问题">
+<meta property="og:description" content="Python和linux shell中读取某目录下的文件和目录">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-12-22T08:57:59.143Z">
+<meta property="og:updated_time" content="2022-03-04T06:40:07.597Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c中指针地址加1">
-<meta name="twitter:description" content="c、c++中一些指针、数组地址加减的问题">
+<meta name="twitter:title" content="读取某目录下的全部文件和目录">
+<meta name="twitter:description" content="Python和linux shell中读取某目录下的文件和目录">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>c中指针地址加1 | zzm</title>
+<title>读取某目录下的全部文件和目录 | zzm</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -238,11 +238,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Program-c-point-addr" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Program-ReadDirectory" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/10/22/Program-c-point-addr/" class="article-date">
-      <time datetime="2019-10-22T08:42:54.000Z" itemprop="datePublished">2019-10-22</time>
+      <a href="/2019/09/26/Program-ReadDirectory/" class="article-date">
+      <time datetime="2019-09-26T08:53:57.000Z" itemprop="datePublished">2019-09-26</time>
 </a>
 
 
@@ -257,7 +257,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      c中指针地址加1
+      读取某目录下的全部文件和目录
     </h1>
   
 
@@ -272,7 +272,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/地址/">地址</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指针/">指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/directory/">directory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/file/">file</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -282,12 +282,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>c、c++中一些指针、数组地址加减的问题<br><a id="more"></a></p>
-<h1 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">int a[5]=&#123;0,1,2,3,4&#125;;</span><br><span class="line">int *p=(int *)(&amp;a+1);</span><br><span class="line">printf(&quot;%p\n&quot;,&amp;a);</span><br><span class="line">printf(&quot;%p\n&quot;,&amp;a+1);</span><br><span class="line">printf(&quot;%d\n&quot;,*(p));</span><br><span class="line">printf(&quot;%d\n&quot;,*(p-1));</span><br><span class="line">printf(&quot;%d\n&quot;,*(p-2));</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0x7ffcfb1f5830</span><br><span class="line">0x7ffcfb1f5844</span><br><span class="line">32764</span><br><span class="line">4</span><br><span class="line">3</span><br></pre></td></tr></table></figure></p>
-<p>指针P+n = 指针P + sizeof（指针的类型）<em> n<br>sizeof(a)=20 a的类型是int(</em>)[5]</p>
-<p>如果改为<code>int *p=(int *)(&amp;a[0]+1);</code>结果就完全不同了</p>
-<p><a href="https://blog.csdn.net/qq_23996069/article/details/89309016" target="_blank" rel="noopener">参考1</a><br><a href="https://blog.csdn.net/m0_37605407/article/details/79198118" target="_blank" rel="noopener">参考2</a></p>
+        <p>Python和linux shell中读取某目录下的文件和目录<br><a id="more"></a></p>
+<h1 id="一、python"><a href="#一、python" class="headerlink" title="一、python"></a>一、python</h1><h2 id="1-获取某目录下的全部文件"><a href="#1-获取某目录下的全部文件" class="headerlink" title="1.获取某目录下的全部文件"></a>1.获取某目录下的全部文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path=&apos;/home/user/program&apos;</span><br><span class="line">roots=os.listdir(path)</span><br><span class="line">print(&apos;root_dir:&apos;,roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if os.path.isfile(path+file):</span><br><span class="line">        print(file)</span><br></pre></td></tr></table></figure>
+<h2 id="2-获取某目录下的全部目录"><a href="#2-获取某目录下的全部目录" class="headerlink" title="2.获取某目录下的全部目录"></a>2.获取某目录下的全部目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path=&apos;/home/user/program&apos;</span><br><span class="line">roots=os.listdir(path)</span><br><span class="line">print(&apos;root_dir:&apos;,roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if not os.path.isfile(path+file):</span><br><span class="line">        print(file)</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path=&apos;/home/user/program&apos;</span><br><span class="line">roots=os.listdir(path)</span><br><span class="line">print(&apos;root_dir:&apos;,roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if os.path.isdir(path+file):</span><br><span class="line">        print(file)</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-walk一次拿到全部分开的文件和目录"><a href="#3-walk一次拿到全部分开的文件和目录" class="headerlink" title="3.walk一次拿到全部分开的文件和目录"></a>3.walk一次拿到全部分开的文件和目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">def file_name(file_dir):</span><br><span class="line">    root= os.walk(file_dir,topdown=True)</span><br><span class="line">    print(root.__next__())</span><br><span class="line">file_name(&apos;/home/user/program&apos;)</span><br></pre></td></tr></table></figure>
+<p> 输出：<br> <code>(&#39;/home/zzm/program&#39;, [&#39;sketch_rnn&#39;, &#39;semantic_image_inpainting-master&#39;, &#39;timage&#39;, &#39;.ipynb_checkpoints&#39;, &#39;Gan_Mnist&#39;, &#39;GlobalLocalImageCompletion_TF-master&#39;, &#39;11Class_1_new_64&#39;, &#39;.git&#39;, &#39;11Class_3_new_64&#39;], [&#39;aa.c&#39;, &#39;test.py&#39;, &#39;aa&#39;, &#39;Untitled.ipynb&#39;, &#39;linerRegression.py&#39;, &#39;DealImage.py&#39;])</code></p>
+<h2 id="4-递归获取所有子目录下的文件和目录"><a href="#4-递归获取所有子目录下的文件和目录" class="headerlink" title="4.递归获取所有子目录下的文件和目录"></a>4.递归获取所有子目录下的文件和目录</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">def file_name(file_dir):</span><br><span class="line">    for root,dirs,files in os.walk(file_dir,topdown=True):</span><br><span class="line">        print(&apos;root_dir:&apos;,root)</span><br><span class="line">        print(&apos;sub_dirs:&apos;,dirs)</span><br><span class="line">        print(&apos;files&apos;,files)</span><br><span class="line"></span><br><span class="line">file_name(&apos;/home/user/program&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="5-获取某一类型的文件，并获取没有后缀的文件名"><a href="#5-获取某一类型的文件，并获取没有后缀的文件名" class="headerlink" title="5.获取某一类型的文件，并获取没有后缀的文件名"></a>5.获取某一类型的文件，并获取没有后缀的文件名</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">roots=os.listdir(&apos;/home/zzm/program&apos;)</span><br><span class="line">print(&apos;root_dir:&apos;, roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if os.path.isfile(&apos;/home/zzm/program/&apos; + file) and os.path.splitext(file)[1] == &apos;.py&apos; :</span><br><span class="line">        print(os.path.splitext(file)[0])</span><br></pre></td></tr></table></figure>
+<h2 id="6-glob"><a href="#6-glob" class="headerlink" title="6. glob"></a>6. glob</h2><p> os.listdir: 获取文件夹下的文件和文件夹的名称<br> glob.glob: 获取文件夹下，符合通配符的文件及文件夹的路径<br>注意：不要在末尾加 \，文件夹参数就到文件夹，不用加\，文件通配符，也不用加 \<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line">paths = glob.glob(os.path.join(path,&apos;*.json&apos;))</span><br><span class="line"># 输出带路径</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、linux-bash"><a href="#二、linux-bash" class="headerlink" title="二、linux bash"></a>二、linux bash</h1><h2 id="1-获取某目录下全部子目录"><a href="#1-获取某目录下全部子目录" class="headerlink" title="1.获取某目录下全部子目录"></a>1.获取某目录下全部子目录</h2><p>ls -F | grep ‘/$’<br>注：ls -F 显示的目录以/结尾,再用grep筛选出来,-F参数使得ls命令可以在显示子目录的时候在它的文件名之后加上一个斜线(“/”)字符。而文件后面的星号(“*”)字符表示这是一个可执行程序</p>
+<p>ls -l | grep ‘^d’<br>注：ls -l 显示的目录以d开头</p>
+<p>ls -ld */</p>
+<p>ls -ap | grep ‘/‘<br>注：ls -p可以给目录加上一个’/’，过滤一下就能只显示目录了,-a显示隐藏文件。</p>
+<h2 id="2-获取某目录下全部文件"><a href="#2-获取某目录下全部文件" class="headerlink" title="2.获取某目录下全部文件"></a>2.获取某目录下全部文件</h2><p>ls -F | grep -v ‘/$’<br>注：grep -v 找相反的，也就是不以/结尾的文件</p>
+<p>ls  -F | grep -v ‘/$’ | grep ‘.py$’<br>注：找出文件，且以.py结尾的。</p>
 
       
     </div>
@@ -296,13 +305,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2019/10/22/Program-c-point-addr/">c中指针地址加1</a></p>
+        <p><span>Title:</span><a href="/2019/09/26/Program-ReadDirectory/">读取某目录下的全部文件和目录</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
-        <p><span>Created:</span>2019-10-22, 16:42:54</p>
-        <p><span>Updated:</span>2021-12-22, 16:57:59</p>
+        <p><span>Created:</span>2019-09-26, 16:53:57</p>
+        <p><span>Updated:</span>2022-03-04, 14:40:07</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2019/10/22/Program-c-point-addr/" title="c中指针地址加1">http://blog.zhengmingz.top/2019/10/22/Program-c-point-addr/</a>
-            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/10/22/Program-c-point-addr/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2019/09/26/Program-ReadDirectory/" title="读取某目录下的全部文件和目录">http://blog.zhengmingz.top/2019/09/26/Program-ReadDirectory/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/26/Program-ReadDirectory/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -315,15 +324,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/10/24/Install-mysql/">
-                    mysql
+                <a href="/2019/09/26/Install-django/">
+                    Django 在 pycharm（社区版）上安装运行
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/10/08/Install-docker/">
-                    docker
+                <a href="/2019/09/26/Algorithm-PartOptim/">
+                    粒子群优化算法
                 </a>
             </div>
         
@@ -335,7 +344,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目1"><span class="toc-number">1.</span> <span class="toc-text">题目1</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、python"><span class="toc-number">1.</span> <span class="toc-text">一、python</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-获取某目录下的全部文件"><span class="toc-number">1.1.</span> <span class="toc-text">1.获取某目录下的全部文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-获取某目录下的全部目录"><span class="toc-number">1.2.</span> <span class="toc-text">2.获取某目录下的全部目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-walk一次拿到全部分开的文件和目录"><span class="toc-number">1.3.</span> <span class="toc-text">3.walk一次拿到全部分开的文件和目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-递归获取所有子目录下的文件和目录"><span class="toc-number">1.4.</span> <span class="toc-text">4.递归获取所有子目录下的文件和目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-获取某一类型的文件，并获取没有后缀的文件名"><span class="toc-number">1.5.</span> <span class="toc-text">5.获取某一类型的文件，并获取没有后缀的文件名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-glob"><span class="toc-number">1.6.</span> <span class="toc-text">6. glob</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、linux-bash"><span class="toc-number">2.</span> <span class="toc-text">二、linux bash</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-获取某目录下全部子目录"><span class="toc-number">2.1.</span> <span class="toc-text">1.获取某目录下全部子目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-获取某目录下全部文件"><span class="toc-number">2.2.</span> <span class="toc-text">2.获取某目录下全部文件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -371,7 +380,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"c中指针地址加1　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"读取某目录下的全部文件和目录　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -391,7 +400,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/10/24/Install-mysql/" title="Pre: mysql">
+            <a href="/2019/09/26/Install-django/" title="Pre: Django 在 pycharm（社区版）上安装运行">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -399,7 +408,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/10/08/Install-docker/" title="Next: docker">
+            <a href="/2019/09/26/Algorithm-PartOptim/" title="Next: 粒子群优化算法">
                 <i class="fa fa-angle-right"></i>
             </a>
         

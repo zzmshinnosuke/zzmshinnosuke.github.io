@@ -16,14 +16,14 @@
 
 
 <meta name="description" content="分为两种方式：（1）直接安装显卡驱动（2）安装cuda toolkit顺便安装显卡驱动，或者可以只安装cuda。">
-<meta name="keywords" content="ubuntu,NVIDIA显卡驱动,cuda">
+<meta name="keywords" content="cuda,ubuntu,NVIDIA显卡驱动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Install-cuda">
 <meta property="og:url" content="http://blog.zhengmingz.top/2022/07/06/Install-cuda/index.html">
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="分为两种方式：（1）直接安装显卡驱动（2）安装cuda toolkit顺便安装显卡驱动，或者可以只安装cuda。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2022-07-06T08:40:42.688Z">
+<meta property="og:updated_time" content="2022-07-06T08:47:23.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Install-cuda">
 <meta name="twitter:description" content="分为两种方式：（1）直接安装显卡驱动（2）安装cuda toolkit顺便安装显卡驱动，或者可以只安装cuda。">
@@ -321,7 +321,7 @@
 <li><p>执行<code>source .bashrc</code>，输入<code>nvcc -V</code>，查看cuda版本。</p>
 </li>
 </ul>
-<h3 id="设置cuda计算模式"><a href="#设置cuda计算模式" class="headerlink" title="　设置cuda计算模式"></a>　设置cuda计算模式</h3><ul>
+<h3 id="设置cuda计算模式"><a href="#设置cuda计算模式" class="headerlink" title="设置cuda计算模式"></a>设置cuda计算模式</h3><ul>
 <li>有三种模式：0-default、1-Exclusive、2-Prohibited。设置成２后，其他程序不能占用。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python中配置cuda计算模式</span><br><span class="line">os.system(&apos;sudo nvidia-smi -i %s -c 0&apos; % os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;])</span><br><span class="line">os.system(&apos;sudo nvidia-smi -i %s -c 2&apos; % os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;])</span><br><span class="line"># shell</span><br><span class="line">sudo nvidia-smi -i &apos;0&apos; -c 0</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -336,7 +336,7 @@
         <p><span>Title:</span><a href="/2022/07/06/Install-cuda/">Install-cuda</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2022-07-06, 15:58:46</p>
-        <p><span>Updated:</span>2022-07-06, 16:40:42</p>
+        <p><span>Updated:</span>2022-07-06, 16:47:23</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/07/06/Install-cuda/" title="Install-cuda">http://blog.zhengmingz.top/2022/07/06/Install-cuda/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2022/07/06/Install-cuda/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -366,7 +366,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu安装NVIDIA显卡驱动"><span class="toc-number">1.1.</span> <span class="toc-text">ubuntu安装NVIDIA显卡驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu-安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）"><span class="toc-number">1.2.</span> <span class="toc-text">ubuntu 安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多版本cuda切换"><span class="toc-number">2.1.</span> <span class="toc-text">多版本cuda切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置cuda计算模式"><span class="toc-number">2.2.</span> <span class="toc-text">　设置cuda计算模式</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu安装NVIDIA显卡驱动"><span class="toc-number">1.1.</span> <span class="toc-text">ubuntu安装NVIDIA显卡驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu-安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）"><span class="toc-number">1.2.</span> <span class="toc-text">ubuntu 安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多版本cuda切换"><span class="toc-number">2.1.</span> <span class="toc-text">多版本cuda切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置cuda计算模式"><span class="toc-number">2.2.</span> <span class="toc-text">设置cuda计算模式</span></a></li></ol></li></ol>
         
     </div>
     <style>

@@ -8,7 +8,7 @@
       <link href="/2022/07/06/Install-cuda/"/>
       <url>/2022/07/06/Install-cuda/</url>
       
-        <content type="html"><![CDATA[<p>分为两种方式：<br>（1）直接安装显卡驱动<br>（2）安装cuda toolkit顺便安装显卡驱动，或者可以只安装cuda。<br><a id="more"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="ubuntu安装NVIDIA显卡驱动"><a href="#ubuntu安装NVIDIA显卡驱动" class="headerlink" title="ubuntu安装NVIDIA显卡驱动"></a>ubuntu安装NVIDIA显卡驱动</h3><p>查看GPU型号<br><code>lspci | grep -i nvidia</code><br><strong>注：</strong> Cuda Toolkit（<a href="https://developer.nvidia.cn/downloads" target="_blank" rel="noopener">下载</a>）包含nvidia显卡驱动, 可以直接一起安装。在Ubuntu18上安装Cuda11.1一直没有成功，也没报错，让看<code>/var/log/nvidia-installer.log</code>,里边也没提示什么，就重新下载Nvidia驱动，提示没有make。所以应该先安装<code>gcc</code>和<code>make</code>才能继续的安装，之后就一路顺利的完成了。</p><p><strong>安装驱动</strong></p><ul><li>去英伟达<a href="http://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">官网</a>下载驱动程序</li><li>禁用nouveau第三方驱动<br>打开编辑配置文件： <code>sudo gedit /etc/modprobe.d/blacklist.conf</code><br>在最后一行添加：<code>blacklist nouveau</code><br>改好后执行命令：<code>sudo update-initramfs -u</code><br>重启使之生效：<code>reboot</code>  </li><li>安装驱动<br>重启后按Ctrl+Alt+F1 进入命令行界面<br>执行命令：<code>lsmod | grep nouveau</code><br>禁用X服务：<code>sudo /etc/init.d/lightdm stop</code> (或者：sudo service lightdm stop)<br>给驱动run文件赋予可执行权限：<code>sudo chmod a+x NVIDIA-Linux-x86_64-390.25.run</code>    (下载的驱动文件名）<br>安装：<code>sudo ./NVIDIA-Linux-x86_64-390.25.run -no-opengl-files</code>  <pre><code>  –no-opengl-files 只安装驱动文件，不安装OpenGL文件。这个参数最重要    –no-x-check 安装驱动时不检查X服务    –no-nouveau-check 安装驱动时不检查nouveau     后面两个参数可不加。  </code></pre></li><li>开启X服务：<code>sudo /etc/init.d/lightdm start</code> (或者：sudo service lightdm start)  </li><li>重启，没有问题，输入命令：<code>nvidia-smi</code><br>如果出现了驱动版本就表示安装成功了。</li></ul><p><a href="https://blog.csdn.net/u014797226/article/details/79626693" target="_blank" rel="noopener">参考</a></p><p><strong>禁用Nouveau 开源驱动</strong><br>首先添加一个blacklist:<br><code># vi /etc/modprobe.d/blacklist-nouveau.conf</code><br>写入以下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">blacklist nouveau</span><br><span class="line">blacklist lbm-nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">alias nouveau off</span><br><span class="line">alias lbm-nouveau off</span><br></pre></td></tr></table></figure></p><p>为了保证完全禁用掉，还要在内核中直接禁用Nouveau:<br><code># echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf</code><br>这之后，更新配置试生效：<br><code># update-initramfs -u</code><br>重启  </p><p><strong>问题</strong><br>没有关闭系统自动升级，重庆后ubuntu的内核自动升级了，用GPU跑模型的时候，提示cuda不存在，用<code>nvidia-smi</code>查看，提示：<br><code>NVIDIA-SMI has failed because it couldn&#39;t communicate with the NVIDIA driver.  Make sure that the latest NVIDIA driver is installed and running.</code><br>通过如下方法解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install dkms</span><br><span class="line">sudo dkms install -m nvidia -v 418.87.00</span><br></pre></td></tr></table></figure></p><p>其中，418.87.00是之前安装nvidia驱动的版本号，可以通过以下命令查到：<br><code>ls /usr/src | grep nvidia</code></p><p>还可以通过降低系统的内核的方法来解决，由于ubuntu18启动时不能进入一个ubuntu高级的地方可以选择内核版本，所以没用这个方法。 </p><h3 id="ubuntu-安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）"><a href="#ubuntu-安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）" class="headerlink" title="ubuntu 安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）"></a>ubuntu 安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）</h3><ul><li>在<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">官网</a>选择cuda版本</li><li>选择目标系统平台linux/x86_64/ubuntu/16.04/runfile(local)</li><li>按给出的命令下载cuda .run安装包<br>  <code>wget https://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run</code></li><li>赋予执行权限<br>  <code>chmod +x cuda_10.1.243_418.87.00_linux.run</code> </li><li>安装<br>  <code>sudo sh cuda_10.1.243_418.87.00_linux.run</code></li><li>如果系统已安装Nvidia驱动，只需要安装其他版本的cuda，可以只选择toolkit一项；如果没有安装显卡驱动，可以按默认全部选择选项安装。</li></ul><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="多版本cuda切换"><a href="#多版本cuda切换" class="headerlink" title="多版本cuda切换"></a>多版本cuda切换</h3><ul><li>按照安装２中方法，安装需要版本的cuda。</li><li><p>添加cuda 软链接</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /usr/local/cuda-10.1</span><br><span class="line">sudo ln -s /usr/local/cuda-11.1 /usr/local/cuda</span><br></pre></td></tr></table></figure></li><li><p>切换，在<code>.bashrc</code>中添加以下配置</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/cuda/bin</span><br><span class="line">export LD_LIBRARY=$LD_LIBRARY:/usr/local/cuda/lib64</span><br><span class="line">export LIRRARY_PATH=$LIRRARY_PATH:/usr/local/cuda/lib64</span><br><span class="line">export CUDA_HOME=&apos;/usr/local/cuda-11.1&apos;</span><br></pre></td></tr></table></figure></li><li><p>执行<code>source .bashrc</code>，输入<code>nvcc -V</code>，查看cuda版本。</p></li></ul><h3 id="设置cuda计算模式"><a href="#设置cuda计算模式" class="headerlink" title="　设置cuda计算模式"></a>　设置cuda计算模式</h3><ul><li>有三种模式：0-default、1-Exclusive、2-Prohibited。设置成２后，其他程序不能占用。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python中配置cuda计算模式</span><br><span class="line">os.system(&apos;sudo nvidia-smi -i %s -c 0&apos; % os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;])</span><br><span class="line">os.system(&apos;sudo nvidia-smi -i %s -c 2&apos; % os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;])</span><br><span class="line"># shell</span><br><span class="line">sudo nvidia-smi -i &apos;0&apos; -c 0</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>分为两种方式：<br>（1）直接安装显卡驱动<br>（2）安装cuda toolkit顺便安装显卡驱动，或者可以只安装cuda。<br><a id="more"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="ubuntu安装NVIDIA显卡驱动"><a href="#ubuntu安装NVIDIA显卡驱动" class="headerlink" title="ubuntu安装NVIDIA显卡驱动"></a>ubuntu安装NVIDIA显卡驱动</h3><p>查看GPU型号<br><code>lspci | grep -i nvidia</code><br><strong>注：</strong> Cuda Toolkit（<a href="https://developer.nvidia.cn/downloads" target="_blank" rel="noopener">下载</a>）包含nvidia显卡驱动, 可以直接一起安装。在Ubuntu18上安装Cuda11.1一直没有成功，也没报错，让看<code>/var/log/nvidia-installer.log</code>,里边也没提示什么，就重新下载Nvidia驱动，提示没有make。所以应该先安装<code>gcc</code>和<code>make</code>才能继续的安装，之后就一路顺利的完成了。</p><p><strong>安装驱动</strong></p><ul><li>去英伟达<a href="http://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">官网</a>下载驱动程序</li><li>禁用nouveau第三方驱动<br>打开编辑配置文件： <code>sudo gedit /etc/modprobe.d/blacklist.conf</code><br>在最后一行添加：<code>blacklist nouveau</code><br>改好后执行命令：<code>sudo update-initramfs -u</code><br>重启使之生效：<code>reboot</code>  </li><li>安装驱动<br>重启后按Ctrl+Alt+F1 进入命令行界面<br>执行命令：<code>lsmod | grep nouveau</code><br>禁用X服务：<code>sudo /etc/init.d/lightdm stop</code> (或者：sudo service lightdm stop)<br>给驱动run文件赋予可执行权限：<code>sudo chmod a+x NVIDIA-Linux-x86_64-390.25.run</code>    (下载的驱动文件名）<br>安装：<code>sudo ./NVIDIA-Linux-x86_64-390.25.run -no-opengl-files</code>  <pre><code>  –no-opengl-files 只安装驱动文件，不安装OpenGL文件。这个参数最重要    –no-x-check 安装驱动时不检查X服务    –no-nouveau-check 安装驱动时不检查nouveau     后面两个参数可不加。  </code></pre></li><li>开启X服务：<code>sudo /etc/init.d/lightdm start</code> (或者：sudo service lightdm start)  </li><li>重启，没有问题，输入命令：<code>nvidia-smi</code><br>如果出现了驱动版本就表示安装成功了。</li></ul><p><a href="https://blog.csdn.net/u014797226/article/details/79626693" target="_blank" rel="noopener">参考</a></p><p><strong>禁用Nouveau 开源驱动</strong><br>首先添加一个blacklist:<br><code># vi /etc/modprobe.d/blacklist-nouveau.conf</code><br>写入以下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">blacklist nouveau</span><br><span class="line">blacklist lbm-nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">alias nouveau off</span><br><span class="line">alias lbm-nouveau off</span><br></pre></td></tr></table></figure></p><p>为了保证完全禁用掉，还要在内核中直接禁用Nouveau:<br><code># echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf</code><br>这之后，更新配置试生效：<br><code># update-initramfs -u</code><br>重启  </p><p><strong>问题</strong><br>没有关闭系统自动升级，重庆后ubuntu的内核自动升级了，用GPU跑模型的时候，提示cuda不存在，用<code>nvidia-smi</code>查看，提示：<br><code>NVIDIA-SMI has failed because it couldn&#39;t communicate with the NVIDIA driver.  Make sure that the latest NVIDIA driver is installed and running.</code><br>通过如下方法解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install dkms</span><br><span class="line">sudo dkms install -m nvidia -v 418.87.00</span><br></pre></td></tr></table></figure></p><p>其中，418.87.00是之前安装nvidia驱动的版本号，可以通过以下命令查到：<br><code>ls /usr/src | grep nvidia</code></p><p>还可以通过降低系统的内核的方法来解决，由于ubuntu18启动时不能进入一个ubuntu高级的地方可以选择内核版本，所以没用这个方法。 </p><h3 id="ubuntu-安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）"><a href="#ubuntu-安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）" class="headerlink" title="ubuntu 安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）"></a>ubuntu 安装不同版本cuda（可以顺带安装显卡驱动，一次安装更省事）</h3><ul><li>在<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">官网</a>选择cuda版本</li><li>选择目标系统平台linux/x86_64/ubuntu/16.04/runfile(local)</li><li>按给出的命令下载cuda .run安装包<br>  <code>wget https://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run</code></li><li>赋予执行权限<br>  <code>chmod +x cuda_10.1.243_418.87.00_linux.run</code> </li><li>安装<br>  <code>sudo sh cuda_10.1.243_418.87.00_linux.run</code></li><li>如果系统已安装Nvidia驱动，只需要安装其他版本的cuda，可以只选择toolkit一项；如果没有安装显卡驱动，可以按默认全部选择选项安装。</li></ul><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="多版本cuda切换"><a href="#多版本cuda切换" class="headerlink" title="多版本cuda切换"></a>多版本cuda切换</h3><ul><li>按照安装２中方法，安装需要版本的cuda。</li><li><p>添加cuda 软链接</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /usr/local/cuda-10.1</span><br><span class="line">sudo ln -s /usr/local/cuda-11.1 /usr/local/cuda</span><br></pre></td></tr></table></figure></li><li><p>切换，在<code>.bashrc</code>中添加以下配置</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/cuda/bin</span><br><span class="line">export LD_LIBRARY=$LD_LIBRARY:/usr/local/cuda/lib64</span><br><span class="line">export LIRRARY_PATH=$LIRRARY_PATH:/usr/local/cuda/lib64</span><br><span class="line">export CUDA_HOME=&apos;/usr/local/cuda-11.1&apos;</span><br></pre></td></tr></table></figure></li><li><p>执行<code>source .bashrc</code>，输入<code>nvcc -V</code>，查看cuda版本。</p></li></ul><h3 id="设置cuda计算模式"><a href="#设置cuda计算模式" class="headerlink" title="设置cuda计算模式"></a>设置cuda计算模式</h3><ul><li>有三种模式：0-default、1-Exclusive、2-Prohibited。设置成２后，其他程序不能占用。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python中配置cuda计算模式</span><br><span class="line">os.system(&apos;sudo nvidia-smi -i %s -c 0&apos; % os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;])</span><br><span class="line">os.system(&apos;sudo nvidia-smi -i %s -c 2&apos; % os.environ[&apos;CUDA_VISIBLE_DEVICES&apos;])</span><br><span class="line"># shell</span><br><span class="line">sudo nvidia-smi -i &apos;0&apos; -c 0</span><br></pre></td></tr></table></figure></li></ul>]]></content>
       
       
       <categories>
@@ -20,11 +20,11 @@
       
         <tags>
             
+            <tag> cuda </tag>
+            
             <tag> ubuntu </tag>
             
             <tag> NVIDIA显卡驱动 </tag>
-            
-            <tag> cuda </tag>
             
         </tags>
       
@@ -80,9 +80,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> security </tag>
             
@@ -204,11 +204,11 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> shell </tag>
             
             <tag> linux </tag>
+            
+            <tag> ubuntu </tag>
             
         </tags>
       
@@ -341,6 +341,8 @@
       
         <tags>
             
+            <tag> tmux </tag>
+            
             <tag> ubuntu </tag>
             
             <tag> remote </tag>
@@ -350,8 +352,6 @@
             <tag> vnc </tag>
             
             <tag> screen </tag>
-            
-            <tag> tmux </tag>
             
         </tags>
       
@@ -618,9 +618,9 @@
             
             <tag> python </tag>
             
-            <tag> file </tag>
-            
             <tag> shell </tag>
+            
+            <tag> file </tag>
             
             <tag> directory </tag>
             
@@ -842,11 +842,11 @@
       
         <tags>
             
-            <tag> tmux </tag>
-            
             <tag> shell </tag>
             
             <tag> zsh </tag>
+            
+            <tag> tmux </tag>
             
             <tag> vim </tag>
             
@@ -877,9 +877,9 @@
             
             <tag> python </tag>
             
-            <tag> cuda </tag>
-            
             <tag> conda </tag>
+            
+            <tag> cuda </tag>
             
             <tag> tensorflow </tag>
             

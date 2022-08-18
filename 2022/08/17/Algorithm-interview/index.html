@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zzm">
+
+
+
+<meta name="description" content="算法面经">
+<meta name="keywords" content="deeplearning,interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm-interview">
+<meta property="og:url" content="http://blog.zhengmingz.top/2022/08/17/Algorithm-interview/index.html">
+<meta property="og:site_name" content="zzm">
+<meta property="og:description" content="算法面经">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2022-08-18T09:18:44.831Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm-interview">
+<meta name="twitter:description" content="算法面经">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="zzm" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Algorithm-interview | zzm</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zzm</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frp/">Frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Image/">Image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAT-DDNS/">NAT-DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVIDIA显卡驱动/">NVIDIA显卡驱动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/">conda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cuda/">cuda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/">deeplearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gpu/">gpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jupyter/">jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lab/">lab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mine-virus/">mine virus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notebook/">notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pickle/">pickle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/png/">png</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxychains/">proxychains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pycharm/">pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/remote/">remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/screen/">screen</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/self/">self</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super/">super</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tuple/">tuple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vimrc/">vimrc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnc/">vnc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wpf/">wpf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务安排/">事务安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网穿透/">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地址/">地址</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发/">开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/指针/">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/粒子群/">粒子群</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代/">迭代</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">菜鸟程序员</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zzm</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zzm</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Algorithm-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/17/Algorithm-interview/" class="article-date">
+      <time datetime="2022-08-17T04:46:51.000Z" itemprop="datePublished">2022-08-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Algorithm-interview
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>算法面经<br><a id="more"></a></p>
+<h1 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h1><h2 id="特征工程的常用方法"><a href="#特征工程的常用方法" class="headerlink" title="特征工程的常用方法"></a>特征工程的常用方法</h2><ul>
+<li>对时间戳处理</li>
+<li>对离散型变量进行独热编码</li>
+<li>对连续型变量进行分箱/分区</li>
+<li>特征缩放</li>
+<li>特征选择</li>
+<li>特征衍生（特征交叉）<h2 id="LSTM的结构"><a href="#LSTM的结构" class="headerlink" title="LSTM的结构"></a>LSTM的结构</h2>包括遗忘门，输入门和输出门三种。<br>　　<br>GRU与LSTM区别</li>
+<li>LSTM和GRU的性能在很多任务上不分伯仲；</li>
+<li>GRU参数更少，因此更容易收敛，但是在大数据集的情况下，LSTM性能表现更好；</li>
+<li>GRU 只有两个门（update和reset），LSTM 有三个门（forget，input，output），GRU 直接将hidden state 传给下一个单元，而 LSTM 用memory cell 把hidden state 包装起来。</li>
+</ul>
+<h2 id="RNN为什么会出现梯度消失或者梯度爆炸"><a href="#RNN为什么会出现梯度消失或者梯度爆炸" class="headerlink" title="RNN为什么会出现梯度消失或者梯度爆炸"></a>RNN为什么会出现梯度消失或者梯度爆炸</h2><p>在RNN中经常遇到梯度消失和爆炸现象的原因：很难捕捉到长期的依赖关系，因为乘法梯度可以随着层的数量呈指数递减/递增。</p>
+<h2 id="sigmoid和softmax的区别"><a href="#sigmoid和softmax的区别" class="headerlink" title="sigmoid和softmax的区别"></a>sigmoid和softmax的区别</h2><p> Softmax函数是二分类函数Sigmoid在多分类上的推广，目的是将多分类的结果以概率的形式展现出来。最大的区别在于softmax的计算的是一个比重，而sigmoid只是对每一个输出值进行非线性化。</p>
+<h2 id="训练集、测试集和验证集的作用，训练的时候为什么要进行shuffle"><a href="#训练集、测试集和验证集的作用，训练的时候为什么要进行shuffle" class="headerlink" title="训练集、测试集和验证集的作用，训练的时候为什么要进行shuffle"></a>训练集、测试集和验证集的作用，训练的时候为什么要进行shuffle</h2><p>首先用训练集训练出模型，然后用验证集验证模型（注意：这是一个中间过程，此时最好的模型还未选定），根据情况不断调整模型，选出其中最好的模型（验证误差用于指导我们选择哪个模型），记录最好的模型的各项设置，然后据此再用（训练集+验证集）数据训练出一个新模型，作为最终的模型，最后用测试集评估最终的模型。<br>进行shuffle：打乱数据之间的顺序，让数据随机化，避免过拟合。</p>
+<h2 id="数据不平衡的解决方法"><a href="#数据不平衡的解决方法" class="headerlink" title="数据不平衡的解决方法"></a>数据不平衡的解决方法</h2><p>以二分类举例，数据不平衡是指数据集中正类和负类的比例严重失调，比如正：负为9：1。数据不平衡会导致模型学习偏差，模型会倾向于学习比例高的数据特征，对比例低的数据只学习到很少的特征。</p>
+<ul>
+<li>数据方面:<ul>
+<li>(1)上采样：增加少类样本; </li>
+<li>(2)下采样：抛弃部分大类样本</li>
+</ul>
+</li>
+<li>模型方面：<ul>
+<li>设置惩罚机制：增加少类样本预测错误的惩罚</li>
+</ul>
+</li>
+<li>评价指标<ul>
+<li>使用：精确率和召回率</li>
+</ul>
+</li>
+<li>更换损失函数<ul>
+<li>使用focal_loss<h2 id="各类激活函数"><a href="#各类激活函数" class="headerlink" title="各类激活函数"></a>各类激活函数</h2></li>
+</ul>
+</li>
+</ul>
+<h2 id="BP-算法流程"><a href="#BP-算法流程" class="headerlink" title="BP 算法流程"></a>BP 算法流程</h2><h2 id="CNN-的参数的优化方法"><a href="#CNN-的参数的优化方法" class="headerlink" title="CNN 的参数的优化方法"></a>CNN 的参数的优化方法</h2><h2 id="随机梯度下降、mini-batch、整个训练样本一起进去的区别"><a href="#随机梯度下降、mini-batch、整个训练样本一起进去的区别" class="headerlink" title="随机梯度下降、mini-batch、整个训练样本一起进去的区别"></a>随机梯度下降、mini-batch、整个训练样本一起进去的区别</h2><h2 id="BatchNormalization的核心思想和实现"><a href="#BatchNormalization的核心思想和实现" class="headerlink" title="BatchNormalization的核心思想和实现"></a>BatchNormalization的核心思想和实现</h2><h2 id="Transformer的原理"><a href="#Transformer的原理" class="headerlink" title="Transformer的原理"></a>Transformer的原理</h2><h1 id="传统机器学习算法"><a href="#传统机器学习算法" class="headerlink" title="传统机器学习算法"></a>传统机器学习算法</h1>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2022/08/17/Algorithm-interview/">Algorithm-interview</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
+        <p><span>Created:</span>2022-08-17, 12:46:51</p>
+        <p><span>Updated:</span>2022-08-18, 17:18:44</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2022/08/17/Algorithm-interview/" title="Algorithm-interview">http://blog.zhengmingz.top/2022/08/17/Algorithm-interview/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2022/08/17/Algorithm-interview/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2022/07/06/Install-cuda/">
+                    Install-cuda
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深度学习"><span class="toc-number">1.</span> <span class="toc-text">深度学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特征工程的常用方法"><span class="toc-number">1.1.</span> <span class="toc-text">特征工程的常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM的结构"><span class="toc-number">1.2.</span> <span class="toc-text">LSTM的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN为什么会出现梯度消失或者梯度爆炸"><span class="toc-number">1.3.</span> <span class="toc-text">RNN为什么会出现梯度消失或者梯度爆炸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid和softmax的区别"><span class="toc-number">1.4.</span> <span class="toc-text">sigmoid和softmax的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练集、测试集和验证集的作用，训练的时候为什么要进行shuffle"><span class="toc-number">1.5.</span> <span class="toc-text">训练集、测试集和验证集的作用，训练的时候为什么要进行shuffle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据不平衡的解决方法"><span class="toc-number">1.6.</span> <span class="toc-text">数据不平衡的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各类激活函数"><span class="toc-number">1.7.</span> <span class="toc-text">各类激活函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BP-算法流程"><span class="toc-number">1.8.</span> <span class="toc-text">BP 算法流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN-的参数的优化方法"><span class="toc-number">1.9.</span> <span class="toc-text">CNN 的参数的优化方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机梯度下降、mini-batch、整个训练样本一起进去的区别"><span class="toc-number">1.10.</span> <span class="toc-text">随机梯度下降、mini-batch、整个训练样本一起进去的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BatchNormalization的核心思想和实现"><span class="toc-number">1.11.</span> <span class="toc-text">BatchNormalization的核心思想和实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer的原理"><span class="toc-number">1.12.</span> <span class="toc-text">Transformer的原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传统机器学习算法"><span class="toc-number">2.</span> <span class="toc-text">传统机器学习算法</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Algorithm-interview　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2022/07/06/Install-cuda/" title="Next: Install-cuda">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/08/17/Algorithm-interview/">Algorithm-interview</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/06/Install-cuda/">Install-cuda</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/Program-RWFile/">读写文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/26/Security-Mine-Virus/">清除挖矿病毒</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/12/Tool-vim/">vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/09/27/Install-nat-ddns/">nat-ddns</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/07/23/Install-jupyter/">jupyter</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/28/Program-linux-shell/">linux-shell</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/13/Tool-git/">git</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/07/Program-python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/05/Program-pytorch-notices/">pytorch-notices</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/18/Research-paper/">paper</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/12/Install-remote-connect/">remote-connect</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/Program-dict-set-tuple/">dict-list-tuple-string</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/Install-shadowsocks/">shadowsocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/Deal-Develop-DailyManage/">每日事务安排应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/22/Program-ImageProcess/">图像处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Install-mysql/">mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Program-c-point-addr/">c中指针地址加1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/Install-docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Install-django/">Django 在 pycharm（社区版）上安装运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Program-ReadDirectory/">读取某目录下的全部文件和目录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Algorithm-PartOptim/">粒子群优化算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Program-svg2png/">svg转png格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-bugNum/">修改bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/12/Algorithm-splitArray/">分割数组的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Program-wpfgif/">wpf加载gif</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Install-ZshTmuxVim/">tmux+vim+zsh 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/Install-conda/">conda</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Install-ftp/">ftp服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Install-Hexo/">Hexo创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/Algorithm-knapsack-problem/">背包问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2022 zzm
+            </div>
+
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

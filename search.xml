@@ -47,11 +47,11 @@
       
         <tags>
             
+            <tag> cuda </tag>
+            
             <tag> ubuntu </tag>
             
             <tag> NVIDIA显卡驱动 </tag>
-            
-            <tag> cuda </tag>
             
         </tags>
       
@@ -436,9 +436,9 @@
       
         <tags>
             
-            <tag> shadowsocks </tag>
-            
             <tag> 服务器 </tag>
+            
+            <tag> shadowsocks </tag>
             
             <tag> 代理 </tag>
             
@@ -904,9 +904,9 @@
             
             <tag> python </tag>
             
-            <tag> cuda </tag>
-            
             <tag> conda </tag>
+            
+            <tag> cuda </tag>
             
             <tag> tensorflow </tag>
             
@@ -937,9 +937,9 @@
             
             <tag> ubuntu </tag>
             
-            <tag> 服务器 </tag>
-            
             <tag> ftp </tag>
+            
+            <tag> 服务器 </tag>
             
             <tag> 安装 </tag>
             

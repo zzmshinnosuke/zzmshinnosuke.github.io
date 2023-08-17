@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="分为两种方式：（1）通过U盘制作启动盘安装（2）在已经安装windows的基础上，安装ubuntu16双系统，使用硬盘安装的方式，不用u盘。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2022-12-17T11:06:44.293Z">
+<meta property="og:updated_time" content="2023-08-17T06:32:08.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu安装">
 <meta name="twitter:description" content="分为两种方式：（1）通过U盘制作启动盘安装（2）在已经安装windows的基础上，安装ubuntu16双系统，使用硬盘安装的方式，不用u盘。">
@@ -326,7 +326,7 @@
 <li>保存<br><code>sudo mount -a</code><br>不保存就可以了（但是/home中的东西并没有复制成功，还的从/home_bak复制）<br><a href="https://blog.csdn.net/weixin_43167547/article/details/106457983" target="_blank" rel="noopener">参考</a></li>
 </ul>
 <h3 id="创建sudo新用户"><a href="#创建sudo新用户" class="headerlink" title="创建sudo新用户"></a>创建sudo新用户</h3><p>加入用户<br><code>sudo adduser zzm</code><br>查看用户组<br><code>groups</code><br>加入sudo组<br><code>sudo usermod -aG sudo zzm</code><br>删除用户<br>sudo deluser, sudo deluser —remove-home<br><a href="https://blog.csdn.net/wowocpp/article/details/100115112" target="_blank" rel="noopener">参考</a></p>
-<h3 id="添加新用户"><a href="#添加新用户" class="headerlink" title="添加新用户"></a>添加新用户</h3><p>useradd 和　adduser都可以创建用户，adduser属于快捷创建，主要介绍useradd。</p>
+<h3 id="添加新用户"><a href="#添加新用户" class="headerlink" title="添加新用户"></a>添加新用户</h3><p>useradd和adduser都可以创建用户，adduser属于快捷创建，主要介绍useradd。  </p>
 <ul>
 <li><p>格式<br>useradd  [-d home] [-s shell] [-c comment] [-m [-k template]] [-f inactive] [-e expire ] [-p passwd] [-r] name<br>-c：加上备注文字，备注文字保存在passwd的备注栏中。<br>-d：指定用户登入时的启始目录。<br>-D：变更预设值。<br>-e：指定账号的有效期限，缺省表示永久有效。<br>-f：指定在密码过期后多少天即关闭该账号。<br>-g：指定用户所属的起始群组。<br>-G：指定用户所属的附加群组。<br>-m：自动建立用户的登入目录。<br>-M：不要自动建立用户的登入目录。<br>-n：取消建立以用户名称为名的群组。<br>-r：建立系统账号。<br>-s：指定用户登入后所使用的shell。<br>-u：指定用户ID号。  </p>
 </li>
@@ -366,7 +366,7 @@
 <h3 id="查看内存条信息"><a href="#查看内存条信息" class="headerlink" title="查看内存条信息"></a>查看内存条信息</h3><p><code>sudo dmidecode --type memory</code></p>
 <h3 id="查看硬盘信息"><a href="#查看硬盘信息" class="headerlink" title="查看硬盘信息"></a>查看硬盘信息</h3><p>硬盘数量、大小：<code>sudo fdisk -l |grep &quot;Disk /dev/sd&quot;</code><br>硬盘型号：<code>sudo hdparm -i /dev/sda |grep &quot;Model&quot;</code><br><a href="https://www.cnblogs.com/ranxf/p/6903200.html" target="_blank" rel="noopener">参考</a></p>
 <h3 id="查看主板"><a href="#查看主板" class="headerlink" title="查看主板"></a>查看主板</h3><p>主板型号,主板支持最大内存,单条内存的参数<br>sudo dmidecode -t 2 //查看主板信息<br>sudo dmidecode -t 16 |grep Maximum //查看主板支持最大内存<br>sudo dmidecode -t memory //查看单条内存的参数<br><a href="https://blog.csdn.net/djd1234567/article/details/48372911" target="_blank" rel="noopener">参考</a>  </p>
-<h3 id="打开usb摄像头"><a href="#打开usb摄像头" class="headerlink" title="打开usb摄像头"></a>打开usb摄像头</h3><p>命令：<code>cheese</code></p>
+<h3 id="打开usb摄像头"><a href="#打开usb摄像头" class="headerlink" title="打开usb摄像头"></a>打开usb摄像头</h3><p>命令：<code>cheese</code> </p>
 
       
     </div>
@@ -378,7 +378,7 @@
         <p><span>Title:</span><a href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-09-16, 10:02:47</p>
-        <p><span>Updated:</span>2022-12-17, 19:06:44</p>
+        <p><span>Updated:</span>2023-08-17, 14:32:08</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/09/16/Install-ubuntu/" title="ubuntu安装">http://blog.zhengmingz.top/2019/09/16/Install-ubuntu/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/16/Install-ubuntu/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

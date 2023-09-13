@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="tmux、vim、zsh等shell工具的配置与使用">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-12-22T09:08:27.000Z">
+<meta property="og:updated_time" content="2023-09-13T00:56:56.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tmux+vim+zsh 配置">
 <meta name="twitter:description" content="tmux、vim、zsh等shell工具的配置与使用">
@@ -284,7 +284,7 @@
           
         <p>tmux、vim、zsh等shell工具的配置与使用<br><a id="more"></a></p>
 <h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p><a href="http://man.openbsd.org/OpenBSD-current/man1/tmux.1" target="_blank" rel="noopener">官方手册</a><br><a href="https://pragprog.com/book/bhtmux2/tmux-2" target="_blank" rel="noopener">电子数</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>sudo apt-get install tmux</code><br><strong>Session 命令</strong><br>启动新会话： tmux new -s 会话名  -n  窗口名<br>恢复会话： tmux a  -t  会话名<br>列出所有会话：tmux  ls<br>关闭会话：tmux  kill-session  -t  会话名<br>关闭所有会话：<br>tmux ls | grep : | cut -d. -f1 | awk ‘{print substr($1, 0, length($1)-1)}’ | xargs kill<br>脱离会话： Ctrl+b，d<br>重新附加会话：  tmux  attach-session<br>列出会话：tmux list-sessions<br>重命名会话：tmux  rename -t  oldname  newname<br>Ctrl+b，：  可以不用退出，直接在下方输入命令（如： new -s  会话名）<br>Ctrl+b，s    可以显示所有的session，并切换<br><strong>Window 命令</strong><br>Ctrl+b，c  新建窗口<br>Ctrl+b，p 移动到上一个窗口<br>Ctrl+b，n  移动到下一个窗口<br>Ctrl+b, w  通过窗口列表切换窗口<br>退出所有panel，window也关闭<br><strong>Panel 命令</strong><br>Ctrl+b，箭头    选择操作不同的窗格<br>Ctrl+b，”     水平分割窗格，形成上下两个panel<br>Ctrl+b，%    垂直分割窗格，形成左右两个panel<br>Ctrl+b+箭头   Ctrl+b不放，可以一直按箭头调整窗格的大小，1<br>Ctrl+b，Alt+箭头   调整窗格大小，5<br>Ctrl+b，Page Up和Page Down  可以上下翻看历史记录<br>Ctrl+b，q  显示窗格对应的数字<br>Ctrl+d     exit     logout  退出当前窗格<br><strong>tmux打开shell自启动</strong><br>打开<code>.bashrc</code>添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [ $TERM != &quot;screen-256color&quot; ] &amp;&amp; [  $TERM != &quot;screen&quot; ]; then</span><br><span class="line">    tmux attach || tmux new; exit</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>sudo apt-get install tmux</code><br><strong>Session 命令</strong><br>启动新会话： tmux new -s 会话名  -n  窗口名<br>恢复会话： tmux a  -t  会话名<br>列出所有会话：tmux  ls<br>关闭会话：tmux  kill-session  -t  会话名<br>关闭所有会话：<br>tmux ls | grep : | cut -d. -f1 | awk ‘{print substr($1, 0, length($1)-1)}’ | xargs kill<br>脱离会话： Ctrl+b，d<br>重新附加会话：  tmux  attach-session<br>列出会话：tmux list-sessions<br>重命名会话：tmux  rename -t  oldname  newname<br>Ctrl+b，：  可以不用退出，直接在下方输入命令（如： new -s  会话名）<br>Ctrl+b，s    可以显示所有的session，并切换<br><strong>Window 命令</strong><br>Ctrl+b，c  新建窗口<br>Ctrl+b，p 移动到上一个窗口<br>Ctrl+b，n  移动到下一个窗口<br>Ctrl+b, w  通过窗口列表切换窗口<br>退出所有panel，window也关闭<br><strong>Panel 命令</strong><br>Ctrl+b，箭头    选择操作不同的窗格<br>Ctrl+b，”     水平分割窗格，形成上下两个panel<br>Ctrl+b，%    垂直分割窗格，形成左右两个panel<br>Ctrl+b+箭头   Ctrl+b不放，可以一直按箭头调整窗格的大小，1<br>Ctrl+b，Alt+箭头   调整窗格大小，5<br>Ctrl+b，Page Up和Page Down  可以上下翻看历史记录<br>Ctrl+b，q  显示窗格对应的数字<br>Ctrl+d     exit     logout  退出当前窗格<br>Ctrl+b, z  最大化窗格，再按一次恢复，便于快速复制文本<br><strong>tmux打开shell自启动</strong><br>打开<code>.bashrc</code>添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [ $TERM != &quot;screen-256color&quot; ] &amp;&amp; [  $TERM != &quot;screen&quot; ]; then</span><br><span class="line">    tmux attach || tmux new; exit</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><strong>新建session错误</strong><br>报错sessions should be nested with care, unset $TMUX to force<br>按错误提示执行命令：<br>需要使用命令 unset TMUX<br>再次执行 ：问题解决</p>
 <p>vim报错：_arguments:450: _vim_files: function definition file not found<br>直接删除~/.zcompdump文件，但是不知道会不会影响其他插件的功能。</p>
 <p><strong>远程安装tmux，scp传输出错</strong><br><strong>xshell 使用rzsz出差</strong><br>open terminal failed: not a terminal<br>需要关闭tmux才可以</p>
@@ -307,7 +307,7 @@
         <p><span>Title:</span><a href="/2019/09/09/Install-ZshTmuxVim/">tmux+vim+zsh 配置</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-09-09, 00:38:25</p>
-        <p><span>Updated:</span>2021-12-22, 17:08:27</p>
+        <p><span>Updated:</span>2023-09-13, 08:56:56</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/09/09/Install-ZshTmuxVim/" title="tmux+vim+zsh 配置">http://blog.zhengmingz.top/2019/09/09/Install-ZshTmuxVim/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/09/09/Install-ZshTmuxVim/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

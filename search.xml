@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>rustdesk</title>
+      <link href="/2024/05/08/Install-rustdesk/"/>
+      <url>/2024/05/08/Install-rustdesk/</url>
+      
+        <content type="html"><![CDATA[<p>手机远程控制<br><a id="more"></a></p><h1 id="搭建个人服务"><a href="#搭建个人服务" class="headerlink" title="搭建个人服务"></a>搭建个人服务</h1><p>服务端软件是部署在Docker上，先安装Docker</p><ul><li><p>拉取RustDesk镜像<br><code>sudo docker image pull rustdesk/rustdesk-server</code></p></li><li><p>启动hbbs服务  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name hbbs -p 21115:21115 -p 21116:21116 -p 21116:21116/udp -p 21118:21118 -v `pwd`:/root -td --net=host rustdesk/rustdesk-server hbbs</span><br></pre></td></tr></table></figure></li><li><p>启动hbbr服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name hbbr -p 21117:21117 -p 21119:21119 -v `pwd`:/root -td --net=host rustdesk/rustdesk-server hbbr</span><br></pre></td></tr></table></figure></li><li><p>查看Docker容器启动情况<br><code>docker ps -a</code></p></li><li><p>ID/中继服务器<br>将服务器IP填写到ID服务器中，被控端可以不填写中继服务器，控制端建议填写，都是服务器IP</p></li></ul><p><a href="https://blog.csdn.net/weixin_43558058/article/details/135446150" target="_blank" rel="noopener">参考</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Install </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> rustdesk </tag>
+            
+            <tag> 远程桌面 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows系统和软件的配置</title>
       <link href="/2023/08/31/System-win/"/>
       <url>/2023/08/31/System-win/</url>

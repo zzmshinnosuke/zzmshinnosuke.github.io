@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-07-23T08:55:27.374Z">
+<meta property="og:updated_time" content="2024-07-31T06:23:17.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker">
 <meta name="twitter:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
@@ -298,6 +298,7 @@
 <li>安装最新版Docker CE（社区版）<br><code>sudo apt-get install docker-ce</code>  </li>
 <li>检查Docker CE是否安装正确<br><code>sudo docker run hello-world</code>  </li>
 </ul>
+<h2 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h2><p><a href="https://www.jb51.net/server/321927kvo.htm" target="_blank" rel="noopener">参考</a></p>
 <h2 id="支持gpu"><a href="#支持gpu" class="headerlink" title="支持gpu"></a>支持gpu</h2><ul>
 <li><p>安装 nvidia-container-toolkit</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \</span><br><span class="line">  sudo apt-key add -</span><br><span class="line">distribution=$(. /etc/os-release;echo $ID$VERSION_ID)</span><br><span class="line">sudo curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \</span><br><span class="line">  sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">apt-get install nvidia-container-runtime</span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
@@ -324,6 +325,21 @@
 </ul>
 <p><strong>容器保存为镜像</strong><br><code>docker commit my_container my_new_image:v1.0</code><br>执行这个命令后，my_container容器的当前状态将会被保存为一个新的Docker镜像，名为my_new_image，标签为v1.0</p>
 <h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker images  #列出本地镜像</span><br><span class="line">$ docker pull ubuntu:13.10 #获取新镜像</span><br><span class="line">$ docker inspect &lt;镜像名/镜像id&gt;  #查看镜像的详细信息</span><br></pre></td></tr></table></figure>
+<h1 id="实例安装"><a href="#实例安装" class="headerlink" title="实例安装"></a>实例安装</h1><h2 id="gitlab"><a href="#gitlab" class="headerlink" title="gitlab"></a>gitlab</h2><p><a href="https://blog.csdn.net/weixin_38597669/article/details/122307342?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-122307342-blog-123974516.t0_layer_searchtargeting_sa&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-122307342-blog-123974516.t0_layer_searchtargeting_sa&amp;utm_relevant_index=6" target="_blank" rel="noopener">参考</a>  </p>
+<ul>
+<li>拉取镜像<br><code>docker pull gitlab/gitlab-ce</code>     </li>
+<li>创建容器<br><code>docker run --detach --publish 10443:443 --publish 1080:80 --publish 1022:22 --name gitlab --restart always --volume /home/gitlab/config:/etc/gitlab --volume  /home/gitlab/logs:/var/log/gitlab --volume /home/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest</code></li>
+</ul>
+<h2 id="overleaf"><a href="#overleaf" class="headerlink" title="overleaf"></a>overleaf</h2><ul>
+<li>拉取镜像<br><code>docker pull kingsleyluoxin/sharelatex:full</code> </li>
+<li>创建容器<br> <code>docker run -idt -p 8000:80 -v /home/overleaf:/var/lib/sharelatex --name overleaf kingsleyluoxin/sharelatex:full</code></li>
+<li>创建管理帐号<br><a href="http://localhost:8000/launchpad" target="_blank" rel="noopener">http://localhost:8000/launchpad</a></li>
+<li>登录<br><a href="http://localhost:8000/login" target="_blank" rel="noopener">http://localhost:8000/login</a></li>
+</ul>
+<h2 id="nextcloud"><a href="#nextcloud" class="headerlink" title="nextcloud"></a>nextcloud</h2><ul>
+<li>拉取镜像<br><code>docker pull nextcloud</code>  </li>
+<li>创建容器<br><code>docker run -idt -p 8888:80 -v /home/nextcloud:/var/www/html/data --name nextcloud nextcloud</code>   </li>
+</ul>
 
       
     </div>
@@ -335,7 +351,7 @@
         <p><span>Title:</span><a href="/2019/10/08/Install-docker/">docker</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-10-08, 21:35:41</p>
-        <p><span>Updated:</span>2024-07-23, 16:55:27</p>
+        <p><span>Updated:</span>2024-07-31, 14:23:17</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/10/08/Install-docker/" title="docker">http://blog.zhengmingz.top/2019/10/08/Install-docker/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/10/08/Install-docker/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -371,7 +387,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持gpu"><span class="toc-number">1.2.</span> <span class="toc-text">支持gpu</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加到docker用户组"><span class="toc-number">2.</span> <span class="toc-text">添加到docker用户组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#命令"><span class="toc-number">3.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器"><span class="toc-number">3.1.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像"><span class="toc-number">3.2.</span> <span class="toc-text">镜像</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置国内源"><span class="toc-number">1.2.</span> <span class="toc-text">配置国内源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持gpu"><span class="toc-number">1.3.</span> <span class="toc-text">支持gpu</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加到docker用户组"><span class="toc-number">2.</span> <span class="toc-text">添加到docker用户组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#命令"><span class="toc-number">3.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器"><span class="toc-number">3.1.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像"><span class="toc-number">3.2.</span> <span class="toc-text">镜像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例安装"><span class="toc-number">4.</span> <span class="toc-text">实例安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gitlab"><span class="toc-number">4.1.</span> <span class="toc-text">gitlab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overleaf"><span class="toc-number">4.2.</span> <span class="toc-text">overleaf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nextcloud"><span class="toc-number">4.3.</span> <span class="toc-text">nextcloud</span></a></li></ol></li></ol>
         
     </div>
     <style>

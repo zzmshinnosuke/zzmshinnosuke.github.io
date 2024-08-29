@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zzm">
+
+
+
+<meta name="description" content="title: linux-shelldate: 2021-05-28 17:22:25tags: [ubuntu, linux, shell] categories: [Program]shell编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zzm">
+<meta property="og:url" content="http://blog.zhengmingz.top/1970/01/01/Program-linux-shell/index.html">
+<meta property="og:site_name" content="zzm">
+<meta property="og:description" content="title: linux-shelldate: 2021-05-28 17:22:25tags: [ubuntu, linux, shell] categories: [Program]shell编程">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2024-08-29T07:22:04.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zzm">
+<meta name="twitter:description" content="title: linux-shelldate: 2021-05-28 17:22:25tags: [ubuntu, linux, shell] categories: [Program]shell编程">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="zzm" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>zzm</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zzm</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frp/">Frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Image/">Image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Manage/">Manage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAT-DDNS/">NAT-DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVIDIA显卡驱动/">NVIDIA显卡驱动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/">conda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cuda/">cuda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/">deeplearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gpu/">gpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jupyter/">jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lab/">lab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mine-virus/">mine virus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notebook/">notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/office/">office</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pickle/">pickle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/png/">png</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxychains/">proxychains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pycharm/">pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/remote/">remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rustdesk/">rustdesk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/screen/">screen</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/self/">self</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/super/">super</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tuple/">tuple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vimrc/">vimrc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnc/">vnc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wpf/">wpf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务安排/">事务安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网穿透/">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地址/">地址</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发/">开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/指针/">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/粒子群/">粒子群</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程桌面/">远程桌面</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代/">迭代</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">菜鸟程序员</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zzm</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zzm</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Program-linux-shell" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/1970/01/01/Program-linux-shell/" class="article-date">
+      <time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished">1970-01-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<p>title: linux-shell<br>date: 2021-05-28 17:22:25<br>tags: [ubuntu, linux, shell]</p>
+<h2 id="categories-Program"><a href="#categories-Program" class="headerlink" title="categories: [Program]"></a>categories: [Program]</h2><p>shell编程<br><a id="more"></a></p>
+<h2 id="一、获取用户输入内容，并进行判断"><a href="#一、获取用户输入内容，并进行判断" class="headerlink" title="一、获取用户输入内容，并进行判断"></a>一、获取用户输入内容，并进行判断</h2><p> read -p “please input(Y/N):”  yn</p>
+<h2 id="二、数组"><a href="#二、数组" class="headerlink" title="二、数组"></a>二、数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1.定义数组</span><br><span class="line">$ a=(1 2 3 4 5)</span><br><span class="line"></span><br><span class="line">2.数组长度</span><br><span class="line">$ echo $&#123;#a[@]&#125;</span><br><span class="line">用$&#123;#数组名[@或*]&#125; 可以得到数组长度</span><br><span class="line"></span><br><span class="line">3.读取数组</span><br><span class="line">$ echo $&#123;a[2]&#125;</span><br><span class="line">$ echo $&#123;a[*]&#125;</span><br><span class="line">用$&#123;数组名[下标]&#125; 下标是从0开始  下标是：*或者@ 得到整个数组内容</span><br><span class="line"></span><br><span class="line">4.赋值</span><br><span class="line">$ a[1]=100</span><br><span class="line">直接通过 数组名[下标] 就可以对其进行引用赋值，如果下标不存在，自动添加新一个数组元素</span><br><span class="line"></span><br><span class="line">5.删除</span><br><span class="line">$ unset a</span><br><span class="line">$ unset a[1]   </span><br><span class="line">直接通过：unset 数组[下标] 可以清除相应的元素，不带下标，清除整个数据。</span><br></pre></td></tr></table></figure>
+<p>6.循环数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for value in $&#123;a[@]&#125;</span><br><span class="line">do</span><br><span class="line">    echo $value</span><br><span class="line">done</span><br><span class="line">for ((i=0;i&lt;$&#123;#a[@]&#125;;i++)) #不加双括号会报错</span><br><span class="line">do</span><br><span class="line">    echo $&#123;a[$i]&#125;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>7.特殊使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1）分片:</span><br><span class="line"># a=(1 2 3 4 5 6)</span><br><span class="line"># echo $&#123;a[@]:0:3&#125;</span><br><span class="line">1 2 3</span><br><span class="line"># echo $&#123;a[@]:1:4&#125;</span><br><span class="line">2 3 4 5</span><br><span class="line"># c=($&#123;a[@]:1:4&#125;)</span><br><span class="line"># echo $&#123;#c[@]&#125;</span><br><span class="line">4</span><br><span class="line"># echo $&#123;c[*]&#125;</span><br><span class="line">2 3 4 5</span><br></pre></td></tr></table></figure></p>
+<p>直接通过 ${数组名[@或*]:起始位置:长度} 切片原先数组，返回是字符串，中间用“空格”分开，因此如果加上”()”，将得到切片数组，上面例子：c 就是一个新数据。</p>
+<p>2）替换:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># a=(1 2 3 4 5 3)</span><br><span class="line"># echo $&#123;a[@]/3/8&#125;</span><br><span class="line">1 2 8 4 5 8</span><br><span class="line"># echo $&#123;a[@]&#125;</span><br><span class="line">1 2 3 4 5 3</span><br></pre></td></tr></table></figure></p>
+<p>调用方法是：${数组名[@或*]/查找字符/替换字符} 该操作不会改变原先数组内容。</p>
+<h2 id="三、脚本批量压缩"><a href="#三、脚本批量压缩" class="headerlink" title="三、脚本批量压缩"></a>三、脚本批量压缩</h2><h3 id="1-将当前目录下的所有文件夹压缩"><a href="#1-将当前目录下的所有文件夹压缩" class="headerlink" title="1.将当前目录下的所有文件夹压缩"></a>1.将当前目录下的所有文件夹压缩</h3><p>找到所有的文件夹进行压缩<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">dirnames=$(ls -d */)</span><br><span class="line">for dir in $dirnames</span><br><span class="line">do</span><br><span class="line">    temp=$&#123;dir%/&#125;</span><br><span class="line">    echo $temp </span><br><span class="line">    echo $(tar -cvf $temp&quot;.tar.gz&quot; $temp)</span><br><span class="line">    testing=$(test -e $temp&quot;.tar.gz&quot; &amp;&amp; echo yes)</span><br><span class="line">    if [ &quot;$testing&quot;==&quot;yes&quot; ]; then</span><br><span class="line">         echo $(scp $temp&quot;.tar.gz&quot; user@IP:/home/user )</span><br><span class="line">    fi	</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p> 找到当前目录下所有的文件和文件夹，选出文件夹进行压缩<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line">for dir in $(ls)</span><br><span class="line">do</span><br><span class="line">    if [ -d $dir ]; then</span><br><span class="line">       echo $dir </span><br><span class="line">       echo $(tar -cvf $dir&quot;.tar.gz&quot; $dir)</span><br><span class="line">       testing=$(test -e $dir&quot;.tar.gz&quot; &amp;&amp; echo yes)</span><br><span class="line">       if [ &quot;$testing&quot;==&quot;yes&quot; ]; then</span><br><span class="line">          echo $(scp $dir&quot;.tar.gz&quot; user@IP:/home/user )</span><br><span class="line">       fi</span><br><span class="line">    fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="ubuntu文件夹打不开，点击文件夹没反应"><a href="#ubuntu文件夹打不开，点击文件夹没反应" class="headerlink" title="ubuntu文件夹打不开，点击文件夹没反应"></a>ubuntu文件夹打不开，点击文件夹没反应</h2><p>直接在命令行输入：<br><code>killall nautilus</code></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/1970/01/01/Program-linux-shell/"></a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
+        <p><span>Created:</span>1970-01-01, 08:00:00</p>
+        <p><span>Updated:</span>2024-08-29, 15:22:04</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/1970/01/01/Program-linux-shell/" title="">http://blog.zhengmingz.top/1970/01/01/Program-linux-shell/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/1970/01/01/Program-linux-shell/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/08/26/Algorithm-knapsack-problem/">
+                    背包问题
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#categories-Program"><span class="toc-number">1.</span> <span class="toc-text">categories: [Program]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、获取用户输入内容，并进行判断"><span class="toc-number">2.</span> <span class="toc-text">一、获取用户输入内容，并进行判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、数组"><span class="toc-number">3.</span> <span class="toc-text">二、数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、脚本批量压缩"><span class="toc-number">4.</span> <span class="toc-text">三、脚本批量压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-将当前目录下的所有文件夹压缩"><span class="toc-number">4.1.</span> <span class="toc-text">1.将当前目录下的所有文件夹压缩</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Problems"><span class="toc-number"></span> <span class="toc-text">Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu文件夹打不开，点击文件夹没反应"><span class="toc-number">1.</span> <span class="toc-text">ubuntu文件夹打不开，点击文件夹没反应</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/08/26/Algorithm-knapsack-problem/" title="Pre: 背包问题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/08/28/Manage-linux/">Manage-linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/08/Install-rustdesk/">rustdesk</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/31/System-win/">Windows系统和软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/08/17/Algorithm-interview/">Algorithm-interview</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/06/Install-cuda/">Install-cuda</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/Program-RWFile/">读写文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/26/Security-Mine-Virus/">清除挖矿病毒</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/12/Tool-vim/">vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/09/27/Install-nat-ddns/">nat-ddns</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/07/23/Install-jupyter/">jupyter</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/13/Tool-git/">git</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/07/Program-python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/05/Program-pytorch-notices/">pytorch-notices</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/18/Research-paper/">paper</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/12/Install-remote-connect/">remote-connect</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/Program-dict-set-tuple/">dict-list-tuple-string</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/Install-shadowsocks/">shadowsocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/Deal-Develop-DailyManage/">每日事务安排应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/22/Program-ImageProcess/">图像处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Install-mysql/">mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Program-c-point-addr/">c中指针地址加1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/Install-docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Install-django/">Django 在 pycharm（社区版）上安装运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Program-ReadDirectory/">读取某目录下的全部文件和目录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Algorithm-PartOptim/">粒子群优化算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Program-svg2png/">svg转png格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-bugNum/">修改bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/12/Algorithm-splitArray/">分割数组的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Program-wpfgif/">wpf加载gif</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Install-ZshTmuxVim/">tmux+vim+zsh 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/Install-conda/">conda</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Install-ftp/">ftp服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Install-Hexo/">Hexo创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/Algorithm-knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/1970/01/01/Program-linux-shell/">Program-linux-shell</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2024 zzm
+            </div>
+
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Algorithm-bit</title>
+      <link href="/2024/08/29/Algorithm-bit/"/>
+      <url>/2024/08/29/Algorithm-bit/</url>
+      
+        <content type="html"><![CDATA[<ul><li>定理1：设a，b为两个二进制数，则a+b = a^b + (a&amp;b)&lt;&lt;1。<br>证明：a^b是不考虑进位时加法结果。当二进制位同时为1时，才有进位，因此 (a&amp;b)&lt;&lt;1是进位产生的值，称为进位补偿。将两者相加便是完整加法结果。  </li><li>定理2：使用定理1可以实现只用位运算进行加法运算。<br>证明：利用定理1中的等式不停对自身进行迭代。每迭代一次，进位补偿右边就多一位0，因此最多需要加数二进制位长度次迭代，进位补偿就变为0，这时运算结束。<br>java代码：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int aplusb(int a, int b) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">int j_a=a^b;</span><br><span class="line">int j_b=(a&amp;b);</span><br><span class="line">while(j_b!=0)</span><br><span class="line">&#123;</span><br><span class="line">int t_a=j_a;</span><br><span class="line">int t_b=j_b&lt;&lt;1;</span><br><span class="line">j_a=t_a^t_b;</span><br><span class="line">j_b=t_a&amp;t_b;</span><br><span class="line">&#125;</span><br><span class="line">        return j_a;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bit </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manage-linux</title>
       <link href="/2024/08/28/Manage-linux/"/>
       <url>/2024/08/28/Manage-linux/</url>
@@ -20,9 +45,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> Manage </tag>
             
@@ -190,9 +215,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> security </tag>
             
@@ -422,9 +447,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> tmux </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> remote </tag>
             
@@ -813,9 +838,9 @@
       
         <tags>
             
-            <tag> 递归 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 递归 </tag>
             
         </tags>
       
@@ -989,9 +1014,9 @@
       
         <tags>
             
-            <tag> ubuntu </tag>
-            
             <tag> ftp </tag>
+            
+            <tag> ubuntu </tag>
             
             <tag> 服务器 </tag>
             

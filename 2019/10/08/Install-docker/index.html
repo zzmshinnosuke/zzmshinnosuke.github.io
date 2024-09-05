@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-07-31T06:23:17.000Z">
+<meta property="og:updated_time" content="2024-09-05T03:09:35.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker">
 <meta name="twitter:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
@@ -315,7 +315,7 @@
 <h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><p><strong>运行容器</strong><br>docker run -d -P training/webapp python app.py<br>-d 后台运行<br>-P 自动映射端口<br>-p 指定端口 #-p 5000:5000  </p>
 <p><strong>运行利用GPU的Ubuntu容器</strong><br><code>$ docker run -it --gpus all ubuntu nvidia-smi</code></p>
 <p>示例：<br><code>docker run --name my_container -p 8080:80 -v /path/to/host/directory:/path/in/container image_name</code></p>
-<p><strong>查看容器</strong><br>docker ps<br>docker ps -a #查看所有容器<br><strong>停止容器</strong><br>docker stop id/name<br><strong>重启容器</strong><br>docker start id/name  </p>
+<p><strong>查看容器</strong><br>docker ps   #查看运行容器<br>docker ps -a #查看所有容器<br><strong>停止容器</strong><br>docker stop id/name<br><strong>重启容器</strong><br>docker start id/name<br><strong>删除容器</strong><br>docker rm id/name</p>
 <p><strong>附着容器</strong></p>
 <ul>
 <li><p>附着到正在运行的容器<br>docker attach <id、container_name><br>退出容器，不结束运行需要分别按下<code>Ctrl+p</code> 和 <code>Ctrl+q</code></id、container_name></p>
@@ -324,7 +324,11 @@
 </li>
 </ul>
 <p><strong>容器保存为镜像</strong><br><code>docker commit my_container my_new_image:v1.0</code><br>执行这个命令后，my_container容器的当前状态将会被保存为一个新的Docker镜像，名为my_new_image，标签为v1.0</p>
-<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker images  #列出本地镜像</span><br><span class="line">$ docker pull ubuntu:13.10 #获取新镜像</span><br><span class="line">$ docker inspect &lt;镜像名/镜像id&gt;  #查看镜像的详细信息</span><br></pre></td></tr></table></figure>
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker images  #列出本地镜像</span><br><span class="line">$ docker pull ubuntu:13.10 #获取新镜像</span><br><span class="line">$ docker inspect &lt;镜像名/镜像id&gt;  #查看镜像的详细信息</span><br><span class="line">$ docker rmi 镜像名 #删除镜像</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将镜像保存到本地<br><code>docker save -o nginx.tar nginx:latest</code></li>
+<li>加载本地镜像<br><code>docker load -i nginx.tar</code></li>
+</ul>
 <h1 id="实例安装"><a href="#实例安装" class="headerlink" title="实例安装"></a>实例安装</h1><h2 id="gitlab"><a href="#gitlab" class="headerlink" title="gitlab"></a>gitlab</h2><p><a href="https://blog.csdn.net/weixin_38597669/article/details/122307342?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-122307342-blog-123974516.t0_layer_searchtargeting_sa&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-122307342-blog-123974516.t0_layer_searchtargeting_sa&amp;utm_relevant_index=6" target="_blank" rel="noopener">参考</a>  </p>
 <ul>
 <li>拉取镜像<br><code>docker pull gitlab/gitlab-ce</code>     </li>
@@ -351,7 +355,7 @@
         <p><span>Title:</span><a href="/2019/10/08/Install-docker/">docker</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-10-08, 21:35:41</p>
-        <p><span>Updated:</span>2024-07-31, 14:23:17</p>
+        <p><span>Updated:</span>2024-09-05, 11:09:35</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/10/08/Install-docker/" title="docker">http://blog.zhengmingz.top/2019/10/08/Install-docker/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/10/08/Install-docker/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="zzm">
+
+
+
+<meta name="description" content="Python读写文本文件，json文件，pkl文件等。Python对目录的读取。">
+<meta name="keywords" content="python,json,file,pickle,directory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python读写文件与目录">
+<meta property="og:url" content="http://blog.zhengmingz.top/2022/03/08/Python-ReadWrite/index.html">
+<meta property="og:site_name" content="zzm">
+<meta property="og:description" content="Python读写文本文件，json文件，pkl文件等。Python对目录的读取。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2024-11-13T07:54:09.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python读写文件与目录">
+<meta name="twitter:description" content="Python读写文本文件，json文件，pkl文件等。Python对目录的读取。">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="zzm" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Python读写文件与目录 | zzm</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">zzm</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frp/">Frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Image/">Image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Manage/">Manage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAT-DDNS/">NAT-DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVIDIA显卡驱动/">NVIDIA显卡驱动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/">conda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cuda/">cuda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/">deeplearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gpu/">gpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jupyter/">jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lab/">lab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mine-virus/">mine virus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notebook/">notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/office/">office</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pickle/">pickle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/png/">png</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxychains/">proxychains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pycharm/">pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/remote/">remote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rustdesk/">rustdesk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/screen/">screen</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/self/">self</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tuple/">tuple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vimrc/">vimrc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vnc/">vnc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wpf/">wpf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务安排/">事务安排</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网穿透/">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地址/">地址</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发/">开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/指针/">指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/粒子群/">粒子群</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背包问题/">背包问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程桌面/">远程桌面</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代/">迭代</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">菜鸟程序员</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">zzm</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">zzm</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zzmshinnosuke@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="http://github.com/zzmshinnosuke" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Python-ReadWrite" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/08/Python-ReadWrite/" class="article-date">
+      <time datetime="2022-03-08T02:17:01.000Z" itemprop="datePublished">2022-03-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python读写文件与目录
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/directory/">directory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/file/">file</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pickle/">pickle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Python读写文本文件，json文件，pkl文件等。Python对目录的读取。<br><a id="more"></a></p>
+<h1 id="Python读写文件"><a href="#Python读写文件" class="headerlink" title="Python读写文件"></a>Python读写文件</h1><h2 id="文本文件"><a href="#文本文件" class="headerlink" title="文本文件"></a>文本文件</h2><h3 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h3><ul>
+<li>按行读取<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with open(path, &apos;r&apos;) as f:</span><br><span class="line">    line = f.readline()            </span><br><span class="line">    while line:               </span><br><span class="line">        line=line.strip()</span><br><span class="line">        print(line)</span><br><span class="line">        line = f.readline()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i=0</span><br><span class="line">with open(path, &apos;w&apos;) as fp:  #追加模式，ｗ换成ａ</span><br><span class="line">    while i &lt;= 10:</span><br><span class="line">        f.write(&quot;&#123;&#125;\n&quot;.formate(i))</span><br><span class="line">        i+=1</span><br></pre></td></tr></table></figure>
+<h2 id="json文件"><a href="#json文件" class="headerlink" title="json文件"></a>json文件</h2><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写。  </p>
+<h3 id="READ"><a href="#READ" class="headerlink" title="READ"></a>READ</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(path, &apos;r&apos;) as fp:</span><br><span class="line">    info=json.load(fp)</span><br></pre></td></tr></table></figure>
+<h3 id="Write-1"><a href="#Write-1" class="headerlink" title="Write"></a>Write</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(path, &apos;w&apos;) as fp:</span><br><span class="line">    json.dump(info, fp)</span><br></pre></td></tr></table></figure>
+<h2 id="pkl文件"><a href="#pkl文件" class="headerlink" title="pkl文件"></a>pkl文件</h2><p>pickle提供了一个简单的持久化功能，可以将对象以文件的形式存放在磁盘上。<br>pickle模块只能在python中使用，python中几乎所有的数据类型（列表，字典，集合，类等）都可以用pickle来序列化。<br>pkl文件保存为二进制格式，读写方式与json类似。  </p>
+<h3 id="Read-1"><a href="#Read-1" class="headerlink" title="Read"></a>Read</h3><p>反序列化对象。将文件中的数据解析为一个Python对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pickle</span><br><span class="line">with open(path, &apos;rb&apos;) as fp:</span><br><span class="line">    info=pickle.load(fp)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Write-2"><a href="#Write-2" class="headerlink" title="Write"></a>Write</h3><p>序列化对象，并将结果数据流写入到文件对象中。‘pickle.dump(obj, file[, protocol])’，参数protocol是序列化模式，默认值为0，表示以文本的形式序列化。protocol的值还可以是1或2，表示以二进制的形式序列化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pickle</span><br><span class="line">with open(path, &apos;wb&apos;) as fp:</span><br><span class="line">    pickle.dump(infos, fp)</span><br></pre></td></tr></table></figure></p>
+<h1 id="Python读写目录"><a href="#Python读写目录" class="headerlink" title="Python读写目录"></a>Python读写目录</h1><h2 id="获取某目录下的全部文件"><a href="#获取某目录下的全部文件" class="headerlink" title="获取某目录下的全部文件"></a>获取某目录下的全部文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path=&apos;/home/user/program&apos;</span><br><span class="line">roots=os.listdir(path)</span><br><span class="line">print(&apos;root_dir:&apos;,roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if os.path.isfile(path+file):</span><br><span class="line">        print(file)</span><br></pre></td></tr></table></figure>
+<h2 id="获取某目录下的全部目录"><a href="#获取某目录下的全部目录" class="headerlink" title="获取某目录下的全部目录"></a>获取某目录下的全部目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path=&apos;/home/user/program&apos;</span><br><span class="line">roots=os.listdir(path)</span><br><span class="line">print(&apos;root_dir:&apos;,roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if not os.path.isfile(path+file):</span><br><span class="line">        print(file)</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path=&apos;/home/user/program&apos;</span><br><span class="line">roots=os.listdir(path)</span><br><span class="line">print(&apos;root_dir:&apos;,roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if os.path.isdir(path+file):</span><br><span class="line">        print(file)</span><br></pre></td></tr></table></figure></p>
+<h2 id="walk一次拿到全部分开的文件和目录"><a href="#walk一次拿到全部分开的文件和目录" class="headerlink" title="walk一次拿到全部分开的文件和目录"></a>walk一次拿到全部分开的文件和目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">def file_name(file_dir):</span><br><span class="line">    root= os.walk(file_dir,topdown=True)</span><br><span class="line">    print(root.__next__())</span><br><span class="line">file_name(&apos;/home/user/program&apos;)</span><br></pre></td></tr></table></figure>
+<p> 输出：<br> <code>(&#39;/home/zzm/program&#39;, [&#39;sketch_rnn&#39;, &#39;semantic_image_inpainting-master&#39;, &#39;timage&#39;, &#39;.ipynb_checkpoints&#39;, &#39;Gan_Mnist&#39;, &#39;GlobalLocalImageCompletion_TF-master&#39;, &#39;11Class_1_new_64&#39;, &#39;.git&#39;, &#39;11Class_3_new_64&#39;], [&#39;aa.c&#39;, &#39;test.py&#39;, &#39;aa&#39;, &#39;Untitled.ipynb&#39;, &#39;linerRegression.py&#39;, &#39;DealImage.py&#39;])</code></p>
+<h2 id="递归获取所有子目录下的文件和目录"><a href="#递归获取所有子目录下的文件和目录" class="headerlink" title="递归获取所有子目录下的文件和目录"></a>递归获取所有子目录下的文件和目录</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">def file_name(file_dir):</span><br><span class="line">    for root,dirs,files in os.walk(file_dir,topdown=True):</span><br><span class="line">        print(&apos;root_dir:&apos;,root)</span><br><span class="line">        print(&apos;sub_dirs:&apos;,dirs)</span><br><span class="line">        print(&apos;files&apos;,files)</span><br><span class="line"></span><br><span class="line">file_name(&apos;/home/user/program&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="获取某一类型的文件，并获取没有后缀的文件名"><a href="#获取某一类型的文件，并获取没有后缀的文件名" class="headerlink" title="获取某一类型的文件，并获取没有后缀的文件名"></a>获取某一类型的文件，并获取没有后缀的文件名</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">roots=os.listdir(&apos;/home/zzm/program&apos;)</span><br><span class="line">print(&apos;root_dir:&apos;, roots)</span><br><span class="line">for file in roots:</span><br><span class="line">    if os.path.isfile(&apos;/home/zzm/program/&apos; + file) and os.path.splitext(file)[1] == &apos;.py&apos; :</span><br><span class="line">        print(os.path.splitext(file)[0])</span><br></pre></td></tr></table></figure>
+<h2 id="glob"><a href="#glob" class="headerlink" title="glob"></a>glob</h2><p> os.listdir: 获取文件夹下的文件和文件夹的名称<br> glob.glob: 获取文件夹下，符合通配符的文件及文件夹的路径<br>注意：不要在末尾加 \，文件夹参数就到文件夹，不用加\，文件通配符，也不用加 \<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line">paths = glob.glob(os.path.join(path,&apos;*.json&apos;))</span><br><span class="line"># 输出带路径</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2022/03/08/Python-ReadWrite/">Python读写文件与目录</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
+        <p><span>Created:</span>2022-03-08, 10:17:01</p>
+        <p><span>Updated:</span>2024-11-13, 15:54:09</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/08/Python-ReadWrite/" title="Python读写文件与目录">http://blog.zhengmingz.top/2022/03/08/Python-ReadWrite/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2022/03/08/Python-ReadWrite/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2022/07/06/Install-cuda/">
+                    Install-cuda
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2021/12/26/Security-Mine-Virus/">
+                    清除挖矿病毒
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python读写文件"><span class="toc-number">1.</span> <span class="toc-text">Python读写文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文本文件"><span class="toc-number">1.1.</span> <span class="toc-text">文本文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Read"><span class="toc-number">1.1.1.</span> <span class="toc-text">Read</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write"><span class="toc-number">1.1.2.</span> <span class="toc-text">Write</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json文件"><span class="toc-number">1.2.</span> <span class="toc-text">json文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#READ"><span class="toc-number">1.2.1.</span> <span class="toc-text">READ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">Write</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pkl文件"><span class="toc-number">1.3.</span> <span class="toc-text">pkl文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Read-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">Read</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">Write</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python读写目录"><span class="toc-number">2.</span> <span class="toc-text">Python读写目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取某目录下的全部文件"><span class="toc-number">2.1.</span> <span class="toc-text">获取某目录下的全部文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取某目录下的全部目录"><span class="toc-number">2.2.</span> <span class="toc-text">获取某目录下的全部目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#walk一次拿到全部分开的文件和目录"><span class="toc-number">2.3.</span> <span class="toc-text">walk一次拿到全部分开的文件和目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归获取所有子目录下的文件和目录"><span class="toc-number">2.4.</span> <span class="toc-text">递归获取所有子目录下的文件和目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取某一类型的文件，并获取没有后缀的文件名"><span class="toc-number">2.5.</span> <span class="toc-text">获取某一类型的文件，并获取没有后缀的文件名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#glob"><span class="toc-number">2.6.</span> <span class="toc-text">glob</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Python读写文件与目录　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2022/07/06/Install-cuda/" title="Pre: Install-cuda">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2021/12/26/Security-Mine-Virus/" title="Next: 清除挖矿病毒">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/11/13/AI/">AI</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/29/Algorithm-bit/">Algorithm-bit</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/28/Linux/">Manage-linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/08/Install-rustdesk/">rustdesk</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/31/System-win/">Windows系统和软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/08/17/Algorithm-interview/">Algorithm-interview</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/06/Install-cuda/">Install-cuda</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/Python-ReadWrite/">Python读写文件与目录</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/26/Security-Mine-Virus/">清除挖矿病毒</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/12/Tool-vim/">vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/09/27/Install-nat-ddns/">nat-ddns</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/07/23/Install-jupyter/">jupyter</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/13/Tool-git/">git</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/07/Python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/05/AI-pytorch-notices/">pytorch-notices</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/18/Research-paper/">paper</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/12/Install-remote-connect/">remote-connect</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/Python-datatype/">dict-list-tuple-string</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/Install-shadowsocks/">shadowsocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/Deal-Develop-DailyManage/">每日事务安排应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/22/Python-ImageProcess/">图像处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Install-mysql/">mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/C-point-addr/">c中指针地址加1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/Install-docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Install-django/">Django 在 pycharm（社区版）上安装运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Algorithm-PartOptim/">粒子群优化算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/Python-svg2png/">svg转png格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-longestSubarray/">最长子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/17/Algorithm-bugNum/">修改bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/16/Install-ubuntu/">ubuntu安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/12/Algorithm-splitArray/">分割数组的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/C#-WPF/">wpf加载gif</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/Install-ZshTmuxVim/">tmux+vim+zsh 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/Install-conda/">python环境安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Install-ftp/">ftp服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/Install-Hexo/">Hexo创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/Algorithm-knapsack-problem/">背包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/1970/01/01/Linux-shell/">Linux-shell</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2024 zzm
+            </div>
+
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

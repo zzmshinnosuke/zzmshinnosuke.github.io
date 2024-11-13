@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>AI</title>
+      <link href="/2024/11/13/AI/"/>
+      <url>/2024/11/13/AI/</url>
+      
+        <content type="html"><![CDATA[<p>AI相关知识<br><a id="more"></a></p><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><h3 id="Nvidia驱动安装"><a href="#Nvidia驱动安装" class="headerlink" title="Nvidia驱动安装"></a>Nvidia驱动安装</h3><h3 id="cuda安装"><a href="#cuda安装" class="headerlink" title="cuda安装"></a>cuda安装</h3><h3 id="conda环境安装"><a href="#conda环境安装" class="headerlink" title="conda环境安装"></a>conda环境安装</h3><p><a href="/public/2019/09/08/Install-conda/index.html">conda</a></p><h2 id="模型下载huggingface"><a href="#模型下载huggingface" class="headerlink" title="模型下载huggingface"></a>模型下载huggingface</h2><h3 id="快速下载"><a href="#快速下载" class="headerlink" title="快速下载"></a>快速下载</h3><ul><li>安装<br><code>pip install -U huggingface_hub</code></li><li>下载<br><code>huggingface-cli download --resume-download --repo-type dataset lavita/medical-qa-shared-task-v1-toy</code></li><li>hf_transfer依附并兼容 huggingface-cli，提高下载速度<br><code>pip install -U hf-transfer</code></li><li>设置 HF_HUB_ENABLE_HF_TRANSFER 环境变量为 1<br><code>export HF_HUB_ENABLE_HF_TRANSFER=1</code><br>开启后使用方法同 huggingface-cli</li></ul><h2 id="编程环境配置"><a href="#编程环境配置" class="headerlink" title="编程环境配置"></a>编程环境配置</h2><h2 id="模型调试"><a href="#模型调试" class="headerlink" title="模型调试"></a>模型调试</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Algorithm-bit</title>
       <link href="/2024/08/29/Algorithm-bit/"/>
       <url>/2024/08/29/Algorithm-bit/</url>
@@ -515,9 +540,9 @@
       
         <tags>
             
-            <tag> 服务器 </tag>
-            
             <tag> shadowsocks </tag>
+            
+            <tag> 服务器 </tag>
             
             <tag> 代理 </tag>
             
@@ -1012,9 +1037,9 @@
             
             <tag> ubuntu </tag>
             
-            <tag> ftp </tag>
-            
             <tag> 服务器 </tag>
+            
+            <tag> ftp </tag>
             
             <tag> 安装 </tag>
             

@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="常用命令大文件切分与合并针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。  切分，可以指定每个文件的大小split -b 1024M LargeFile.tar prefix_ 合并cat prefix_* &amp;gt; merged_file  针对rm被禁用的情况，删除文件rsync -a --delete empty/ target/ 其中empty为空目录，可以将target">
-<meta name="keywords" content="ubuntu,linux,Manage">
+<meta name="description" content="常用命令查看系统信息 linux 版本uname -a    linux版本cat /proc/version  系统more /etc/issue     大文件切分与合并针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。  切分，可以指定每个文件的大小split -b 1024M LargeFile.tar prefix_ 合并cat prefix_* &amp;gt; merged_">
+<meta name="keywords" content="linux,ubuntu,Manage">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Manage-linux">
 <meta property="og:url" content="http://blog.zhengmingz.top/2024/08/28/Linux/index.html">
 <meta property="og:site_name" content="zzm">
-<meta property="og:description" content="常用命令大文件切分与合并针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。  切分，可以指定每个文件的大小split -b 1024M LargeFile.tar prefix_ 合并cat prefix_* &amp;gt; merged_file  针对rm被禁用的情况，删除文件rsync -a --delete empty/ target/ 其中empty为空目录，可以将target">
+<meta property="og:description" content="常用命令查看系统信息 linux 版本uname -a    linux版本cat /proc/version  系统more /etc/issue     大文件切分与合并针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。  切分，可以指定每个文件的大小split -b 1024M LargeFile.tar prefix_ 合并cat prefix_* &amp;gt; merged_">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-11-13T08:10:17.500Z">
+<meta property="og:updated_time" content="2024-11-26T07:08:23.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manage-linux">
-<meta name="twitter:description" content="常用命令大文件切分与合并针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。  切分，可以指定每个文件的大小split -b 1024M LargeFile.tar prefix_ 合并cat prefix_* &amp;gt; merged_file  针对rm被禁用的情况，删除文件rsync -a --delete empty/ target/ 其中empty为空目录，可以将target">
+<meta name="twitter:description" content="常用命令查看系统信息 linux 版本uname -a    linux版本cat /proc/version  系统more /etc/issue     大文件切分与合并针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。  切分，可以指定每个文件的大小split -b 1024M LargeFile.tar prefix_ 合并cat prefix_* &amp;gt; merged_">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -282,7 +282,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="大文件切分与合并"><a href="#大文件切分与合并" class="headerlink" title="大文件切分与合并"></a>大文件切分与合并</h3><p>针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。</p>
+        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="查看系统信息"><a href="#查看系统信息" class="headerlink" title="查看系统信息"></a>查看系统信息</h3><ul>
+<li>linux 版本<br>uname -a   </li>
+<li>linux版本<br>cat /proc/version </li>
+<li>系统<br>more /etc/issue   </li>
+</ul>
+<h3 id="大文件切分与合并"><a href="#大文件切分与合并" class="headerlink" title="大文件切分与合并"></a>大文件切分与合并</h3><p>针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。</p>
 <ul>
 <li>切分，可以指定每个文件的大小<br>split -b 1024M LargeFile.tar prefix_</li>
 <li>合并<br>cat prefix_* &gt; merged_file</li>
@@ -347,7 +352,7 @@
         <p><span>Title:</span><a href="/2024/08/28/Linux/">Manage-linux</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2024-08-28, 11:24:53</p>
-        <p><span>Updated:</span>2024-11-13, 16:10:17</p>
+        <p><span>Updated:</span>2024-11-26, 15:08:23</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2024/08/28/Linux/" title="Manage-linux">http://blog.zhengmingz.top/2024/08/28/Linux/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2024/08/28/Linux/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -383,7 +388,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">1.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大文件切分与合并"><span class="toc-number">1.1.</span> <span class="toc-text">大文件切分与合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#针对rm被禁用的情况，删除文件"><span class="toc-number">1.2.</span> <span class="toc-text">针对rm被禁用的情况，删除文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程连接"><span class="toc-number">2.</span> <span class="toc-text">远程连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh"><span class="toc-number">2.1.</span> <span class="toc-text">ssh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录管理"><span class="toc-number">3.</span> <span class="toc-text">目录管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-number">3.1.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc"><span class="toc-number">3.2.</span> <span class="toc-text">wc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看目录中的文件数量"><span class="toc-number">3.3.</span> <span class="toc-text">查看目录中的文件数量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用管理"><span class="toc-number">4.</span> <span class="toc-text">应用管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后台运行程序"><span class="toc-number">4.1.</span> <span class="toc-text">后台运行程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看端口及服务是否启动"><span class="toc-number">4.2.</span> <span class="toc-text">查看端口及服务是否启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘管理"><span class="toc-number">5.</span> <span class="toc-text">磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-du命令"><span class="toc-number">5.1.</span> <span class="toc-text">1.du命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-df命令"><span class="toc-number">5.2.</span> <span class="toc-text">2. df命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-fdisk命令"><span class="toc-number">5.3.</span> <span class="toc-text">3.fdisk命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络管理"><span class="toc-number">6.</span> <span class="toc-text">网络管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看网关方法"><span class="toc-number">6.1.</span> <span class="toc-text">查看网关方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查端口"><span class="toc-number">6.2.</span> <span class="toc-text">检查端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙管理"><span class="toc-number">6.3.</span> <span class="toc-text">防火墙管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置"><span class="toc-number">7.</span> <span class="toc-text">设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决linux终端路径过长的问题"><span class="toc-number">7.1.</span> <span class="toc-text">解决linux终端路径过长的问题</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">1.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看系统信息"><span class="toc-number">1.1.</span> <span class="toc-text">查看系统信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大文件切分与合并"><span class="toc-number">1.2.</span> <span class="toc-text">大文件切分与合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#针对rm被禁用的情况，删除文件"><span class="toc-number">1.3.</span> <span class="toc-text">针对rm被禁用的情况，删除文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程连接"><span class="toc-number">2.</span> <span class="toc-text">远程连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh"><span class="toc-number">2.1.</span> <span class="toc-text">ssh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录管理"><span class="toc-number">3.</span> <span class="toc-text">目录管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-number">3.1.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc"><span class="toc-number">3.2.</span> <span class="toc-text">wc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看目录中的文件数量"><span class="toc-number">3.3.</span> <span class="toc-text">查看目录中的文件数量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用管理"><span class="toc-number">4.</span> <span class="toc-text">应用管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后台运行程序"><span class="toc-number">4.1.</span> <span class="toc-text">后台运行程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看端口及服务是否启动"><span class="toc-number">4.2.</span> <span class="toc-text">查看端口及服务是否启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘管理"><span class="toc-number">5.</span> <span class="toc-text">磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-du命令"><span class="toc-number">5.1.</span> <span class="toc-text">1.du命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-df命令"><span class="toc-number">5.2.</span> <span class="toc-text">2. df命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-fdisk命令"><span class="toc-number">5.3.</span> <span class="toc-text">3.fdisk命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络管理"><span class="toc-number">6.</span> <span class="toc-text">网络管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看网关方法"><span class="toc-number">6.1.</span> <span class="toc-text">查看网关方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查端口"><span class="toc-number">6.2.</span> <span class="toc-text">检查端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙管理"><span class="toc-number">6.3.</span> <span class="toc-text">防火墙管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置"><span class="toc-number">7.</span> <span class="toc-text">设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决linux终端路径过长的问题"><span class="toc-number">7.1.</span> <span class="toc-text">解决linux终端路径过长的问题</span></a></li></ol></li></ol>
         
     </div>
     <style>

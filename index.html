@@ -404,7 +404,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="大文件切分与合并"><a href="#大文件切分与合并" class="headerlink" title="大文件切分与合并"></a>大文件切分与合并</h3><p>针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。</p>
+        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="查看系统信息"><a href="#查看系统信息" class="headerlink" title="查看系统信息"></a>查看系统信息</h3><ul>
+<li>linux 版本<br>uname -a   </li>
+<li>linux版本<br>cat /proc/version </li>
+<li>系统<br>more /etc/issue   </li>
+</ul>
+<h3 id="大文件切分与合并"><a href="#大文件切分与合并" class="headerlink" title="大文件切分与合并"></a>大文件切分与合并</h3><p>针对大文件传输容易中断的问题，可以将其切分为小文件，传输后再合并。</p>
 <ul>
 <li>切分，可以指定每个文件的大小<br>split -b 1024M LargeFile.tar prefix_</li>
 <li>合并<br>cat prefix_* &gt; merged_file</li>

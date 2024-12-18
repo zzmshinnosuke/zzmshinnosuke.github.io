@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-09-05T03:09:35.572Z">
+<meta property="og:updated_time" content="2024-12-18T01:51:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker">
 <meta name="twitter:description" content="Docker 是一个开源的应用容器引擎， 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。">
@@ -329,6 +329,11 @@
 <li>将镜像保存到本地<br><code>docker save -o nginx.tar nginx:latest</code></li>
 <li>加载本地镜像<br><code>docker load -i nginx.tar</code></li>
 </ul>
+<h2 id="docker-commit镜像越来越大的问题"><a href="#docker-commit镜像越来越大的问题" class="headerlink" title="docker commit镜像越来越大的问题"></a>docker commit镜像越来越大的问题</h2><p>通过<code>docker system df -v</code>可以查看容器的大小，但是commit之后会变的非常大。</p>
+<p>直接打包容器，之后再通过import为镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker export -o container.tar 容器id  </span><br><span class="line">docker import container.tar 镜像名:v1</span><br></pre></td></tr></table></figure></p>
+<p>通过这种方法打包后，镜像确实很小了很多，但是在docker run时会提示“docker: Error response from daemon: No command specified”的错误。</p>
+<p>解决方案：<br>获取command<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a --no-trunc</span><br></pre></td></tr></table></figure></p>
+<p>可以看到最后的command “/bin/bash”，将其加到docker run 最后。</p>
 <h1 id="实例安装"><a href="#实例安装" class="headerlink" title="实例安装"></a>实例安装</h1><h2 id="gitlab"><a href="#gitlab" class="headerlink" title="gitlab"></a>gitlab</h2><p><a href="https://blog.csdn.net/weixin_38597669/article/details/122307342?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-122307342-blog-123974516.t0_layer_searchtargeting_sa&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-122307342-blog-123974516.t0_layer_searchtargeting_sa&amp;utm_relevant_index=6" target="_blank" rel="noopener">参考</a>  </p>
 <ul>
 <li>拉取镜像<br><code>docker pull gitlab/gitlab-ce</code>     </li>
@@ -355,7 +360,7 @@
         <p><span>Title:</span><a href="/2019/10/08/Install-docker/">docker</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2019-10-08, 21:35:41</p>
-        <p><span>Updated:</span>2024-09-05, 11:09:35</p>
+        <p><span>Updated:</span>2024-12-18, 09:51:24</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2019/10/08/Install-docker/" title="docker">http://blog.zhengmingz.top/2019/10/08/Install-docker/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2019/10/08/Install-docker/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -391,7 +396,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置国内源"><span class="toc-number">1.2.</span> <span class="toc-text">配置国内源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持gpu"><span class="toc-number">1.3.</span> <span class="toc-text">支持gpu</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加到docker用户组"><span class="toc-number">2.</span> <span class="toc-text">添加到docker用户组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#命令"><span class="toc-number">3.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器"><span class="toc-number">3.1.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像"><span class="toc-number">3.2.</span> <span class="toc-text">镜像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例安装"><span class="toc-number">4.</span> <span class="toc-text">实例安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gitlab"><span class="toc-number">4.1.</span> <span class="toc-text">gitlab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overleaf"><span class="toc-number">4.2.</span> <span class="toc-text">overleaf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nextcloud"><span class="toc-number">4.3.</span> <span class="toc-text">nextcloud</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置国内源"><span class="toc-number">1.2.</span> <span class="toc-text">配置国内源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#支持gpu"><span class="toc-number">1.3.</span> <span class="toc-text">支持gpu</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加到docker用户组"><span class="toc-number">2.</span> <span class="toc-text">添加到docker用户组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#命令"><span class="toc-number">3.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器"><span class="toc-number">3.1.</span> <span class="toc-text">容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像"><span class="toc-number">3.2.</span> <span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-commit镜像越来越大的问题"><span class="toc-number">3.3.</span> <span class="toc-text">docker commit镜像越来越大的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例安装"><span class="toc-number">4.</span> <span class="toc-text">实例安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gitlab"><span class="toc-number">4.1.</span> <span class="toc-text">gitlab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overleaf"><span class="toc-number">4.2.</span> <span class="toc-text">overleaf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nextcloud"><span class="toc-number">4.3.</span> <span class="toc-text">nextcloud</span></a></li></ol></li></ol>
         
     </div>
     <style>

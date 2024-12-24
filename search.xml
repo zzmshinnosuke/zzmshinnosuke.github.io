@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>AI-train</title>
+      <link href="/2024/12/24/AI-train/"/>
+      <url>/2024/12/24/AI-train/</url>
+      
+        <content type="html"><![CDATA[<p>多机多卡训练<br><a id="more"></a></p><h2 id="docker-网络配置"><a href="#docker-网络配置" class="headerlink" title="docker 网络配置"></a>docker 网络配置</h2><h3 id="初始化集群"><a href="#初始化集群" class="headerlink" title="初始化集群"></a>初始化集群</h3><p>选择 server1 作为 manager 节点，在此服务器上执行初始化命令：<code>docker swarm init</code>, 执行之后可以生成加入该集群的命令。</p><h3 id="加入集群"><a href="#加入集群" class="headerlink" title="加入集群"></a>加入集群</h3><p>将 server2 作为 worker 节点加入集群，进入 server2 执行join命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm join --token SWMTKN-1-5g90q48weqrtqryq4kj6ow0e8xm9wmv9o6vgqc5j320ymybd5c-8ex8j0bc40s6hgvy5ui5gl4gy 10.0.18.1:2377</span><br></pre></td></tr></table></figure></p><h3 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h3><p>在manager中创建overlay网络:：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver=overlay --attachable my-net</span><br></pre></td></tr></table></figure></p><p>查看当前网络状态<br><code>docker network ls</code></p><h3 id="同步网络"><a href="#同步网络" class="headerlink" title="同步网络"></a>同步网络</h3><p>进入work节点查看网络状态<code>docker network ls</code>，没有上一步创建的网络。</p><p>这时需要开启一个容器，指定网络为my-network，docker会自动同步对应网络。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --gpus all --name vc2 -network my-net--shm-size 128g  -v /path/work:/root/work vc2:5.2</span><br></pre></td></tr></table></figure></p><h2 id="运行容器搭建"><a href="#运行容器搭建" class="headerlink" title="运行容器搭建"></a>运行容器搭建</h2><p>分别在manager和worker启动容器</p><h3 id="验证网络"><a href="#验证网络" class="headerlink" title="验证网络"></a>验证网络</h3><p>启动容器后，可以使用<code>docker inspect vc2</code>来查看容器的网络结构。</p><p>分别进入manager和worker上的容器，ping对方的ip测试是否通。</p><h3 id="开启容器间免密访问"><a href="#开启容器间免密访问" class="headerlink" title="开启容器间免密访问"></a>开启容器间免密访问</h3><ul><li><p>安装openssh-server服务<br>分别在manager和worker节点的容器中安装openssh-server服务并启动：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 安装ssh服务</span><br><span class="line">apt-get install openssh-server -y</span><br><span class="line"># 启动ssh服务</span><br><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure></li><li><p>配置免密登录<br>分别在manager,worker节点的容器中执行<code>ssh-keygen -t rsa</code>命令，一直回车即可  </p><ul><li>将manager节点中的~/.ssh/id_rsa.pub的内容复制写入到manager节点和worker节点中的~/.ssh/authorized_keys文件中。</li><li>将worker节点中的~/.ssh/id_rsa.pub的内容复制写入到manager节点和worker节点中的~/.ssh/authorized_keys文件中。</li></ul></li></ul><p>最后测试容器之间是否可以免密登录。</p><h3 id="配置NCCL网络"><a href="#配置NCCL网络" class="headerlink" title="配置NCCL网络"></a>配置NCCL网络</h3><p>在容器中使用<code>ifconfig</code>查看使用的网卡。</p><p>将这个环境变量写入到 /etc/profile 中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">#需要注意NCCL的配置,这里需要根据机器的情况指定NCCL的通讯网卡 </span><br><span class="line">export NCCL_SOCKET_IFNAME=eth0</span><br></pre></td></tr></table></figure></p><p>然后使用<code>source /etc/profile</code>让其生效，worker节点执行同样的操作。</p><h3 id="多机训练"><a href="#多机训练" class="headerlink" title="多机训练"></a>多机训练</h3><p>在工程目录下新建hostfile文件，写入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">manager-ip slots=8</span><br><span class="line">worker-ip slots=8</span><br></pre></td></tr></table></figure></p><h3 id="执行训练"><a href="#执行训练" class="headerlink" title="执行训练"></a>执行训练</h3><p>在manager节点的工程目录下，运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deepspeed --hostfile hostfile src/train.py \</span><br><span class="line">    --deepspeed zero.json \</span><br><span class="line">    --stage sft \</span><br><span class="line">    --model_name_or_path /home/user/code/llava \</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p><p>分别去两台服务器中执行<code>nvidia-smi</code>，可以看到显卡均有被使用。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+          <category> docker </category>
+          
+          <category> deepspeed </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI</title>
       <link href="/2024/11/13/AI/"/>
       <url>/2024/11/13/AI/</url>
@@ -70,9 +99,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> ubuntu </tag>
+            
+            <tag> linux </tag>
             
             <tag> Manage </tag>
             
@@ -242,9 +271,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> ubuntu </tag>
+            
+            <tag> linux </tag>
             
             <tag> security </tag>
             
@@ -472,9 +501,9 @@
       
         <tags>
             
-            <tag> tmux </tag>
-            
             <tag> ubuntu </tag>
+            
+            <tag> tmux </tag>
             
             <tag> remote </tag>
             

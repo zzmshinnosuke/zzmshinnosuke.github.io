@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="linux系统安装后远程连接，包括终端和远程桌面。screen和tmux可以保持终端，客户端关闭后也不会退出，再次进入后可以直接进入原终端。">
-<meta name="keywords" content="ubuntu,tmux,remote,ssh,vnc,screen">
+<meta name="description" content="多机多卡训练">
+<meta name="keywords" content="AI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="remote-connect">
-<meta property="og:url" content="http://blog.zhengmingz.top/2020/11/12/Install-remote-connect/index.html">
+<meta property="og:title" content="AI-train">
+<meta property="og:url" content="http://blog.zhengmingz.top/2024/12/24/AI-train/index.html">
 <meta property="og:site_name" content="zzm">
-<meta property="og:description" content="linux系统安装后远程连接，包括终端和远程桌面。screen和tmux可以保持终端，客户端关闭后也不会退出，再次进入后可以直接进入原终端。">
+<meta property="og:description" content="多机多卡训练">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-09-01T15:23:43.000Z">
+<meta property="og:updated_time" content="2024-12-24T09:11:53.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="remote-connect">
-<meta name="twitter:description" content="linux系统安装后远程连接，包括终端和远程桌面。screen和tmux可以保持终端，客户端关闭后也不会退出，再次进入后可以直接进入原终端。">
+<meta name="twitter:title" content="AI-train">
+<meta name="twitter:description" content="多机多卡训练">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>remote-connect | zzm</title>
+<title>AI-train | zzm</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -238,11 +238,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Install-remote-connect" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AI-train" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/11/12/Install-remote-connect/" class="article-date">
-      <time datetime="2020-11-12T02:09:48.000Z" itemprop="datePublished">2020-11-12</time>
+      <a href="/2024/12/24/AI-train/" class="article-date">
+      <time datetime="2024-12-24T08:36:41.000Z" itemprop="datePublished">2024-12-24</time>
 </a>
 
 
@@ -257,7 +257,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      remote-connect
+      AI-train
     </h1>
   
 
@@ -266,13 +266,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Install/">Install</a>
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/docker/">docker</a><a class="article-category-link" href="/categories/AI/docker/deepspeed/">deepspeed</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/remote/">remote</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/screen/">screen</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/">tmux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vnc/">vnc</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -282,27 +282,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>linux系统安装后远程连接，包括终端和远程桌面。<br>screen和tmux可以保持终端，客户端关闭后也不会退出，再次进入后可以直接进入原终端。<br><a id="more"></a></p>
-<h1 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h1><h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h2><p>安装<br><code>sudo apt-get install openssh-server</code><br>连接<br><code>ssh -p PORT user@IP</code></p>
-<h3 id="ssh免密登录"><a href="#ssh免密登录" class="headerlink" title="ssh免密登录"></a>ssh免密登录</h3><ul>
-<li>在客户端生成公钥(如果要配置多个服务器，就将名称改一下)<br><code>ssh-keygen -f ~/.ssh/id_rsa_sever</code><br>然后一路Enter，不需要输入任何内容。会产生两个文件：公钥文件id_rsa_sever.pub和私钥文件id_rsa_sever。  </li>
-<li><p>将公钥文件复制到服务器上<br>在服务器的.ssh目录下查看是否有authorized_keys文件，没有就创建一个，然后将公钥文件附到authorized_keys文件中  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch authorized_keys</span><br><span class="line">cat id_rsa_sever.pub &gt;&gt; authorized_keys</span><br><span class="line">chmod -R 600  authorized_keys</span><br></pre></td></tr></table></figure>
+        <p>多机多卡训练<br><a id="more"></a></p>
+<h2 id="docker-网络配置"><a href="#docker-网络配置" class="headerlink" title="docker 网络配置"></a>docker 网络配置</h2><h3 id="初始化集群"><a href="#初始化集群" class="headerlink" title="初始化集群"></a>初始化集群</h3><p>选择 server1 作为 manager 节点，在此服务器上执行初始化命令：<code>docker swarm init</code>, 执行之后可以生成加入该集群的命令。</p>
+<h3 id="加入集群"><a href="#加入集群" class="headerlink" title="加入集群"></a>加入集群</h3><p>将 server2 作为 worker 节点加入集群，进入 server2 执行join命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm join --token SWMTKN-1-5g90q48weqrtqryq4kj6ow0e8xm9wmv9o6vgqc5j320ymybd5c-8ex8j0bc40s6hgvy5ui5gl4gy 10.0.18.1:2377</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h3><p>在manager中创建overlay网络:：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver=overlay --attachable my-net</span><br></pre></td></tr></table></figure></p>
+<p>查看当前网络状态<br><code>docker network ls</code></p>
+<h3 id="同步网络"><a href="#同步网络" class="headerlink" title="同步网络"></a>同步网络</h3><p>进入work节点查看网络状态<code>docker network ls</code>，没有上一步创建的网络。</p>
+<p>这时需要开启一个容器，指定网络为my-network，docker会自动同步对应网络。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --gpus all --name vc2 -network my-net--shm-size 128g  -v /path/work:/root/work vc2:5.2</span><br></pre></td></tr></table></figure></p>
+<h2 id="运行容器搭建"><a href="#运行容器搭建" class="headerlink" title="运行容器搭建"></a>运行容器搭建</h2><p>分别在manager和worker启动容器</p>
+<h3 id="验证网络"><a href="#验证网络" class="headerlink" title="验证网络"></a>验证网络</h3><p>启动容器后，可以使用<code>docker inspect vc2</code>来查看容器的网络结构。</p>
+<p>分别进入manager和worker上的容器，ping对方的ip测试是否通。</p>
+<h3 id="开启容器间免密访问"><a href="#开启容器间免密访问" class="headerlink" title="开启容器间免密访问"></a>开启容器间免密访问</h3><ul>
+<li><p>安装openssh-server服务<br>分别在manager和worker节点的容器中安装openssh-server服务并启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 安装ssh服务</span><br><span class="line">apt-get install openssh-server -y</span><br><span class="line"># 启动ssh服务</span><br><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在.ssh目录下的config中配置（配置上私钥文件的路径），可以给多个服务器添加配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host name</span><br><span class="line">    HostName IP</span><br><span class="line">    User 用户名</span><br><span class="line">    IdentityFile ～/user/.ssh/id_rsa_sever</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>vscode 配置免密登录，和上述步骤一致，但是需要先安装Remote-Development插件<br><a href="https://blog.csdn.net/weixin_39505820/article/details/105157944" target="_blank" rel="noopener">参考</a></p>
+<li><p>配置免密登录<br>分别在manager,worker节点的容器中执行<code>ssh-keygen -t rsa</code>命令，一直回车即可  </p>
+<ul>
+<li>将manager节点中的~/.ssh/id_rsa.pub的内容复制写入到manager节点和worker节点中的~/.ssh/authorized_keys文件中。</li>
+<li>将worker节点中的~/.ssh/id_rsa.pub的内容复制写入到manager节点和worker节点中的~/.ssh/authorized_keys文件中。</li>
+</ul>
 </li>
 </ul>
-<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><p>缺点：容易使用，没有tmux好用<br>安装<br><code>sudo apt-get install screen</code><br>screen -S  name #创建screen会话，自定义screen虚拟终端的名称<br>关闭ssh<br>screen -r name #查看之前的会话虚拟终端  </p>
-<p>错误：<br>There is no screen to be resumed matching <strong><em><br>screen -d *</em></strong><br>然后再使用恢复命令恢复就 ok 了  </p>
-<h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>优点：功能较多，可以轻易将终端划分。<br>安装<br>sudo apt-get install tmux<br><a href="https://blog.zhengmingz.top/2019/09/09/ZshTmuxVim/">使用</a></p>
-<h1 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h1><h2 id="不需要安装桌面直接进入当前显示器桌面"><a href="#不需要安装桌面直接进入当前显示器桌面" class="headerlink" title="不需要安装桌面直接进入当前显示器桌面"></a>不需要安装桌面直接进入当前显示器桌面</h2><p>缺点：桌面操作卡顿，只能一个用户进入<br><a href="https://www.jianshu.com/p/9dce33bb490c" target="_blank" rel="noopener">参考</a></p>
-<h2 id="需要安装桌面"><a href="#需要安装桌面" class="headerlink" title="需要安装桌面"></a>需要安装桌面</h2><p>缺点：桌面不够清晰，有部分程序界面打不开（如vs）<br>安装vnc4server<br><code>sudo apt-get install vnc4server</code><br>终端输入<code>vncserver</code>设置密码<br>安装gnome相关组件<br><code>sudo apt-get install gnome-core gnome-panel gnome-session gnome-settings-daemon gnome-terminal metacity nautilus</code><br>关闭已经开启的vnc会话<br>vncserver -kill :1<br>修改vnc启动文件<br>sudo vim ~/.vnc/xstartup<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup</span><br><span class="line">[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line">vncconfig -iconic &amp;</span><br><span class="line">#x-terminal-emulator -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;</span><br><span class="line">#x-window-manager &amp;</span><br><span class="line"></span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line"></span><br><span class="line">gnome-session&amp;</span><br><span class="line">gnome-panel&amp;</span><br><span class="line">gnome-settings-daemon&amp;</span><br><span class="line">gnome-terminal&amp;</span><br><span class="line">metacity&amp;</span><br><span class="line">nautilus&amp;</span><br></pre></td></tr></table></figure></p>
-<p>打开会话<br>vncserver ：1（2）</p>
-<p>客户端连接：<br>IP：5901（5902）</p>
-<p>多用户登录<br>每个用户执行vncserver，输入密码，修改启动文件<br>在终端打开会话，客户端可以使用vncviewer连接<br><a href="https://blog.csdn.net/w113691/article/details/78396896" target="_blank" rel="noopener">参考</a></p>
+<p>最后测试容器之间是否可以免密登录。</p>
+<h3 id="配置NCCL网络"><a href="#配置NCCL网络" class="headerlink" title="配置NCCL网络"></a>配置NCCL网络</h3><p>在容器中使用<code>ifconfig</code>查看使用的网卡。</p>
+<p>将这个环境变量写入到 /etc/profile 中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">#需要注意NCCL的配置,这里需要根据机器的情况指定NCCL的通讯网卡 </span><br><span class="line">export NCCL_SOCKET_IFNAME=eth0</span><br></pre></td></tr></table></figure></p>
+<p>然后使用<code>source /etc/profile</code>让其生效，worker节点执行同样的操作。</p>
+<h3 id="多机训练"><a href="#多机训练" class="headerlink" title="多机训练"></a>多机训练</h3><p>在工程目录下新建hostfile文件，写入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">manager-ip slots=8</span><br><span class="line">worker-ip slots=8</span><br></pre></td></tr></table></figure></p>
+<h3 id="执行训练"><a href="#执行训练" class="headerlink" title="执行训练"></a>执行训练</h3><p>在manager节点的工程目录下，运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deepspeed --hostfile hostfile src/train.py \</span><br><span class="line">    --deepspeed zero.json \</span><br><span class="line">    --stage sft \</span><br><span class="line">    --model_name_or_path /home/user/code/llava \</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p>
+<p>分别去两台服务器中执行<code>nvidia-smi</code>，可以看到显卡均有被使用。</p>
 
       
     </div>
@@ -311,13 +318,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2020/11/12/Install-remote-connect/">remote-connect</a></p>
+        <p><span>Title:</span><a href="/2024/12/24/AI-train/">AI-train</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
-        <p><span>Created:</span>2020-11-12, 10:09:48</p>
-        <p><span>Updated:</span>2023-09-01, 23:23:43</p>
+        <p><span>Created:</span>2024-12-24, 16:36:41</p>
+        <p><span>Updated:</span>2024-12-24, 17:11:53</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2020/11/12/Install-remote-connect/" title="remote-connect">http://blog.zhengmingz.top/2020/11/12/Install-remote-connect/</a>
-            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2020/11/12/Install-remote-connect/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2024/12/24/AI-train/" title="AI-train">http://blog.zhengmingz.top/2024/12/24/AI-train/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2024/12/24/AI-train/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -329,16 +336,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2021/01/18/Research-paper/">
-                    paper
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/06/13/Python-datatype/">
-                    dict-list-tuple-string
+                <a href="/2024/11/13/AI/">
+                    AI
                 </a>
             </div>
         
@@ -350,7 +351,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#终端"><span class="toc-number">1.</span> <span class="toc-text">终端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh"><span class="toc-number">1.1.</span> <span class="toc-text">ssh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh免密登录"><span class="toc-number">1.1.1.</span> <span class="toc-text">ssh免密登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#screen"><span class="toc-number">1.2.</span> <span class="toc-text">screen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tmux"><span class="toc-number">1.3.</span> <span class="toc-text">tmux</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程桌面"><span class="toc-number">2.</span> <span class="toc-text">远程桌面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不需要安装桌面直接进入当前显示器桌面"><span class="toc-number">2.1.</span> <span class="toc-text">不需要安装桌面直接进入当前显示器桌面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要安装桌面"><span class="toc-number">2.2.</span> <span class="toc-text">需要安装桌面</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-网络配置"><span class="toc-number">1.</span> <span class="toc-text">docker 网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化集群"><span class="toc-number">1.1.</span> <span class="toc-text">初始化集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加入集群"><span class="toc-number">1.2.</span> <span class="toc-text">加入集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建网络"><span class="toc-number">1.3.</span> <span class="toc-text">创建网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步网络"><span class="toc-number">1.4.</span> <span class="toc-text">同步网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行容器搭建"><span class="toc-number">2.</span> <span class="toc-text">运行容器搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证网络"><span class="toc-number">2.1.</span> <span class="toc-text">验证网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启容器间免密访问"><span class="toc-number">2.2.</span> <span class="toc-text">开启容器间免密访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置NCCL网络"><span class="toc-number">2.3.</span> <span class="toc-text">配置NCCL网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多机训练"><span class="toc-number">2.4.</span> <span class="toc-text">多机训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行训练"><span class="toc-number">2.5.</span> <span class="toc-text">执行训练</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -386,7 +387,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"remote-connect　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"AI-train　| zzm　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -406,15 +407,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2021/01/18/Research-paper/" title="Pre: paper">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/06/13/Python-datatype/" title="Next: dict-list-tuple-string">
+            <a href="/2024/11/13/AI/" title="Next: AI">
                 <i class="fa fa-angle-right"></i>
             </a>
         

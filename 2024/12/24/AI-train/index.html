@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="zzm">
 <meta property="og:description" content="多机多卡训练">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-12-24T09:11:53.073Z">
+<meta property="og:updated_time" content="2024-12-24T09:58:59.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AI-train">
 <meta name="twitter:description" content="多机多卡训练">
@@ -282,7 +282,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>多机多卡训练<br><a id="more"></a></p>
+        <p>多机多卡训练<br><a id="more"></a><br><a href="https://www.jianshu.com/p/2792ebf9af71" target="_blank" rel="noopener">Reference</a></p>
 <h2 id="docker-网络配置"><a href="#docker-网络配置" class="headerlink" title="docker 网络配置"></a>docker 网络配置</h2><h3 id="初始化集群"><a href="#初始化集群" class="headerlink" title="初始化集群"></a>初始化集群</h3><p>选择 server1 作为 manager 节点，在此服务器上执行初始化命令：<code>docker swarm init</code>, 执行之后可以生成加入该集群的命令。</p>
 <h3 id="加入集群"><a href="#加入集群" class="headerlink" title="加入集群"></a>加入集群</h3><p>将 server2 作为 worker 节点加入集群，进入 server2 执行join命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm join --token SWMTKN-1-5g90q48weqrtqryq4kj6ow0e8xm9wmv9o6vgqc5j320ymybd5c-8ex8j0bc40s6hgvy5ui5gl4gy 10.0.18.1:2377</span><br></pre></td></tr></table></figure></p>
 <h3 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h3><p>在manager中创建overlay网络:：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver=overlay --attachable my-net</span><br></pre></td></tr></table></figure></p>
@@ -321,7 +321,7 @@
         <p><span>Title:</span><a href="/2024/12/24/AI-train/">AI-train</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">zzm</a></p>
         <p><span>Created:</span>2024-12-24, 16:36:41</p>
-        <p><span>Updated:</span>2024-12-24, 17:11:53</p>
+        <p><span>Updated:</span>2024-12-24, 17:58:59</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2024/12/24/AI-train/" title="AI-train">http://blog.zhengmingz.top/2024/12/24/AI-train/</a>
             <span class="copy-path" data-clipboard-text="From http://blog.zhengmingz.top/2024/12/24/AI-train/　　By zzm" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
